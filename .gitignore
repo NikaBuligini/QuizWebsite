@@ -1,4 +1,4 @@
-/.classpath
-/.settings
+.classpath
 *.class
 /build
+/.settings
