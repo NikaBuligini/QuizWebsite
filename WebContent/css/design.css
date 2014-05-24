@@ -40,3 +40,207 @@ h1 {
 .sign {
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+html, body, div, h1, h2, h3, h4, h5, h6, p, img, dl,
+dt, dd, ol, ul, li, table, tr, td, form, object, embed,
+article, aside, canvas, command, details, fieldset,
+figcaption, figure, footer, group, header, hgroup, legend,
+mark, menu, meter, nav, output, progress, section, summary,
+time, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+article, aside, details, figcaption, figure, footer,
+header, hgroup, menu, nav, section {
+	display: block;
+}
+html {
+	font: 81.25% arial, helvetica, sans-serif;
+	background: #fff;
+	color: #333;
+	line-height: 1;
+	direction: ltr;
+}
+
+a {
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #222;
+	font-size: 1.54em;
+	font-weight: normal;
+	line-height: 24px;
+	margin: 0 0 .46em;
+}
+
+
+.wrapper {
+	position: relative;
+	min-height: 100%;
+}
+
+
+.header-bar {
+	height: 71px;
+	background-image: initial;
+	background-position-x: initial;
+	background-position-y: initial;
+	background-size: initial;
+	background-repeat-x: initial;
+	background-repeat-y: initial;
+	background-attachment: initial;
+	background-origin: initial;
+	background-clip: initial;
+	background-color: rgb(241, 241, 241);
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: rgb(229, 229, 229);
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+.registration-header-content {
+	padding-top: 0px;
+	padding-right: 44px;
+	padding-bottom: 0px;
+	padding-left: 44px;
+}
+.signin-button {
+	margin-top: 22px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	float: right;
+}
+.signin-button a {
+	font-size: 13px;
+	font-weight: normal;
+}
+.signin-submit-button {
+	border: 1px solid #3079ed;
+	text-shadow: 0 1px rgba(0,0,0,0.1);
+	background-color: #4d90fe;
+	background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed);
+}
+.signin-submit {
+	display: inline-block;
+	color: white;
+	min-width: 46px;
+	text-align: center;
+	height: 27px;
+	padding: 0 8px;
+	line-height: 27px;
+	border-radius: 2px;
+	transition: all 0.218s;
+	-webkit-user-select: none;
+	cursor: default;
+}
+
+
+.signuppage {
+	margin: 0 auto;
+	width: 950px;
+	padding-top: 23px;
+	padding-bottom: 100px;
+}
+.signuppage h1 {
+	text-align: center;
+	font-family: initial;
+	color: #555;
+	font-size: 38px;
+	font-weight: 300;
+	margin-top: 27px;
+	margin-bottom: 50px;
+}
+.signuppage .sign-up {
+	margin: 0 auto;
+	width: 362px;
+}
+.signuppage .sign-up-box {
+	border: 0;
+	margin: 0;
+	padding: 25px;
+	background: #f1f1f1;
+}
+.signuponepage .form-element {
+	position: relative;
+	margin: 0 0 1.5em;
+}
+.signuponepage .form-element label {
+	display: inline-block;
+	width: 100%;
+	position: relative;
+}
+.form-element .firstname {
+	width: 150px;
+	margin-right: 5px;
+}
+.form-element .placeholder-text {
+	position: absolute;
+	top: 8px;
+	left: 10px;
+	color: #999;
+	display: none;
+}
+.grey-text {
+	color: #999;
+	left: 4px;
+}
+.signup-height {
+	height: 30px;
+}
+.signup-input input {
+	height: 21px;
+	width: 100%;
+}
+.form-element div {
+	position: relative;
+	margin: 0 0 1.1em;
+}
+.form-element strong {
+	line-height: 25px;
+}
