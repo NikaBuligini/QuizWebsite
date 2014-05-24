@@ -5,10 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * imisatvis rom davalebis am nawilma imushaos sachiroa MyDBInfo zustad iseti
- * rogoric mesame davalebashi gvqonda. me chem mier daweril MyDBInfo.java fails
- * ar gamovgzavni
- * @author Nikoloz Buligini
+ * imisatvis rom am nawilma imushaos sachiroa MyDBInfo zustad iseti
+ * rogoric mesame davalebashi gvqonda.
  */
 public class DBConnection {
 	
