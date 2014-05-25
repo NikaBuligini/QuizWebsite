@@ -1,0 +1,89 @@
+@CHARSET "utf-8";
+
+
+.header-bar {
+	height: 71px;
+	background-image: initial;
+	background-position-x: initial;
+	background-position-y: initial;
+	background-size: initial;
+	background-repeat-x: initial;
+	background-repeat-y: initial;
+	background-attachment: initial;
+	background-origin: initial;
+	background-clip: initial;
+	background-color: rgb(241, 241, 241);
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: rgb(229, 229, 229);
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+.registration-header-content {
+	padding-top: 0px;
+	padding-right: 44px;
+	padding-bottom: 0px;
+	padding-left: 44px;
+}
+.signin-button {
+	margin-top: 22px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	float: right;
+}
+.signin-button a {
+	font-size: 13px;
+	font-weight: normal;
+}
+.signin-submit-button {
+	border: 1px solid #3079ed;
+	text-shadow: 0 1px rgba(0,0,0,0.1);
+	background-color: #4d90fe;
+	background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed);
+}
+.signin-submit {
+	display: inline-block;
+	color: white;
+	min-width: 46px;
+	text-align: center;
+	height: 27px;
+	padding: 0 8px;
+	line-height: 27px;
+	border-radius: 2px;
+	transition: all 0.218s;
+	-webkit-user-select: none;
+	cursor: default;
+}
+
+
+
+
+
+
+
+
+.footer-bar {
+	position: absolute;
+	bottom: 0;
+	height: 35px;
+	width: 100%;
+	border-top: 1px solid #ebebeb;
+	overflow: hidden;
+}
+.content {
+	padding: 0 44px;
+}
+.footer {
+	padding-top: 18px;
+	font-size: .85em;
+	white-space: nowrap;
+	line-height: 0;
+}
+.footer ul li {
+	display: inline;
+	padding: 0 1.5em 0 0;
+}
+.footer a {
+	color: #333;
+}

@@ -125,62 +125,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-.header-bar {
-	height: 71px;
-	background-image: initial;
-	background-position-x: initial;
-	background-position-y: initial;
-	background-size: initial;
-	background-repeat-x: initial;
-	background-repeat-y: initial;
-	background-attachment: initial;
-	background-origin: initial;
-	background-clip: initial;
-	background-color: rgb(241, 241, 241);
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-	border-bottom-color: rgb(229, 229, 229);
-	overflow-x: hidden;
-	overflow-y: hidden;
-}
-.registration-header-content {
-	padding-top: 0px;
-	padding-right: 44px;
-	padding-bottom: 0px;
-	padding-left: 44px;
-}
-.signin-button {
-	margin-top: 22px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-	margin-left: 0px;
-	float: right;
-}
-.signin-button a {
-	font-size: 13px;
-	font-weight: normal;
-}
-.signin-submit-button {
-	border: 1px solid #3079ed;
-	text-shadow: 0 1px rgba(0,0,0,0.1);
-	background-color: #4d90fe;
-	background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed);
-}
-.signin-submit {
-	display: inline-block;
-	color: white;
-	min-width: 46px;
-	text-align: center;
-	height: 27px;
-	padding: 0 8px;
-	line-height: 27px;
-	border-radius: 2px;
-	transition: all 0.218s;
-	-webkit-user-select: none;
-	cursor: default;
-}
-
-
 .signuppage {
 	margin: 0 auto;
 	width: 950px;
@@ -230,12 +174,9 @@ h1, h2, h3, h4, h5, h6 {
 	color: #999;
 	left: 4px;
 }
-.signup-height {
-	height: 30px;
-}
 .signup-input input {
 	height: 21px;
-	width: 100%;
+	width: 97%;
 }
 .form-element div {
 	position: relative;
@@ -243,4 +184,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 .form-element strong {
 	line-height: 25px;
+}
+.form-element span {
+	margin: .5em 0 0;
+	display: block;
+	color: #dd4b39;
+	line-height: 17px;
+}
+.signup-button {
+	text-align: right;
+	margin: 0;
+}
+.signup-button input {
+	margin-top: 20px;
+	border: 1px solid #3079ed;
+	text-shadow: 0 1px rgba(0,0,0,0.1);
+	background-color: #4d90fe;
+	background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed);
+	color: white;
+	height: 27px;
+	width: 60px;
+}
+.half-input {
+	height: 21px;
+	width: 95%;
 }
