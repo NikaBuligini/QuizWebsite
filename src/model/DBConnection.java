@@ -15,8 +15,6 @@ public class DBConnection {
 	static String server = MyDBInfo.MYSQL_DATABASE_SERVER;
 	static String database = MyDBInfo.MYSQL_DATABASE_NAME;
 	
-	static final String TABLE_NAME = "products";
-	
 	private Connection con;
 	
 	/**

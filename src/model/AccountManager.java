@@ -5,16 +5,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class AccountManager {
+public class AccountManager implements WebVariables {
 	
 	public static final int WRONG_PARAMS = 0;
 	public static final int FAILED = 1;
 	public static final int ADDED = 2;
-	
-	private static final String TABLE_NAME = "users";
-	private static final String USERNAME_COLUMN_NAME = "user";
-	private static final String PASSWORD_COLUMN_NAME = "password";
-	private static final String USERS_COLUMNS = "(username, password)";
 	
 	
 	public int addUser(Connection con, User e, String password){
@@ -43,7 +38,7 @@ public class AccountManager {
 		
 		try {
 			while (rs.next()) {
-				String pass = rs.getString(PASSWORD_COLUMN_NAME);
+				String pass = rs.getString(PASSWORD_COL);
 				if (password.equals(pass)){
 					stmt.close();
 					rs.close();
@@ -75,7 +70,13 @@ public class AccountManager {
 	 * amistvis axali shezgudvebis damateba shegvidzlia
 	 */
 	private boolean isValid(User e){
-		return e.getUsername().equals("") || e.getUsername() == null;
+		return e.getUsername().equals("") || e.getUsername() == null ||
+				e.getEMail().equals("") || e.getEMail() == null ||
+				e.getFirstName().equals("") || e.getFirstName() == null ||
+				e.getLastName().equals("") || e.getLastName() == null ||
+				e.getQuestion().equals("") || e.getQuestion() == null ||
+				e.getAnswer().equals("") || e.getAnswer() == null ||
+				e.getBirthday().equals("") || e.getBirthday() == null;
 	}
 	
 	private boolean baseContainsUsername(Connection con, String username){
@@ -114,7 +115,7 @@ public class AccountManager {
 	}
 	
 	private String selectQueryForUsername(String username){
-		return "SELECT * FROM " + TABLE_NAME + " WHERE " + USERNAME_COLUMN_NAME 
+		return "SELECT * FROM " + USERS_TABLE + " WHERE " + USERNAME_COL 
 				+ "='" + username + "'";
 	}
 	
@@ -139,7 +140,7 @@ public class AccountManager {
 	}
 	
 	private String insertQuery(User e, String password){
-		return "INSERT INTO " + TABLE_NAME + " " + USERS_COLUMNS + " VALUES (" 
+		return "INSERT INTO " + USERS_TABLE + " " + USERS_COLUMNS + " VALUES (" 
 				+ e.getUsername() + ", " + password + ")";
 	}
 }

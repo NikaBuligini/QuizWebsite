@@ -14,18 +14,14 @@ import javax.servlet.http.HttpSession;
 import model.AccountManager;
 import model.DBConnection;
 import model.User;
+import model.WebVariables;
 
 /**
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet implements WebVariables {
 	private static final long serialVersionUID = 1L;
-	
-	private static final String USER_NAME = "user";
-	private static final String PASSWORD_NAME = "pass";
-	private static final String CURR_USER = "currUser";
-	private static final String IS_LOGGED = "logged";
 	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -49,8 +45,8 @@ public class LoginServlet extends HttpServlet {
 		ServletContext context = getServletConfig().getServletContext();
 		DBConnection db = (DBConnection) context.getAttribute(ServletListener.CONNECTION);
 		
-		String username = request.getParameter(USER_NAME);
-		String password = request.getParameter(PASSWORD_NAME);
+		String username = request.getParameter(USERNAME);
+		String password = request.getParameter(PASSWORD);
 		
 		AccountManager manager = new AccountManager();
 		boolean contains = manager.contains(db.getConnection(), username, password);

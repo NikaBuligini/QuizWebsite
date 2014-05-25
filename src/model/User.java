@@ -11,6 +11,7 @@ public class User {
 	private String l_name;
 	private String birthday;
 	private String eMail;
+	private String gender;
 	private String question;
 	private String answer;
 	
@@ -27,12 +28,13 @@ public class User {
 	 * @param answer	kitxvaze pasuxi
 	 */
 	public User(String user, String firstName, String lastName, String birthday,
-			String mail, String question, String answer){
+			String mail, String gender, String question, String answer){
 		this.userName = user;
 		setFirstName(firstName);
 		setLastName(lastName);
 		setBirthday(birthday);
 		setEMail(mail);
+		setGender(gender);
 		setQuestion(question, answer);
 	}
 	
@@ -101,6 +103,15 @@ public class User {
 	 */
 	public void setEMail(String eMail){
 		this.eMail = eMail;
+	}
+	
+	
+	public String getGender(){
+		return gender;
+	}
+	
+	private void setGender(String gender){
+		this.gender = gender;
 	}
 	
 	

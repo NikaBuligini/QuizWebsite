@@ -6,16 +6,15 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import model.DBConnection;
+import model.WebVariables;
 
 /**
  * Application Lifecycle Listener implementation class ServletListener
  * mxolod konteqstis lifecycle
  */
 @WebListener
-public class ServletListener implements ServletContextListener {
+public class ServletListener implements ServletContextListener, WebVariables {
 
-	static final String CONNECTION = "connection";
-	
 	private DBConnection db;
 	
     /**
@@ -31,7 +30,7 @@ public class ServletListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
     	db = new DBConnection();
     	ServletContext context = sce.getServletContext();
-    	context.setAttribute(CONNECTION, db);
+    	context.setAttribute(CONNECTION, db.getConnection());
     }
 
 	/**
