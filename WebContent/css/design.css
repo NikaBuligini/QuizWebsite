@@ -140,6 +140,13 @@ h1, h2, h3, h4, h5, h6 {
 	margin-top: 27px;
 	margin-bottom: 50px;
 }
+.errorMessage {
+	text-align: center;
+	font-family: initial;
+	color: #dd4b39;
+	font-size: 20px;
+	margin-bottom: 18px;
+}
 .signuppage .sign-up {
 	margin: 0 auto;
 	width: 362px;
@@ -174,7 +181,7 @@ h1, h2, h3, h4, h5, h6 {
 	color: #999;
 	left: 4px;
 }
-.signup-input input {
+.signup-input input, select {
 	height: 21px;
 	width: 97%;
 }
@@ -184,6 +191,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 .form-element strong {
 	line-height: 25px;
+}
+.form-element span {
+	margin: .5em 0 0;
+	display: block;
+	color: #dd4b39;
+	line-height: 17px;
 }
 .form-element span {
 	margin: .5em 0 0;

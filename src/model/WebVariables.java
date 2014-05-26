@@ -4,9 +4,11 @@ public interface WebVariables {
 	
 	// Tables
 	static final String USERS_TABLE = "users";
-	
 	static final String USERNAME_COL = "user";
 	static final String PASSWORD_COL = "password";
+	
+	static final String QUESTIONS_TABLE = "questions";
+	static final String QUESTION_COL = "Question";
 	
 	
 	// Context Attributes
@@ -18,7 +20,7 @@ public interface WebVariables {
 	
 	
 	// SQL Select Variables
-	static final String USERS_COLUMNS = "(" + USERNAME_COL + ", " + PASSWORD_COL + ")";
+	static final String USERS_COLUMNS = "(user, password)";
 	
 	
 	// Request Parameters
@@ -34,6 +36,8 @@ public interface WebVariables {
 	
 	static final String PASS1 = "pass1";
 	static final String PASS2 = "pass2";
+	
+	static final String REGISTRATION_INFO = "reg_info";
 	
 	
 	// Session Attributes

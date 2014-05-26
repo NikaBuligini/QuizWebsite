@@ -50,36 +50,27 @@ public class RegistrationServlet extends HttpServlet implements WebVariables{
 			RequestDispatcher dispatcher = request.getRequestDispatcher("registration.jsp");
 			dispatcher.forward(request, response);
 		}
+		
 		String gender = request.getParameter(GENDER);
 		String question = request.getParameter(QUESTION);
 		String answer = request.getParameter(ANSWER);
 		
 		
-		
 		User e = new User(username, firstname, lastname, birthday,
 				eMail, gender, question, answer);
 		printUser(e, pass1);
-//		AccountManager manager = new AccountManager();
-//		int result = manager.addUser(con, e, pass1);
-//		switch (result) {
-//		case AccountManager.WRONG_PARAMS:
-//			
-//			response.sendRedirect("failed.html");
-//			break;
-//			
-//		case AccountManager.FAILED:
-//			
-//			response.sendRedirect("failed.html");
-//			break;
-//		
-//		case AccountManager.ADDED:
-//			
-//			response.sendRedirect("/login");
-//			break;
-//			
-//		default:
-//			break;
-//		}
+		AccountManager manager = new AccountManager();
+		int result = manager.addUser(con, e, pass1);
+		
+		if (result == AccountManager.FAILED) {
+			request.setAttribute(REGISTRATION_INFO, "Username " + e.getUsername() + " is already used.");
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("registration.jsp");
+			dispatcher.forward(request, response);
+		} else if (result == AccountManager.ADDED) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	

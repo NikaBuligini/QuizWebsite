@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.Connection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -27,13 +28,6 @@ public class LoginServlet extends HttpServlet implements WebVariables {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		
-		boolean isLogged = (boolean) session.getAttribute(IS_LOGGED);
-		if (isLogged){
-			response.sendRedirect("/profile");
-		}
-		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -43,13 +37,13 @@ public class LoginServlet extends HttpServlet implements WebVariables {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ServletContext context = getServletConfig().getServletContext();
-		DBConnection db = (DBConnection) context.getAttribute(ServletListener.CONNECTION);
+		Connection con = (Connection) context.getAttribute(CONNECTION);
 		
 		String username = request.getParameter(USERNAME);
 		String password = request.getParameter(PASSWORD);
 		
 		AccountManager manager = new AccountManager();
-		boolean contains = manager.contains(db.getConnection(), username, password);
+		boolean contains = manager.contains(con, username, password);
 		if (contains){
 			HttpSession session = request.getSession();
 			User curr = manager.getUser(username);
