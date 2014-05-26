@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.AccountManager;
-import model.DBConnection;
 import model.User;
 import model.WebVariables;
 
@@ -53,7 +52,8 @@ public class LoginServlet extends HttpServlet implements WebVariables {
 			response.sendRedirect("profile");
 		} else {
 			// info rom ragac arasworia
-			RequestDispatcher dispatcher = request.getRequestDispatcher("failed.html");
+			request.setAttribute(WebVariables.SIGNIN_INFO, "Username or password is incorrect.");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
 			dispatcher.forward(request, response);
 		}
 	}

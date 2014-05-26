@@ -4,7 +4,7 @@
 <html>
 <body>
 	<div class="footer-bar">
-		<div class="footer content">
+		<div class="footer foot-content">
 			<ul>
 				<li>QuizWebsite</li>
 				<li>

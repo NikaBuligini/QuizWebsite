@@ -41,20 +41,17 @@
 							<div>
 								<table>
 									<tbody>
-										<tr class="grey-text">
+										<tr>
 											<td>
-												<label>First Name</label>
-											</td>
-											<td>
-												<label>Last Name</label>
+												<strong>Name</strong>
 											</td>
 										</tr>
 										<tr>
 											<td>
-												<input type="text" name=<%=WebVariables.FIRSTNAME %> class="half-input">
+												<input id="First" type="text" name=<%=WebVariables.FIRSTNAME %> placeholder="First">
 											</td>
 											<td>
-												<input type="text" name=<%=WebVariables.LASTNAME %> class="half-input">
+												<input id="Last" type="text" name=<%=WebVariables.LASTNAME %> placeholder="Last">
 											</td>
 										</tr>
 									</tbody>

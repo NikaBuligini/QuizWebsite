@@ -38,6 +38,7 @@ public interface WebVariables {
 	static final String PASS2 = "pass2";
 	
 	static final String REGISTRATION_INFO = "reg_info";
+	static final String SIGNIN_INFO = "sign_info";
 	
 	
 	// Session Attributes
