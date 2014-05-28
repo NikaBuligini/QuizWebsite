@@ -33,7 +33,7 @@
 					<span id="alert" class="alert"><%=info %></span>
 					<input id="SignIn" type="button" onclick="check(this.form)" value="Sign In">
 					<label>
-						<input name="persistent" type="checkbox" value="no">
+						<input name=<%=WebVariables.PERSISTENT %> type="checkbox" value="yes">
 						<span>Stay signed in</span>
 					</label>
 					<a href="/">Need help?</a>

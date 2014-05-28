@@ -7,11 +7,14 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.AccountManager;
+import model.SQLManager;
 import model.User;
 import model.WebVariables;
 
@@ -26,8 +29,32 @@ public class RegistrationServlet extends HttpServlet implements WebVariables{
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("registration.jsp");
-		dispatcher.forward(request, response);
+		HttpSession session = request.getSession();
+		String logged = (String) session.getAttribute(IS_LOGGED);
+		if (logged != null)
+			response.sendRedirect("profile");
+		
+		ServletContext context = getServletConfig().getServletContext();
+		Connection con = (Connection) context.getAttribute(CONNECTION);
+		
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null) {
+			for (Cookie c : cookies) {
+				if (c.getName().equals(COOKIE_NAME)) {
+					if (SQLManager.containsCookie(con, c.getValue())){
+						session.setAttribute(IS_LOGGED, c.getValue());
+						response.sendRedirect("profile");
+					}
+				}
+			}
+		}
+		
+		
+		logged = (String) session.getAttribute(IS_LOGGED);
+		if (logged == null) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	/**

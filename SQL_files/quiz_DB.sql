@@ -10,6 +10,38 @@ create table users(
 );
 
 
+create table security_questions (
+	ID int auto_increment not null primary key,
+	question varchar(50)
+);
+
+
+create table additional_info(
+	userID int,
+	email varchar(40),
+	firstName varchar(20),
+	lastName varchar(40),
+	birthday datetime,
+	gender int,
+	questionID int,
+	answer varchar(30),
+	PRIMARY KEY (userID),
+	FOREIGN KEY (userID) REFERENCES users (ID) ON DELETE CASCADE,
+	FOREIGN KEY (questionID) REFERENCES security_questions (ID),
+	UNIQUE (email)
+);
+
+
+create table cookies (
+    cookie_value varchar(60),
+    userID int,
+    PRIMARY KEY (cookie_value),
+    FOREIGN KEY (userID)
+        REFERENCES users (ID)
+        ON DELETE CASCADE
+);
+
+
 create table friends(
 	userID int,
 	friendID int,
@@ -23,25 +55,6 @@ create table achivements(
 	description varchar(60),
 	name varchar(30),
 	imagefile CHAR(60)
-);
-
-create table securityQuestion(
-	ID int auto_increment not null primary key,
-	question varchar(50)
-);
-
-
-create table additionalInfo(
-	userID int,
-	email varchar(40),
-	phone varchar(40),
-	firstName varchar(20),
-	lastName varchar(40),
-	birthdate datetime,
-	questionID int,
-	answer varchar(30),
-	foreign key FK_additionalInfo_users(userID) references users(ID),
-	foreign key FK_additionalInfo_securityQuestion(questionID) references securityQuestion(ID)
 );
 
 

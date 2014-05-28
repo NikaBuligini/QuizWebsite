@@ -31,21 +31,17 @@
 			</div>
 			<div class="sign-up">
 				<div class="sign-up-box">
-					<form name="signup" action="registration" method="post">
+					<form name="signup" action="registration" method="post" autocomplete="off">
 						<div class="form-element">
 							<div class="signup-input">
 								<strong>Username</strong><br>
-								<input type="text" name=<%=WebVariables.USERNAME %> required>
+								<input type="text" name=<%=WebVariables.USERNAME %>>
 								<span id="useralert"></span>
 							</div>
 							<div>
+								<strong>Name</strong>
 								<table>
 									<tbody>
-										<tr>
-											<td>
-												<strong>Name</strong>
-											</td>
-										</tr>
 										<tr>
 											<td>
 												<input id="First" type="text" name=<%=WebVariables.FIRSTNAME %> placeholder="First">

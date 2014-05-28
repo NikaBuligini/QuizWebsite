@@ -59,6 +59,7 @@ public class AccountManager implements WebVariables {
 	
 	
 	public User getUser(String username){
+		//
 		return null;
 	}
 	
@@ -122,9 +123,7 @@ public class AccountManager implements WebVariables {
 	}
 	
 	private String insertQuery(String table, User e, String password){
-		String query = "INSERT INTO " + table + " " + USERS_COLUMNS + " VALUES ('" 
+		return "INSERT INTO " + table + " " + USERS_COLUMNS + " VALUES ('" 
 				+ e.getUsername() + "', '" + password + "')";
-		System.out.println(query);
-		return query;
 	}
 }
