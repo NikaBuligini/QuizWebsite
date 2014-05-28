@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.Connection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -12,13 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.AccountManager;
-import model.DBConnection;
+import model.WebVariables;
 
 /**
  * Servlet implementation class PassRecovery
  */
 @WebServlet("/PassRecovery")
-public class PassRecovery extends HttpServlet {
+public class PassRecovery extends HttpServlet implements WebVariables {
 	private static final long serialVersionUID = 1L;
 	private static final String TEXT = "text";
        
@@ -42,11 +43,11 @@ public class PassRecovery extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ServletContext context = getServletConfig().getServletContext();
-		DBConnection db = (DBConnection) context.getAttribute(ServletListener.CONNECTION);
+		Connection con = (Connection) context.getAttribute(CONNECTION);
 		
 		String text = request.getParameter(TEXT);
 		AccountManager manager = new AccountManager();
-		String QuestionAndAnswer = manager.getRecoveryQuestionAndAnswer(db.getConnection(), text);
+		String QuestionAndAnswer = manager.getRecoveryQuestionAndAnswer(con, text);
 		RequestDispatcher dispatcher;
 		System.out.println("text is : "+QuestionAndAnswer);
 		if(QuestionAndAnswer.equals("")){

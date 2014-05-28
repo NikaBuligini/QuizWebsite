@@ -5,25 +5,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class AccountManager {
+public class AccountManager implements WebVariables {
 	
-	public static final int WRONG_PARAMS = 0;
+//	public static final int WRONG_PARAMS = 0;	//agar viyenebt
 	public static final int FAILED = 1;
 	public static final int ADDED = 2;
 	
-	private static final String TABLE_NAME = "users";
-	private static final String TABLE_OF_INFO = "additionalInfo";
-	private static final String EMAIL_COLUMN_NAME = "email";
-	private static final String USERNAME_COLUMN_NAME = "user";
-	private static final String PASSWORD_COLUMN_NAME = "password";
-	private static final String USERS_COLUMNS = "(username, password)";
-	
-	private Statement stmt = null;
-	private ResultSet rs = null;
+//	private Statement stmt = null;
+//	private ResultSet rs = null;
 	
 	public int addUser(Connection con, User e, String password){
-		if (isValid(e))
-			return WRONG_PARAMS;
 		if (baseContainsUsername(con, e.getUsername()))
 			return FAILED;
 		
@@ -33,7 +24,10 @@ public class AccountManager {
 	
 	
 	public boolean contains(Connection con, String username, String password){
-		String SQLQuery = selectQueryForUsername(username);
+		String SQLQuery = selectQueryForUsername(USERS_TABLE, username);
+		
+		Statement stmt = null;
+		ResultSet rs = null;
 		
 		try {
 			stmt = con.createStatement();
@@ -43,14 +37,12 @@ public class AccountManager {
 			ex.printStackTrace();
 		}
 		
+		boolean contains = false;
 		try {
 			while (rs.next()) {
-				String pass = rs.getString(PASSWORD_COLUMN_NAME);
-				if (password.equals(pass)){
-					stmt.close();
-					rs.close();
-					return true;
-				}
+				String pass = rs.getString(PASSWORD_COL);
+				 	if (password.equals(pass))
+				 		contains = true;
 			}
 		} catch (SQLException e1) {
 			System.out.println("Exception in contains method");
@@ -65,7 +57,7 @@ public class AccountManager {
 			e1.printStackTrace();
 		}
 		
-		return false;
+		return contains;
 	}
 	
 	
@@ -73,15 +65,12 @@ public class AccountManager {
 		return null;
 	}
 	
-	/*
-	 * amistvis axali shezgudvebis damateba shegvidzlia
-	 */
-	private boolean isValid(User e){
-		return e.getUsername().equals("") || e.getUsername() == null;
-	}
 	
 	private boolean baseContainsUsername(Connection con, String username){
-		String SQLQuery = selectQueryForUsername(username);
+		String SQLQuery = selectQueryForUsername(USERS_TABLE, username);
+		
+		Statement stmt = null;
+		ResultSet rs = null;
 		
 		try {
 			stmt = con.createStatement();
@@ -91,12 +80,10 @@ public class AccountManager {
 			e.printStackTrace();
 		}
 		
+		boolean contains = false;
 		try {
-			while (rs.next()){
-				stmt.close();
-				rs.close();
-				return true;
-			}
+			while (rs.next())
+				contains = true;
 		} catch (SQLException e) {
 			System.out.println("Exception while using rs.next()");
 			e.printStackTrace();
@@ -110,16 +97,19 @@ public class AccountManager {
 			e.printStackTrace();
 		}
 		
-		return false;
+		return contains;
 	}
 	
-	private String selectQueryForUsername(String username){
-		return "SELECT * FROM " + TABLE_NAME + " WHERE " + USERNAME_COLUMN_NAME 
+	private String selectQueryForUsername(String table, String username){
+		return "SELECT * FROM " + table + " WHERE " + USERNAME_COL 
 				+ "='" + username + "'";
 	}
 	
 	private boolean baseContainsEmail(Connection con, String Email){
 		String SQLQuery = selectQueryForEmail(Email);
+		
+		Statement stmt = null;
+		ResultSet rs = null;
 		
 		try {
 			stmt = con.createStatement();
@@ -154,7 +144,7 @@ public class AccountManager {
 	
 	private String selectQueryForEmail(String Email) {
 		
-		return "SELECT * FROM " + TABLE_OF_INFO + " WHERE " + EMAIL_COLUMN_NAME 
+		return "SELECT * FROM " + USER_INFO_TABLE + " WHERE " + INFO_EMAIL_COL 
 				+ " ='" + Email + "'";
 	}
 
@@ -172,6 +162,9 @@ public class AccountManager {
 		else 
 			return "";
 
+		Statement stmt = null;
+		ResultSet rs = null;
+		
 		try {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(SQLQuery);
@@ -196,16 +189,16 @@ public class AccountManager {
 
 	private String selectQueryForQuestion(String emailOrUsername, boolean email) {
 		if(email)
-			return "Select username, pass, quesiton, answer from " + TABLE_OF_INFO + " "
-					+ "join questions on " + TABLE_OF_INFO + ".questionID = question.ID WHERE " + EMAIL_COLUMN_NAME + " = '" + emailOrUsername + "'";
+			return "Select username, pass, quesiton, answer from " + USER_INFO_TABLE + " "
+					+ "join questions on " + USER_INFO_TABLE + ".questionID = question.ID WHERE " + INFO_EMAIL_COL + " = '" + emailOrUsername + "'";
 		else
-			return "Select username, pass, question, answer from " + TABLE_OF_INFO + " join " + TABLE_NAME + " on " + TABLE_NAME +".ID = " + TABLE_OF_INFO + ".userID"
-				+ " join questions on " + TABLE_OF_INFO + ".questionID = question.ID WHERE " + USERNAME_COLUMN_NAME + " = '" + emailOrUsername + "'";
+			return "Select username, pass, question, answer from " + USER_INFO_TABLE + " join " + USERS_TABLE + " on " + USERS_TABLE +".ID = " + USER_INFO_TABLE + ".userID"
+				+ " join questions on " + USER_INFO_TABLE + ".questionID = question.ID WHERE " + USERNAME_COL + " = '" + emailOrUsername + "'";
 	}
 
 
 	private void addNewUser(Connection con, User e, String password){
-		String SQLQuery = insertQuery(e, password);
+		String SQLQuery = insertQuery(USERS_TABLE, e, password);
 		
 		Statement stmt = null;
 		try {
@@ -224,8 +217,8 @@ public class AccountManager {
 		}
 	}
 	
-	private String insertQuery(User e, String password){
-		return "INSERT INTO " + TABLE_NAME + " " + USERS_COLUMNS + " VALUES (" 
-				+ e.getUsername() + ", " + password + ")";
+	private String insertQuery(String table, User e, String password){
+		return "INSERT INTO " + table + " " + USERS_COLUMNS + " VALUES ('" 
+				+ e.getUsername() + "', '" + password + "')";
 	}
 }

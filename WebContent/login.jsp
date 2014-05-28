@@ -36,7 +36,7 @@
 						<input name=<%=WebVariables.PERSISTENT %> type="checkbox" value="yes">
 						<span>Stay signed in</span>
 					</label>
-					<a href="/">Need help?</a>
+					<a href="passRecovery.html">Need help?</a>
 				</form>
 			</div>
 			<div class="signin-footer">
