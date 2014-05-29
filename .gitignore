@@ -3,3 +3,4 @@ MyDBInfo.java
 *.class
 /build
 /.settings
+/bin
