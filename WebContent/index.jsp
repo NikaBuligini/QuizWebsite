@@ -17,7 +17,7 @@ if (CookiesManager.cookieRedirect(request, response, con))
 </head>
 <body>
 	<div class="wrapper">
-		<jsp:include page="JSP-admin/sign-in-header.jsp"></jsp:include>
+		<jsp:include page="/JSP/Footer-header/sign-in-header.jsp"></jsp:include>
 		<div>
 			<br>
 			<br>
@@ -30,7 +30,7 @@ if (CookiesManager.cookieRedirect(request, response, con))
 			<br>
 			<br>
 		</div>
-		<jsp:include page="JSP-admin/unlogged-footer.jsp"></jsp:include>
+		<jsp:include page="/JSP/Footer-header/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>
