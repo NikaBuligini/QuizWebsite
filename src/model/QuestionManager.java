@@ -1,80 +1,34 @@
 package model;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
-public class QuestionManager implements WebVariables{
+public class QuestionManager extends Manager {
 	
-	private static String SELECT_ALL = "SELECT * FROM " + SEQ_QUESTIONS_TABLE;
-	private static String SELECT_ID = "SELECT ID FROM " + SEQ_QUESTIONS_TABLE;
+	static final String TABLE = "security_questions";
+	static final String ID_C = "ID";
+	static final String QUESTIONS_C = "question";
+	static final String COLUMNS = "(" + QUESTIONS_C + ")";
+	static final int N_COL = 2;
 	
-	public static ArrayList<String> getQuestions(Connection con) {
-		String SQLQuery = SELECT_ALL;
+	public static ArrayList<String> getAll(Connection con){
+		ArrayList<ArrayList<Object>> list = getAllRows(con, TABLE, N_COL);
 		
-		Statement stmt = null;
-		ResultSet rs = null;
-		try {
-			stmt = con.createStatement();
-			rs = stmt.executeQuery(SQLQuery);
-		} catch (SQLException ex) {
-			System.out.println("Exception: Question Manager, getQuestions, Statment or ResultSet");
-			ex.printStackTrace();
-		}
-		
-		ArrayList<String> list = new ArrayList<String>();
-		try {
-			while(rs.next())
-				list.add(rs.getString(SEQ_QUESTION_COL));
-		} catch (SQLException e) {
-			System.out.println("Exception: Question Manager, getQuestions, while(rs.next())");
-			e.printStackTrace();
-		}
-		
-		try {
-			stmt.close();
-			rs.close();
-		} catch (SQLException e1) {
-			System.out.println("Exception: Question Manager, getQuestions, close()");
-			e1.printStackTrace();
-		}
-		
-		return list;
-	}
-	
-	public static int getQuestionID(Connection con, String question) {
-		String SQLQuery = SELECT_ID + " WHERE " + SEQ_QUESTION_COL + "='" + question + "'";
-		
-		Statement stmt = null;
-		ResultSet rs = null;
-		try {
-			stmt = con.createStatement();
-			rs = stmt.executeQuery(SQLQuery);
-		} catch (SQLException ex) {
-			System.out.println("Exception: Question Manager, getQuestionID, Statment or ResultSet");
-			ex.printStackTrace();
-		}
-		
-		int result = 0;
-		try {
-			while (rs.next())
-				result = rs.getInt(SEQ_QUESTION_COL);
-		} catch (SQLException e) {
-			System.out.println("Exception: Question Manager, getQuestionID, while(rs.next())");
-			e.printStackTrace();
-		}
-		
-		try {
-			stmt.close();
-			rs.close();
-		} catch (SQLException e1) {
-			System.out.println("Exception: Question Manager, getQuestionID, close()");
-			e1.printStackTrace();
-		}
+		ArrayList<String> result = new ArrayList<String>();
+		for (int i=0; i<list.size(); i++)
+			result.add((String)list.get(i).get(1));
 		
 		return result;
+	}
+	
+	
+	public static int getID(Connection con, String question){
+		return getSingleInt(con, TABLE, QUESTIONS_C, question, ID_C);
+	}
+	
+	
+	public static String getQuestion(Connection con, int ID){
+		return getSingleString(con, TABLE, ID_C, ID, QUESTIONS_C);
 	}
 	
 }

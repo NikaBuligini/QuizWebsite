@@ -116,7 +116,7 @@ h1, h2, h3, h4, h5, h6 {
 	position: relative;
 	box-sizing: border-box;
 }
-input[type=email], input[type=number], input[type=password], input[type=tel], input[type=text], input[type=url] {
+input[type=email], input[type=password], input[type=text] {
 	margin: 0;
 	background: #fff;
 	border: 1px solid #d9d9d9;
@@ -247,7 +247,7 @@ input[type=checkbox] {
 	color: #dd4b39;
 	line-height: 17px;
 }
-.form-element #First{
+.form-element input[type=email], input[type=password], input[type=text] {
 	padding: 0 8px;
 	direction: ltr;
 	font-size: 16px;
@@ -257,18 +257,8 @@ input[type=checkbox] {
 	position: relative;
 	box-sizing: border-box;
 	height: 31px;
-	width: 95%;
 }
-.form-element #Last {
-	padding: 0 8px;
-	direction: ltr;
-	font-size: 16px;
-	display: block;
-	margin-bottom: 0px;
-	z-index: 1;
-	position: relative;
-	box-sizing: border-box;
-	height: 31px;
+.form-element #First, #Last{
 	width: 95%;
 }
 .signup-button {

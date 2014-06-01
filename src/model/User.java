@@ -6,13 +6,12 @@ package model;
 public class User {
 	
 	// cvladebi
-	private String userName;
 	private String f_name;
 	private String l_name;
 	private String birthday;
 	private String eMail;
-	private String gender;
-	private String question;
+	private int gender;
+	private int question;
 	private String answer;
 	
 	
@@ -27,24 +26,16 @@ public class User {
 	 * @param question	kitxva im shemtxvevistvis tu daaviwyda paroli
 	 * @param answer	kitxvaze pasuxi
 	 */
-	public User(String user, String firstName, String lastName, String birthday,
-			String mail, String gender, String question, String answer){
-		this.userName = user;
-		setFirstName(firstName);
-		setLastName(lastName);
+	public User(String email, String firstname, String lastname, String birthday,
+			int genderID, int questionID, String answer){
+		setFirstName(firstname);
+		setLastName(lastname);
 		setBirthday(birthday);
-		setEMail(mail);
-		setGender(gender);
-		setQuestion(question, answer);
+		setEMail(email);
+		setGenderID(genderID);
+		setQuestion(questionID, answer);
 	}
 	
-	
-	/*
-	 * amas ar chirderba shecvlis metodi da agar vuwer
-	 */
-	public String getUsername(){
-		return userName;
-	}
 	
 	
 	/**
@@ -106,11 +97,11 @@ public class User {
 	}
 	
 	
-	public String getGender(){
+	public int getGenderID(){
 		return gender;
 	}
 	
-	private void setGender(String gender){
+	private void setGenderID(int gender){
 		this.gender = gender;
 	}
 	
@@ -118,7 +109,7 @@ public class User {
 	/**
 	 * @return abrunebs kitxvas
 	 */
-	public String getQuestion(){
+	public int getQuestionID(){
 		return question;
 	}
 	
@@ -133,8 +124,8 @@ public class User {
 	/**
 	 * kitxvis shecvla (kitxvis shecvlisas aucileblad unda sheicvalos pasuxic)
 	 */
-	public void setQuestion(String question, String answer){
-		this.question = question;
+	public void setQuestion(int questionID, String answer){
+		this.question = questionID;
 		this.answer = answer;
 	}
 }

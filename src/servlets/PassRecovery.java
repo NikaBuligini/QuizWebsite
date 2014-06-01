@@ -47,7 +47,8 @@ public class PassRecovery extends HttpServlet implements WebVariables {
 		
 		String text = request.getParameter(TEXT);
 		AccountManager manager = new AccountManager();
-		String QuestionAndAnswer = manager.getRecoveryQuestionAndAnswer(con, text);
+		String QuestionAndAnswer = "";
+//		String QuestionAndAnswer = manager.getRecoveryQuestionAndAnswer(con, text);
 		RequestDispatcher dispatcher;
 		System.out.println("text is : "+QuestionAndAnswer);
 		if(QuestionAndAnswer.equals("")){

@@ -1,0 +1,76 @@
+@CHARSET "utf-8";
+
+
+html, body, div, h1, h2, h3, h4, h5, h6, p, img, dl,
+dt, dd, ol, ul, li, table, tr, td, form, object, embed,
+article, aside, canvas, command, details, fieldset,
+figcaption, figure, footer, group, header, hgroup, legend,
+mark, menu, meter, nav, output, progress, section, summary,
+time, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+article, aside, details, figcaption, figure, footer,
+header, hgroup, menu, nav, section {
+	display: block;
+}
+html {
+	font: 81.25% arial, helvetica, sans-serif;
+	background: #fff;
+	color: #333;
+	line-height: 1;
+	direction: ltr;
+}
+
+a {
+	color: #427fed;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #222;
+	font-size: 1.54em;
+	font-weight: normal;
+	line-height: 24px;
+	margin: 0 0 .46em;
+}
+
+
+.header {
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 200;
+}
+.header .content {
+	min-width: 800px;
+	background: white;
+	border-bottom: 1px solid #e8e8e8;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.header .logo {
+	float: left;
+	position: relative;
+	margin-top: 0px;
+	width: 200px;
+}
+.header .menu {
+	position: relative;
+	margin-left: 3px;
+	margin-right: 3px;
+	overflow: hidden;
+	width: 100px;
+}
+.header .search {
+	overflow: hidden;
+	width: 10%;
+}
+.header .user {
+	float: right;
+	margin-left: 50px;
+	margin-top: 3px;
+	color: black;
+}

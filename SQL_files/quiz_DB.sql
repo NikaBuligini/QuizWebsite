@@ -21,7 +21,7 @@ create table additional_info(
 	email varchar(40),
 	firstName varchar(20),
 	lastName varchar(40),
-	birthday datetime,
+	birthday date,
 	gender int,
 	questionID int,
 	answer varchar(30),
