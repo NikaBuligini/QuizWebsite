@@ -50,7 +50,7 @@ public class LogOutServlet extends HttpServlet implements WebVariables {
 			response.addCookie(user);
 		}
 		
-		response.sendRedirect("/QuizWebsite/login");
+		response.sendRedirect("login");
 	}
 
 }

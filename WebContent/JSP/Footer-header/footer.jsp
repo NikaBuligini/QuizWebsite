@@ -8,10 +8,13 @@
 			<ul>
 				<li>QuizWebsite</li>
 				<li>
-					<a href="">Privacy and Terms</a>
+					<a href="http://localhost:8080/QuizWebsite/JSP/Start/contact.html">Contact</a>
 				</li>
 				<li>
-					<a href="">Help</a>
+					<a href="http://localhost:8080/QuizWebsite/JSP/Start/obutOurSite.html">About</a>
+				</li>
+				<li>
+					<a href="http://localhost:8080/QuizWebsite/JSP/Start/tsesebi.html">Terms</a>
 				</li>
 			</ul>
 		</div>

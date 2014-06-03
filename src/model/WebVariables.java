@@ -28,6 +28,8 @@ public interface WebVariables {
 	static final int MALE = 1;
 	static final int FEMALE = 2;
 	
+	static final String SEARCH = "search";
+	
 	
 	// Session Attributes
 	static final String COOKIE_REMEMBER_ME = "_hash";
@@ -39,6 +41,4 @@ public interface WebVariables {
 	static final String JSP_SIGN_UP = "/JSP/Start/sign-up.jsp";
 	static final String JSP_PROFILE = "/JSP/Profile/profile.jsp";
 	
-	// Servlet
-	static final String SERVLET_PROFILE = "/QuizWebsite/profile";
 }
