@@ -36,9 +36,9 @@ public class CookiesManager extends Manager implements WebVariables {
 	}
 	
 	
-	public static Cookie createRememberMe(Connection con, String username){
+	public static Cookie createRememberMe(Connection con, String email){
 		Cookie result = null;
-		int userID = AccountManager.getIDByUsername(con, username);
+		int userID = AccountManager.getIDByEmail(con, email);
 		String value = getValue(con, userID);
 		UID cookieCode = new UID();
 		
@@ -98,7 +98,7 @@ public class CookiesManager extends Manager implements WebVariables {
 		Cookie c = CookiesManager.getCookie(request, COOKIE_REMEMBER_ME);
 		if (c != null && CookiesManager.contains(con, c.getValue())){
 			int id = CookiesManager.getUserID(con, c.getValue());
-			String username = AccountManager.getUsername(con, id);
+			String username = AccountManager.getEmail(con, id);
 			
 			response.addCookie(CookiesManager.createUsernameCookie(con, username));
 			response.addCookie(CookiesManager.createLoggedIn());

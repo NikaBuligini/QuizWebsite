@@ -65,14 +65,11 @@
 				</li>
 			</ul>
 			<div class="search-bar">
-				<form id="search-form" action="" onsubmit="">
+				<form id="search-form" action="<%=request.getContextPath() %>/search" onsubmit="">
 					<span class="search-logo"></span>
 					<input type="text" value="" name=<%=WebVariables.SEARCH %> autocomplete="off" placeholder="Search for quizes and users">
 				</form>
 			</div>
-		</div>
-		<div class="outer">
-		
 		</div>
 		<script type="text/javascript" src="<%=request.getContextPath() %>/Javascript/profile-header.js"></script>
 	</div>

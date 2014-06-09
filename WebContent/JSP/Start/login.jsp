@@ -27,8 +27,8 @@
 				<img alt="Default Image" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMYLsJK5kj3qSti4ndoNejZs-MhLFQZN0tbsd1OuxABI2M1X0Piw">
 				<p></p>
 				<form name="signin" action="<%=request.getContextPath() %>/login" method="post">
-					<input id="Username" type="text" name=<%=WebVariables.USERNAME %> placeholder="Username">
-					<input id="Password" type="password" name=<%=WebVariables.PASSWORD %> placeholder="Password">
+					<input id="Email" type="text" name="email" placeholder="Email">
+					<input id="Password" type="password" name="passwd" placeholder="Password">
 					<span id="alert" class="alert"><%=info %></span>
 					<input id="SignIn" type="button" onclick="check(this.form)" value="Sign In">
 					<label>
@@ -46,10 +46,10 @@
 	</div>
 	<script type="text/javascript">
 		function check(form){
-			if (form.<%=WebVariables.USERNAME %>.value.length == 0) {
+			if (form.email.value.length == 0) {
 				document.getElementById("alert").innerHTML = "Enter your username.";
 				ok = ok && false;
-			} else if (form.<%=WebVariables.PASSWORD %>.value.length == 0){
+			} else if (form.passwd.value.length == 0){
 				document.getElementById("alert").innerHTML = "Enter your password.";
 			} else {
 				document.signin.submit();

@@ -44,10 +44,10 @@ ul {
 	list-style: none;
 }
 
-.content {
+.wrapper {
 	position: relative;
+	min-height: 100%;
 }
-
 
 .header {
 	padding: 10px 0;
@@ -193,6 +193,91 @@ ul {
 
 
 
+
+.main-nav {
+	float: left;
+	width: 350px;
+	position: fixed;
+	top: 55px;
+	left: 0;
+	z-index: 100;
+}
+.main-nav .content {
+	float: right;
+	width: 160px;
+	margin-top: 20px;
+	padding-right: 20px;
+}
+
+
+.search-content {
+	position: relative;
+	margin-top: 55px;
+	margin-left: 260px;
+	margin-right: 260px;
+	margin-bottom: 0;
+	min-height: 575px;
+}
+.search-content .count {
+	position: relative;
+	width: 100%;
+	height: 30px;
+	padding-top: 20px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+}
+.search-content .results {
+	position: relative;
+	padding-bottom: 50px;
+	width: 100%;
+}
+.search-content .single-result {
+	position: relative;
+	min-height: 60px;
+	padding: 12px 0 8px 0;
+}
+.search-content .results img {
+	float: left;
+}
+.search-content .single-result .bd {
+	margin-left: 68px;
+	width: 65%;
+}
+
+
+
+.main-content {
+	float: left;
+	width: 600px;
+	min-height: 610px;
+	position: relative;
+	top: 55px;
+	left: 350px;
+}
+
+
+.view-content {
+	position: relative;
+	margin-top: 55px;
+	margin-left: 260px;
+	margin-right: 260px;
+	margin-bottom: 0;
+	min-height: 575px;
+}
+.view-content .profile {
+	position: relative;
+	margin-top: 20px;
+}
+.profile .photo {
+	float: left;
+	position: relative;
+	width: 60px;
+	height: 60px;
+}
+.profile img {
+	width: 60px;
+	height: 60px;
+}
 
 
 
