@@ -9,5 +9,6 @@ insert into security_questions (question) value ('2*2?');
 
 select * from security_questions;
 
+insert into users(username,pass) values ('zoro','cxeni');
 insert into additional_info (userID, email, firstName, lastName, birthday, gender, questionID, answer)
-		values ('3', 'zgarbi@udabno.com', 'nika', 'buligini', '1993-08-01', 1, 1, 'ki');
+		values ('1', 'zgarbi@udabno.com', 'nika', 'buligini', '1993-08-01', 1, 1, 'ki');

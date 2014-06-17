@@ -46,21 +46,23 @@ public class PassRecovery extends HttpServlet implements WebVariables {
 		Connection con = (Connection) context.getAttribute(CONNECTION);
 		
 		String text = request.getParameter(TEXT);
-		AccountManager manager = new AccountManager();
-		String QuestionAndAnswer = "";
-//		String QuestionAndAnswer = manager.getRecoveryQuestionAndAnswer(con, text);
+		String tryAgain = "Wrong username, or email, please, try again";
+		String[] list = AccountManager.getRecovery(con, text);
+		
 		RequestDispatcher dispatcher;
-		System.out.println("text is : "+QuestionAndAnswer);
-		if(QuestionAndAnswer.equals("")){
+		if(list == null){
 			dispatcher = request.getRequestDispatcher("passRecoveryTryAgain.html");
 		}else{
-			int slash1 = QuestionAndAnswer.indexOf("/");
-			String Question = QuestionAndAnswer.substring(0,slash1);
-			int slash2 = QuestionAndAnswer.substring(slash1+1).indexOf("/");
-			String Answer = QuestionAndAnswer.substring(slash1+1,slash2);
-			int slash3 = QuestionAndAnswer.substring(slash2+1).indexOf("/");
-			String Username = QuestionAndAnswer.substring(slash2+1,slash3);
-			String Pass = QuestionAndAnswer.substring(slash3);
+			tryAgain = "";
+			
+			String Question = list[0];
+			System.out.println("Question : " + Question);
+			String Answer = list[1];
+			System.out.println("Answer : " + Answer);
+			String Username = list[2];
+			System.out.println("User : " + Username);
+			String Pass = list[3];
+			System.out.println("Pass : " + Pass);
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("recoveryQuestion", Question);
@@ -70,7 +72,7 @@ public class PassRecovery extends HttpServlet implements WebVariables {
 			
 			dispatcher = request.getRequestDispatcher("passRecoveryQuestion.jsp");
 		}
+		context.setAttribute("tryAgain", tryAgain);
 		dispatcher.forward(request, response);
 	}
-
 }
