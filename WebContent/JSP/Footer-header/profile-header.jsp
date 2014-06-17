@@ -1,3 +1,6 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="model.AccountManager"%>
+<%@page import="model.User"%>
 <%@page import="model.CookiesManager"%>
 <%@page import="model.WebVariables"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -14,14 +17,17 @@
 			</div>
 			<ul class="nav-list">
 				<%
-					Cookie userCookie = CookiesManager.getCookie(request, WebVariables.COOKIE_USERNAME);
-					String username = userCookie.getValue();
+				Connection con = (Connection) config.getServletContext().getAttribute(WebVariables.CONNECTION);
+				Cookie userCookie = CookiesManager.getCookie(request, WebVariables.COOKIE_USER);
+				String username = userCookie.getValue();
+				
+				User e = AccountManager.getUser(con, username);
 				%>
 				<li class="hover">
-					<a id="home" href="#" class="nav-item" class="nav-item" onmouseover="mopen('nav-home', 'home')" onmouseout="mclosetime()">
+					<a id="home" href="#" class="nav-item" class="nav-item">
 						<strong>Home</strong>
 					</a>
-					<div id="nav-home" class="nav-h" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+					<div id="nav-home" class="nav-h">
 						<div class="content">
 							<ul class="list">
 								<li>
@@ -37,7 +43,7 @@
 				</li>
 				<li class="hover">
 					<a id="prof" href="#" class="nav-item" onmouseover="mopen('nav-profile', 'prof')" onmouseout="mclosetime()">
-						<strong><%=username %></strong>
+						<strong><%=e.getFirstName() %></strong>
 					</a>
 					<div id="nav-profile" class="nav-p" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
 						<div class="content">
@@ -63,6 +69,7 @@
 						</div>
 					</div>
 				</li>
+				<a id="addQuiz" href="#" class="add-quiz">Add Quiz</a>
 			</ul>
 			<div class="search-bar">
 				<form id="search-form" action="<%=request.getContextPath() %>/search" onsubmit="">
@@ -71,7 +78,14 @@
 				</form>
 			</div>
 		</div>
-		<script type="text/javascript" src="<%=request.getContextPath() %>/Javascript/profile-header.js"></script>
+		<script type="text/javascript">
+			var button = document.getElementById("addQuiz");
+			button.addEventListener("click", mod, false);
+			
+			function mod(){
+				buton.style.color = '#ffffff';
+			}
+		</script>
 	</div>
 </body>
 </html>

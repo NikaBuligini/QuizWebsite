@@ -43,7 +43,7 @@ public class LogOutServlet extends HttpServlet implements WebVariables {
 			response.addCookie(logged);
 		}
 		
-		Cookie user = CookiesManager.getCookie(request, COOKIE_USERNAME);
+		Cookie user = CookiesManager.getCookie(request, COOKIE_USER);
 		if (user != null){
 			user.setValue(null);
 			user.setMaxAge(0);

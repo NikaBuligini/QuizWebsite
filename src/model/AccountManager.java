@@ -75,6 +75,12 @@ public class AccountManager extends Manager {
 	}
 	
 	
+	public static User getUser(Connection con, String email){
+		int id = getIDByEmail(con, email);
+		return getUser(con, id);
+	}
+	
+	
 	public static User getUser(Connection con, int id){
 		ArrayList<Object> row = getSingleRow(con, INFO_TABLE, INFO_USER_ID_C, id, INFO_N_COL);
 		if (row == null)

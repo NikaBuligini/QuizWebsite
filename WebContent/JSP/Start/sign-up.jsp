@@ -88,7 +88,7 @@ if (alert == null)
 							<span class="add-on">
 								<i class="icon-user"></i>
 							</span>
-							<input type="password" class="input-xlarge" id="conpasswd" name="conpasswd" placeholder="Re-enter Password" onkeyup="checkPass()">
+							<input type="password" class="input-xlarge" id="conpasswd" name="conpasswd" placeholder="Re-enter Password" onkeyup="checkPass()" onclick="encrypt()">
 						</div>
 					</div>
 				</div>
@@ -102,8 +102,16 @@ if (alert == null)
 			</form>
 		</div>
 	</div>
-	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="/QuizWebsite/Javascript/check.js"></script>
+	<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/pbkdf2.js"></script>
+	<script type="text/javascript">
+		function encrypt(){
+			var salt = CryptoJS.lib.WordArray.random(128/8);
+			var elem = document.getElementById("passwd");
+			var hash = CryptoJS.PBKDF2(elem.value, salt, { keySize: 128/32 });
+			alert(hash);	
+		}
+	</script>
 </body>
 </html>

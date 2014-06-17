@@ -1,6 +1,28 @@
 /**
  * 
  */
+$(document).ready(function() {
+
+});
+
+
+$('#home').mouseover(function() {
+	mopen('nav-home', 'home');
+});
+
+$('#home').mouseout(function() {
+	mclosetime();
+});
+
+$('#nav-home').mouseover(function() {
+	mcancelclosetime();
+});
+
+$('#nav-home').mouseout(function() {
+	mclosetime();
+});
+
+
 
 var timeout	= 500;
 var closetimer	= 0;
@@ -76,5 +98,3 @@ function mcancelclosetime()
 
 // close layer when click-out
 document.onclick = mclose; 
-
-

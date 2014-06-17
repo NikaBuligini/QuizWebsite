@@ -60,7 +60,7 @@ public class CookiesManager extends Manager implements WebVariables {
 	
 	
 	public static Cookie createUsernameCookie(Connection con, String username){
-		Cookie result = new Cookie(COOKIE_USERNAME, username);
+		Cookie result = new Cookie(COOKIE_USER, username);
 		result.setMaxAge(USERNAME_MAX_AGE);
 		
 		return result;

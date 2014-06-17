@@ -28,5 +28,7 @@ if (log == null){
 		</div>
 		<jsp:include page="/JSP/Footer-header/footer.jsp"></jsp:include>
 	</div>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/Javascript/profile-header.js"></script>
 </body>
 </html>

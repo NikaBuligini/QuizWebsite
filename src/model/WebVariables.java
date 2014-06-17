@@ -23,7 +23,7 @@ public interface WebVariables {
 	
 	// Session Attributes
 	static final String COOKIE_REMEMBER_ME = "_hash";
-	static final String COOKIE_USERNAME = "_user";
+	static final String COOKIE_USER = "_user";
 	static final String COOKIE_LOGGED_IN = "logged_in";
 	
 	// JSP

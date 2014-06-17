@@ -13,8 +13,7 @@ public class SQLTest {
 		DBConnection db = new DBConnection();
 		Connection con = db.getConnection();
 		
-		String bla = QuestionManager.getQuestion(con, 1);
-		System.out.println(bla);
+//		assertEquals(1, AccountManager.getIDByUsername(con, "nika"));
 		
 		db.close();
 	}

@@ -29,12 +29,10 @@ public class ViewServlet extends HttpServlet implements WebVariables{
 		ServletContext context = getServletConfig().getServletContext();
 		Connection con = (Connection) context.getAttribute(CONNECTION);
 		
-		String username = "b";
+		String username = request.getParameter(VIEW);
 		if (username != null){
-			int id = AccountManager.getIDByEmail(con, "nika");
-			System.out.println(id);
-//			User e = AccountManager.getUser(con, id);
-//			request.setAttribute("prof", e);
+			User e = AccountManager.getUser(con, "nbuligini11@gmail.com");
+			request.setAttribute("user", e);
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(JSP_VIEW);
