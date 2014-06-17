@@ -51,7 +51,7 @@
 	cursor: default;
 }
 .footer-bar {
-	position: absolute;
+	position: relative;
 	bottom: 0;
 	height: 35px;
 	width: 100%;

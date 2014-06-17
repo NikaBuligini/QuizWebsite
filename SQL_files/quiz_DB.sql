@@ -5,7 +5,7 @@ use quiz_DB;
 
 create table users(
 	ID int auto_increment not null primary key,
-	userName  varchar(20) unique,
+	email  varchar(30),
 	pass nvarchar(60)
 );
 
@@ -16,19 +16,21 @@ create table security_questions (
 );
 
 
-create table additional_info(
-	userID int,
-	email varchar(40),
-	firstName varchar(20),
-	lastName varchar(40),
-	birthday date,
-	gender int,
-	questionID int,
-	answer varchar(30),
-	PRIMARY KEY (userID),
-	FOREIGN KEY (userID) REFERENCES users (ID) ON DELETE CASCADE,
-	FOREIGN KEY (questionID) REFERENCES security_questions (ID),
-	UNIQUE (email)
+create table additional_info (
+    userID int,
+    firstName varchar(20),
+    lastName varchar(30),
+    gender int,
+    questionID int,
+    answer varchar(30),
+	image varchar(30),
+    PRIMARY KEY (userID),
+    FOREIGN KEY (userID)
+        REFERENCES users (ID)
+        ON DELETE CASCADE,
+    FOREIGN KEY (questionID)
+        REFERENCES security_questions (ID)
+        ON DELETE CASCADE
 );
 
 

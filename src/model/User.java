@@ -8,11 +8,10 @@ public class User {
 	// cvladebi
 	private String f_name;
 	private String l_name;
-	private String birthday;
-	private String eMail;
 	private int gender;
 	private int question;
 	private String answer;
+	private String image;
 	
 	
 	/**
@@ -21,19 +20,15 @@ public class User {
 	 * @param user
 	 * @param firstName	saxeli
 	 * @param lastName	gvari
-	 * @param birthday	dabadebis tarigi
-	 * @param mail	momxmareblis maili
 	 * @param question	kitxva im shemtxvevistvis tu daaviwyda paroli
 	 * @param answer	kitxvaze pasuxi
 	 */
-	public User(String email, String firstname, String lastname, String birthday,
-			int genderID, int questionID, String answer){
+	public User(String firstname, String lastname, int genderID, int questionID, String answer, String image){
 		setFirstName(firstname);
 		setLastName(lastname);
-		setBirthday(birthday);
-		setEMail(email);
 		setGenderID(genderID);
 		setQuestion(questionID, answer);
+		setImage(image);
 	}
 	
 	
@@ -67,36 +62,6 @@ public class User {
 	}
 	
 	
-	/**
-	 * @return abrunebs dabadebis tarigs
-	 */
-	public String getBirthday(){
-		return birthday;
-	}
-	
-	/**
-	 * cvlis dabadebis tarigs
-	 */
-	public void setBirthday(String birthday){
-		this.birthday = birthday;
-	}
-	
-	/**
-	 * @return abrunebs momxmareblis e-mails
-	 */
-	public String getEMail(){
-		return eMail;
-	}
-	
-	/**
-	 * metodi sachiroa eMail-is shesacvlelad
-	 * @param eMail axali eMail
-	 */
-	public void setEMail(String eMail){
-		this.eMail = eMail;
-	}
-	
-	
 	public int getGenderID(){
 		return gender;
 	}
@@ -127,5 +92,13 @@ public class User {
 	public void setQuestion(int questionID, String answer){
 		this.question = questionID;
 		this.answer = answer;
+	}
+	
+	public String getImage(){
+		return image;
+	}
+	
+	public void setImage(String image){
+		this.image = image;
 	}
 }

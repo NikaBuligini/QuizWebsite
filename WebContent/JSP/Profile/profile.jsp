@@ -16,12 +16,19 @@ if (log == null){
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=uts-8">
 	<title>QuizWebsite</title>
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header-footer.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/profile-style.css">
 </head>
 <body>
-	<jsp:include page="/JSP/Footer-header/profile-header.jsp"></jsp:include>
-	<div class="content">
-		<h1>Welcome to Profile page</h1>
+	<div class="wrapper">
+		<jsp:include page="/JSP/Footer-header/profile-header.jsp"></jsp:include>
+		<jsp:include page="/JSP/Profile/profile-nav.jsp"></jsp:include>
+		<div class="main-content">
+			Welcome to profile
+		</div>
+		<jsp:include page="/JSP/Footer-header/footer.jsp"></jsp:include>
 	</div>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/Javascript/profile-header.js"></script>
 </body>
 </html>

@@ -5,172 +5,112 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%
+String alert = (String)request.getAttribute(WebVariables.REGISTRATION_INFO);
+if (alert == null)
+	alert = "";
+%>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Sign Up</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Create new account</title>
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/design.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header-footer.css">
-
-	<%
-	Connection con = (Connection) getServletContext().getAttribute(WebVariables.CONNECTION);
-	ArrayList<String> questions = QuestionManager.getAll(con);
-	String info = (String) request.getAttribute(WebVariables.REGISTRATION_INFO);
-	if (info == null)
-		info = "";
-	%>
 </head>
 <body>
-	<div class="wrapper">
-		<jsp:include page="/JSP/Footer-header/sign-in-header.jsp"></jsp:include>
-		<div class="signuppage">
-			<h1>Create your Account</h1>
-			<div class="errorMessage">
-				<p><%=info %></p>
-			</div>
-			<div class="sign-up">
-				<div class="sign-up-box">
-					<form name="signup" action="<%=request.getContextPath() %>/registration" method="post" autocomplete="off">
-						<div class="form-element">
-							<div class="signup-input">
-								<strong>Username</strong><br>
-								<input type="text" name=<%=WebVariables.USERNAME %>>
-								<span id="useralert"></span>
-							</div>
-							<div>
-								<strong>Name</strong>
-								<table>
-									<tbody>
-										<tr>
-											<td>
-												<input id="First" type="text" name=<%=WebVariables.FIRSTNAME %> placeholder="First">
-											</td>
-											<td>
-												<input id="Last" type="text" name=<%=WebVariables.LASTNAME %> placeholder="Last">
-											</td>
-										</tr>
-									</tbody>
-								</table>
-								<span id="namealert"></span>
-							</div>
-							<div class="signup-input">
-								<strong>Your email address</strong><br>
-								<input type="email" name=<%=WebVariables.EMAIL %>>
-								<span id="emailalert"></span>
-							</div>
-							<div class="signup-input">
-								<strong>Create a password</strong><br>
-								<input type="password" name=<%=WebVariables.PASS1 %>>
-								<span id="pass1alert"></span>
-							</div>
-							<div class="signup-input">
-								<strong>Confirm your password</strong><br>
-								<input type="password" name=<%=WebVariables.PASS2 %>>
-								<span id="pass2alert"></span>
-							</div>
-							<div>
-								<strong>Birthday</strong><br>
-								<input type="date" name="bday">
-								<span id="birthdayalert"></span>
-							</div>
-							<div>
-								<strong>Gender</strong><br>
-								<input type="radio" name=<%=WebVariables.GENDER %> value="female">Female
-								<input type="radio" name=<%=WebVariables.GENDER %> value="male">Male
-								<span id="genderalert"></span>
-							</div>
-							<div class="signup-input">
-								<strong>Question</strong><br>
-								<select name=<%=WebVariables.QUESTION %> form="signup">
-									<%
-									for (int i=0; i<questions.size(); i++){
-									%>
-									<option><%=questions.get(i) %></option>
-									<%
-									}
-									%>
-								</select>
-							</div>
-							<div class="signup-input">
-								<strong>Answer</strong><br>
-								<input type="text" name=<%=WebVariables.ANSWER %>>
-								<span id="answeralert"></span>
-							</div>
-							<div>
-								<div class="signup-button">
-									<input type="button" onclick="check(this.form)" value="Sign Up">
-								</div>
+	<div class="container">
+		<div class="well">
+			<form id="signup" class="form-horizontal" method="post" action="<%=request.getContextPath() %>/registration" autocomplete="off">
+				<legend>Sign Up</legend>
+				<div class="control-group">
+					<label class="control-label">First Name</label>
+					<div class="controls">
+						<div class="input-prepend">
+							<span class="add-on">
+								<i class="icon-user"></i>
+							</span>
+							<input type="text" class="input-xlarge" id="fname" name="fname" placeholder="First Name" onkeyup="checkfname()">
+							<span id="fname-alert" class="check-alert">You can't leave this empty</span>
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Last Name</label>
+					<div class="controls">
+						<div class="input-prepend">
+							<span class="add-on">
+								<i class="icon-user"></i>
+							</span>
+							<input type="text" class="input-xlarge" id="lname" name="lname" placeholder="Last Name" onkeyup="checklname()">
+							<span id="lname-alert" class="check-alert">You can't leave this empty</span>
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Email</label>
+					<div class="controls">
+						<div class="input-prepend">
+							<span class="add-on">
+								<i class="icon-user"></i>
+							</span>
+							<input type="text" class="input-xlarge" id="email" name="email" placeholder="Email" onkeyup="checkemail()">
+							<span id="email-alert" class="check-alert">You can't leave this empty</span>
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Gender</label>
+					<div class="controls">
+						<div class="input-prepend">
+							<div id="gender" name="gender" class="radio-group" data-toggle="buttons-radid">
+								<input type="radio" name="gender" value="male" onclick="checkRadio()">Male
+								<input type="radio" name="gender" value="female" onclick="checkRadio()">Female
 							</div>
 						</div>
-					</form>
+					</div>
 				</div>
-			</div>
+				<div class="control-group">
+					<label class="control-label">Password</label>
+					<div class="controls">
+						<div class="input-prepend">
+							<span class="add-on">
+								<i class="icon-user"></i>
+							</span>
+							<input type="password" class="input-xlarge" id="passwd" name="passwd" placeholder="Password" onkeyup="checkPass()">
+							<span id="passwd-alert" class="check-alert"></span>
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Confirm Password</label>
+					<div class="controls">
+						<div class="input-prepend">
+							<span class="add-on">
+								<i class="icon-user"></i>
+							</span>
+							<input type="password" class="input-xlarge" id="conpasswd" name="conpasswd" placeholder="Re-enter Password" onkeyup="checkPass()" onclick="encrypt()">
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="input01"></label>
+					<div class="controls">
+						<button type="button" class="btn btn-success" onclick="fullCheck(this.form)">Create My Account</button>
+					</div>
+				</div>
+				<span class="registration-alert"><%=alert %></span>
+			</form>
 		</div>
-		<jsp:include page="/JSP/Footer-header/footer.jsp"></jsp:include>
 	</div>
-	<script language="javascript">
-		function check(form){
-			var ok = true;
-			
-			if (form.<%=WebVariables.USERNAME %>.value.length == 0) {
-				document.getElementById("useralert").innerHTML = "You can't leave this empty.";
-				ok = ok && false;
-			} else {
-				document.getElementById("useralert").innerHTML = "";
-			}
-			
-			if (form.<%=WebVariables.FIRSTNAME %>.value.length == 0 || form.<%=WebVariables.LASTNAME %>.value.length == 0){
-				document.getElementById("namealert").innerHTML = "You can't leave this empty.";
-				ok = ok && false;
-			} else {
-				document.getElementById("namealert").innerHTML = "";
-			}
-			
-			if (form.<%=WebVariables.EMAIL %>.value.length == 0) {
-				document.getElementById("emailalert").innerHTML = "You can't leave this empty.";
-				ok = ok && false;
-			} else {
-				document.getElementById("emailalert").innerHTML = "";
-			}
-			
-			if (form.<%=WebVariables.PASS1 %>.value.length == 0) {
-				document.getElementById("pass1alert").innerHTML = "You can't leave this empty.";
-				ok = ok && false;
-			} else {
-				document.getElementById("pass1alert").innerHTML = "";
-			}
-			
-			if (form.<%=WebVariables.PASS2 %>.value.length == 0) {
-				document.getElementById("pass2alert").innerHTML = "You can't leave this empty.";
-				ok = ok && false;
-			} else {
-				document.getElementById("pass2alert").innerHTML = "";
-			}
-			
-			if (form.<%=WebVariables.BIRTHDAY %>.value.length == 0) {
-				document.getElementById("birthdayalert").innerHTML = "You can't leave this empty.";
-				ok = ok && false;
-			} else {
-				document.getElementById("birthdayalert").innerHTML = "";
-			}
-			
-			if (form.<%=WebVariables.GENDER %>.value.length == 0) {
-				document.getElementById("genderalert").innerHTML = "Are you sure?";
-				ok = ok && false;
-			} else {
-				document.getElementById("genderalert").innerHTML = "";
-			}
-			
-			if (form.<%=WebVariables.ANSWER %>.value.length == 0) {
-				document.getElementById("answeralert").innerHTML = "You can't leave this empty.";
-				ok = ok && false;
-			} else {
-				document.getElementById("answeralert").innerHTML = "";
-			}
-			
-			if (ok){
-				document.signup.submit();
-			}
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/QuizWebsite/Javascript/check.js"></script>
+	<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/pbkdf2.js"></script>
+	<script type="text/javascript">
+		function encrypt(){
+			var salt = CryptoJS.lib.WordArray.random(128/8);
+			var elem = document.getElementById("passwd");
+			var hash = CryptoJS.PBKDF2(elem.value, salt, { keySize: 128/32 });
+			alert(hash);	
 		}
 	</script>
 </body>

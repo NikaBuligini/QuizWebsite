@@ -44,17 +44,17 @@ public class LoginServlet extends HttpServlet implements WebVariables {
 		ServletContext context = getServletConfig().getServletContext();
 		Connection con = (Connection) context.getAttribute(CONNECTION);
 		
-		String username = request.getParameter(USERNAME);
-		String password = request.getParameter(PASSWORD);
+		String email = request.getParameter("email");
+		String password = request.getParameter("passwd");
 		
-		boolean contains = AccountManager.contains(con, username, password);
+		boolean contains = AccountManager.contains(con, email, password);
 		if (contains){
 			String persistent = request.getParameter(PERSISTENT);
 			if (persistent != null) {
-				Cookie c = CookiesManager.createRememberMe(con, username);
+				Cookie c = CookiesManager.createRememberMe(con, email);
 				response.addCookie(c);
 			}
-			response.addCookie(CookiesManager.createUsernameCookie(con, username));
+			response.addCookie(CookiesManager.createUsernameCookie(con, email));
 			response.addCookie(CookiesManager.createLoggedIn());
 			
 			response.sendRedirect("profile");

@@ -1,10 +1,11 @@
 use quiz_DB;
 
-insert into security_questions (question) value ('ორი გოჭი ღორია?');
-insert into security_questions (question) value ('რომ მოყინოს დადებს?');
-insert into security_questions (question) value ('საქართველოს დედაქალაქი?');
-insert into security_questions (question) value ('სამჯერ შვიდი?');
-insert into security_questions (question) value ('სპაიდერმენი მეგრულად?');
+insert into security_questions (question) value ('');
+insert into security_questions (question) value ('are two piglets pig?');
+insert into security_questions (question) value ('if it will be freeze will it land?');
+insert into security_questions (question) value ('capital of georgia?');
+insert into security_questions (question) value ('three times seven?');
+insert into security_questions (question) value ('spiderman on margaluri?');
 insert into security_questions (question) value ('2*2?');
 
 select * from security_questions;

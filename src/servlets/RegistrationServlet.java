@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.AccountManager;
 import model.CookiesManager;
-import model.QuestionManager;
 import model.User;
 import model.WebVariables;
 
@@ -23,6 +22,9 @@ import model.WebVariables;
 @WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet implements WebVariables{
 	private static final long serialVersionUID = 1L;
+	
+	static final int DEFAULT_QUESTION = 1;
+	static final String DEFAULT_IMAGE = "default.png";
 	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -45,41 +47,21 @@ public class RegistrationServlet extends HttpServlet implements WebVariables{
 		ServletContext context = getServletConfig().getServletContext();
 		Connection con = (Connection) context.getAttribute(CONNECTION);
 		
-		String username = request.getParameter(USERNAME);
-		String firstname = request.getParameter(FIRSTNAME);
-		String lastname = request.getParameter(LASTNAME);
-		String email = request.getParameter(EMAIL);
-		String birthday = request.getParameter(BIRTHDAY);
-		
-		String pass1 = request.getParameter(PASS1);
-		String pass2 = request.getParameter(PASS2);
-		if (!pass1.equals(pass2)){
-			request.setAttribute(REGISTRATION_INFO, "Passwords are different.");
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher(JSP_SIGN_UP);
-			dispatcher.forward(request, response);
-			return;
-		}
+		String fname = request.getParameter("fname");
+		String lname = request.getParameter("lname");
+		String email = request.getParameter("email");
 		
 		int gender = MALE;
-		if (request.getParameter(GENDER).equals("female"))
+		if (request.getParameter("gender").equals("female"))
 			gender = FEMALE;
 		
-		String question = request.getParameter(QUESTION);
-		int questionID = QuestionManager.getID(con, question);
+		String passwd = request.getParameter("passwd");
 		
-		String answer = request.getParameter(ANSWER);
-		
-		User e = new User(email, firstname, lastname, birthday, gender, questionID, answer);
-		int result = AccountManager.add(con, username, pass1, e);
+		User e = new User(fname, lname, gender, DEFAULT_QUESTION, "", DEFAULT_IMAGE);
+		int result = AccountManager.add(con, email, passwd, e);
 		
 		if (result == AccountManager.FAILED){
-			request.setAttribute(REGISTRATION_INFO, "Username " + username + " is already used.");
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher(JSP_SIGN_UP);
-			dispatcher.forward(request, response);
-		} else if (result == AccountManager.USED_EMAIL){
-			request.setAttribute(REGISTRATION_INFO, "email " + email + " is already used.");
+			request.setAttribute(REGISTRATION_INFO, "Email " + email + " is already used.");
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(JSP_SIGN_UP);
 			dispatcher.forward(request, response);
