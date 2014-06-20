@@ -10,16 +10,26 @@ public class Question {
 
 	Question(String text, String Image) {
 		question = text;
+		ImageName=Image;
 		
 	}
 	
-	void getQuestion(String text ){
-		question = text; 
+	void setQuestion(String text){
+		question=text;
 	}
-	 
-	void getImage(String Image){
+	
+	String getQuestion(String text ){
+		return text; 
+	}
+	
+	void setImage(String Image){
 		ImageName=Image;
 	}
+	 
+	String getImage(String Image){
+		return Image;
+	}
+	
 	
 	boolean IsAnswer(String t){
 		for(int i=0; i<=answer.size(); i++){
