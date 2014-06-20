@@ -87,7 +87,6 @@ create table challenges(
 
 );
 
-
 create table friendRequest(
 	ID int auto_increment not null primary key,
 	fromID int,

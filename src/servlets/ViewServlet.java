@@ -29,9 +29,10 @@ public class ViewServlet extends HttpServlet implements WebVariables{
 		ServletContext context = getServletConfig().getServletContext();
 		Connection con = (Connection) context.getAttribute(CONNECTION);
 		
-		String username = request.getParameter(VIEW);
-		if (username != null){
-			User e = AccountManager.getUser(con, "nbuligini11@gmail.com");
+		String userID = request.getParameter(VIEW);
+		if (userID != null){
+			int ID = Integer.parseInt(userID);
+			User e = AccountManager.getUser(con, ID);
 			request.setAttribute("user", e);
 		}
 		

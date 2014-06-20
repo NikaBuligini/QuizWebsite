@@ -23,15 +23,20 @@
 				
 				User e = AccountManager.getUser(con, username);
 				%>
-				<li class="hover">
+				<li class="hover" id="home-li">
+					<div id="counts" style="display: none;"></div>
 					<a id="home" href="#" class="nav-item" class="nav-item">
-						<strong>Home</strong>
+						<strong id="h-t">Home</strong>
 					</a>
 					<div id="nav-home" class="nav-h">
 						<div class="content">
 							<ul class="list">
+								<li id="notif">
+									<a href="#" id="f-t">Friend Request</a>
+								</li>
+								<li class="space"></li>
 								<li>
-									<a href="#">Notifications</a>
+									<a href="#">Challenges</a>
 								</li>
 								<li class="space"></li>
 								<li>

@@ -13,7 +13,9 @@ public class SQLTest {
 		DBConnection db = new DBConnection();
 		Connection con = db.getConnection();
 		
-//		assertEquals(1, AccountManager.getIDByUsername(con, "nika"));
+		boolean bla = FriendManager.areFriends(con, 2, 1);
+		
+		if (bla)
 		
 		db.close();
 	}
