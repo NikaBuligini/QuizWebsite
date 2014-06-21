@@ -14,6 +14,10 @@ public class Question {
 		
 	}
 	
+	Question(String text) {
+		question = text;
+	}
+	
 	void setQuestion(String text){
 		question=text;
 	}
