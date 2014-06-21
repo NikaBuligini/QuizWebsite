@@ -113,9 +113,6 @@
 				return false;
 			}
 		}
-		function bla(e){
-			e.target.style.display ;
-		}
 		
 	</script>
 	<div></div>
