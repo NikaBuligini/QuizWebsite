@@ -12,6 +12,7 @@ public class User {
 	private int question;
 	private String answer;
 	private String image;
+	private int id;
 	
 	
 	/**
@@ -29,6 +30,7 @@ public class User {
 		setGenderID(genderID);
 		setQuestion(questionID, answer);
 		setImage(image);
+		id = 0;
 	}
 	
 	
@@ -100,5 +102,13 @@ public class User {
 	
 	public void setImage(String image){
 		this.image = image;
+	}
+	
+	public int getID(){
+		return id;
+	}
+	
+	public void setID(int id){
+		this.id = id;
 	}
 }

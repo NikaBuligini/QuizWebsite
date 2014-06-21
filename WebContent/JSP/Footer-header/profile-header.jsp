@@ -23,15 +23,20 @@
 				
 				User e = AccountManager.getUser(con, username);
 				%>
-				<li class="hover">
-					<a id="home" href="#" class="nav-item" class="nav-item">
-						<strong>Home</strong>
+				<li class="hover" id="home-li">
+					<div id="counts" style="display: none;"></div>
+					<a id="home" href="/QuizWebsite/notifications" class="nav-item" class="nav-item">
+						<strong id="h-t">Home</strong>
 					</a>
 					<div id="nav-home" class="nav-h">
 						<div class="content">
 							<ul class="list">
+								<li id="notif">
+									<a href="/QuizWebsite/notifications" id="f-t">Friend Request</a>
+								</li>
+								<li class="space"></li>
 								<li>
-									<a href="#">Notifications</a>
+									<a href="/QuizWebsite/notifications">Challenges</a>
 								</li>
 								<li class="space"></li>
 								<li>
@@ -63,7 +68,7 @@
 								</li>
 								<li class="space"></li>
 								<li>
-									<a href="http://localhost:8080/QuizWebsite/logout">Logout</a>
+									<a href="/QuizWebsite/logout">Logout</a>
 								</li>
 							</ul>
 						</div>

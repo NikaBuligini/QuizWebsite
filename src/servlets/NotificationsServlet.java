@@ -11,40 +11,49 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.AccountManager;
-import model.User;
+import model.NotificationManager;
 import model.WebVariables;
 
 /**
- * Servlet implementation class ViewServlet
+ * Servlet implementation class NotificationsServlet
  */
-@WebServlet("/view")
-public class ViewServlet extends HttpServlet implements WebVariables{
+@WebServlet("/notifications")
+public class NotificationsServlet extends HttpServlet implements WebVariables{
 	private static final long serialVersionUID = 1L;
-
+    	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ServletContext context = getServletConfig().getServletContext();
-		Connection con = (Connection) context.getAttribute(CONNECTION);
-		
-		String userID = request.getParameter(VIEW);
-		if (userID != null){
-			int ID = Integer.parseInt(userID);
-			User e = AccountManager.getUser(con, ID);
-			request.setAttribute("user", e);
-		}
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(JSP_VIEW);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(JSP_NOTIFICATIONS);
 		dispatcher.forward(request, response);
 	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ServletContext context = getServletConfig().getServletContext();
+		Connection con = (Connection) context.getAttribute(CONNECTION);
 		
+		String notifID = request.getParameter("id");
+		int ID = Integer.parseInt(notifID);
+		String type = request.getParameter("type");
+		String command = request.getParameter("com");
+		
+		if (type.equals("fr")) {
+			if (command.equals("accept")){
+				NotificationManager.accept(con, ID, false);
+			} else if (command.equals("decline")){
+				NotificationManager.decline(con, ID, false);
+			}
+		} else {
+			if (command.equals("accept")){
+				
+			} else if (command.equals("decline")){
+				
+			}
+		}
 	}
 
 }
