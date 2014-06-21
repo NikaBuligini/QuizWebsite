@@ -48,7 +48,6 @@ create table friends(
 	userID int,
 	friendID int,
 	foreign key FK_friends_users(userID) references users(ID)
-	#foreign key FK_Friends_Users(UserID) references Users(ID)
 );
 
 
@@ -70,6 +69,38 @@ create table achivementsAndUsers(
 create table quizCategories(
 	ID int auto_increment not null primary key,
 	category varchar(30)
+);
+
+create table categories(
+	ID int auto_increment not null primary key,
+	type varchar(30)
+);
+
+create table challenges(
+	ID int auto_increment not null primary key,
+	fromID int,
+	toID int,
+	message varchar (60),
+	quizID int,
+	foreign key FK_challenges_quizzes(quizID) references quizzes(ID),
+	foreign key FK_challenges_users(fromID) references users(ID)	
+
+);
+
+create table friendRequest(
+	ID int auto_increment not null primary key,
+	fromID int,
+	toID int,
+	foreign key FK_friendRequest_users(fromID) references users(ID)
+
+);
+
+create table messages(
+	ID int auto_increment not null primary key,
+	fromID int,
+	toID int,
+	text varchar(90),
+	foreign key FK_messages_users(fromID) references users(ID)
 );
 
 

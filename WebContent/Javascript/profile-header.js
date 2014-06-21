@@ -2,26 +2,48 @@
  * 
  */
 $(document).ready(function() {
-
+	$.get('http://localhost:8080/QuizWebsite/JSP/NoHTML/get-notifications.jsp', { }, function(data) {
+		$('#counts').html(data);
+		
+		var allCount = $('#h-c').text();;
+		var f_requestCount = $('#f-c').text();
+		
+		if (allCount != 0){
+			$('#h-t').text("Home (" + allCount + ")");
+		}
+		if (f_requestCount != 0){
+			$('#f-t').text("Friend Request (" + allCount + ")");
+		}
+		
+	});
 });
 
 
-$('#home').mouseover(function() {
-	mopen('nav-home', 'home');
+$(window).load(function() {
+	bindEvents();
 });
 
-$('#home').mouseout(function() {
-	mclosetime();
-});
 
-$('#nav-home').mouseover(function() {
-	mcancelclosetime();
-});
+function bindEvents() {
+	$(document).ready(function() {
+		$('#home').mouseover(function() {
+			correctOffset();
+			mopen('nav-home', 'home');
+		});
 
-$('#nav-home').mouseout(function() {
-	mclosetime();
-});
+		$('#home').mouseout(function() {
+			mclosetime();
+		});
 
+		$('#nav-home').mouseover(function() {
+			mcancelclosetime();
+		});
+
+		$('#nav-home').mouseout(function() {
+			mclosetime();
+		});
+	});
+}
 
 
 var timeout	= 500;
@@ -94,6 +116,16 @@ function mcancelclosetime()
 		window.clearTimeout(closetimer);
 		closetimer = null;
 	}
+}
+
+function correctOffset(){
+	var offset = $('#home-li').position();
+	var width = $('#home-li').width();
+	var ownWidth = $('#nav-home').width();
+	$('#nav-home').css({
+		'top': '44px',
+		'left': offset.left + width - ownWidth
+	});
 }
 
 // close layer when click-out
