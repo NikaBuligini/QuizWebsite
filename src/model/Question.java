@@ -8,11 +8,17 @@ public class Question {
 	String question;
 	String ImageName;
 
+	Question(String text) {
+		question = text;
+	}
+	
+	
 	Question(String text, String Image) {
 		question = text;
 		ImageName=Image;
 		
 	}
+	
 	
 	void setQuestion(String text){
 		question=text;
