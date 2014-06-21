@@ -338,6 +338,20 @@ ul {
 	color: #333;
 	font-weight: bold;
 }
+.is-friend {
+	float: right;
+	padding: 5px 10px;
+	border: 1px solid #999;
+	font-size: 1em;
+	background: #fff;
+	border-radius: 3px;
+	cursor: auto;
+	display: inline-block;
+	text-align: center;
+	text-shadow: 0 1px #f0f0f0;
+	color: #777;
+	font-weight: bold;
+}
 .request-sent {
 	float: right;
 	padding: 5px 10px;
@@ -435,7 +449,7 @@ ul {
 .notifications {
 	position: relative;
 	margin: 55px 380px 30px 320px;
-	min-height: 300px;
+	min-height: 545px;
 }
 .notifications .notif-content {
 	position: relative;
@@ -532,7 +546,12 @@ ul {
 	background: rgba(231, 240, 206, 0.22);
 	box-shadow: 0 1px 1px rgba(200,200,200,0.35);
 }
-
+.notifications .no-result {
+	padding-top: 15px;
+	font-weight: normal;
+	color: #aeaeae;
+	font-size: 15px;
+}
 
 
 

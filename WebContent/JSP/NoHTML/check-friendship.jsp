@@ -1,3 +1,5 @@
+<%@page import="model.Notification"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.AccountManager"%>
 <%@page import="model.CookiesManager"%>
 <%@page import="model.FriendManager"%>
@@ -19,13 +21,27 @@
 		Cookie user = CookiesManager.getCookie(request, WebVariables.COOKIE_USER);
 		int from = AccountManager.getIDByEmail(con, user.getValue());
 		
+		if (from == to){
+			return;
+		} else {
+			ArrayList<Notification> notifications = FriendManager.getNotifications(con, from);
+			for (int i=0; i<notifications.size(); i++){
+				if (notifications.get(i).getAuthorID() == to){
+					%>
+					<input type="button" id="add" value="Check Notifications" class="request-sent" disabled="disabled">
+					<%
+					return;
+				}
+			}
+		}
+		
 		areFriends = FriendManager.areFriends(con, from, to);
 		id = FriendManager.getRequestID(con, from, to);
 	}
 	
 	if(areFriends){
 	%>
-	<input type="button" id="add" value="Friends" class="request-sent" disabled="disabled">
+	<input type="button" id="add" value="Friend" class="request-sent" disabled="disabled">
 	<%
 	} else if (id == 0){
 	%>

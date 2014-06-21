@@ -7,7 +7,7 @@
 		<div class="registration-header-content">
 			<img alt="" src="">
 			<span class="signin-button">
-				<a class="signin-submit signin-submit-button" href="http://localhost:8080/QuizWebsite/login">Sign In</a>
+				<a class="signin-submit signin-submit-button" href="/QuizWebsite/login">Sign In</a>
 			</span>
 		</div>
 	</div>

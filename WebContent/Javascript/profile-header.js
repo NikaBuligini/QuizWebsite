@@ -2,7 +2,7 @@
  * 
  */
 $(document).ready(function() {
-	$.get('http://localhost:8080/QuizWebsite/JSP/NoHTML/get-notifications.jsp', { }, function(data) {
+	$.get('/QuizWebsite/JSP/NoHTML/get-notifications.jsp', { }, function(data) {
 		$('#counts').html(data);
 		
 		var allCount = $('#h-c').text();;

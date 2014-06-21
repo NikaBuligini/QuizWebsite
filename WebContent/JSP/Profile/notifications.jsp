@@ -25,34 +25,13 @@ if (log == null){
 		<div class="notifications">
 			<div class="notif-content">
 				<h1>Notifications</h1>
-				<ul>
-					<li>
-						<div class="notif-main">
-							<label class="img-label">
-								<a href="#">
-									<img alt="" src="" width="25px" height="25px">
-								</a>
-							</label>
-							<a href="#" class="notif-author">Saxeli Gvari</a>
-						</div>
-						<div class="notif-main">
-							<p class="notif-text">teqsti</p>
-							<span class="timestamp">21 June.</span>
-						</div>
-						<div class="notif-decision">
-							<button type="button" class="accept">Accept</button>
-							<button type="button" class="decline">Decline</button>
-						</div>
-					</li>
-					<li>
-						b
-					</li>
-				</ul>
+				<ul id="notif-list"></ul>
 			</div>
 		</div>
 		<jsp:include page="/JSP/Footer-header/footer.jsp"></jsp:include>
 	</div>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath() %>/Javascript/profile-header.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/Javascript/notifications.js"></script>
 </body>
 </html>

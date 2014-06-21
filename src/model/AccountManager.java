@@ -95,6 +95,7 @@ public class AccountManager extends Manager {
 		
 		
 		User e = new User(firstname, lastname, genderID, questionID, answer, image);
+		e.setID(id);
 		return e;
 	}
 	
