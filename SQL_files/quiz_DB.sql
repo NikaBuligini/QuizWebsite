@@ -51,19 +51,19 @@ create table friends(
 );
 
 
-create table achivements(
+create table achievements(
 	ID int auto_increment not null primary key,
 	description varchar(60),
 	name varchar(30),
-	imagefile CHAR(60)
+	imagefile CHAR(100)
 );
 
 
-create table achivementsAndUsers(
+create table achievementsAndUsers(
 	userID int,
-	achivementID int,
-	foreign key FK_achivementsAndUsers_users(userID) references users(ID),	
-	foreign key FK_achivementsAndUsers_achivements(achivementID) references achivements(ID)
+	achievementID int,
+	foreign key FK_achievementsAndUsers_users(userID) references users(ID),	
+	foreign key FK_achievementsAndUsers_achievements(achievementID) references achievements(ID)
 );
 
 create table quizCategories(
@@ -74,6 +74,17 @@ create table quizCategories(
 create table categories(
 	ID int auto_increment not null primary key,
 	type varchar(30)
+);
+
+create table quizzes(
+	ID int auto_increment not null primary key,
+	quizName varchar(30),
+	description varchar(60),
+	date datetime,
+	creatorID int,
+	categoryID int,
+	foreign key FK_quizzes_users(creatorID) references users(ID),
+	foreign key FK_quizzes_quizCategories(categoryID) references quizCategories(ID)
 );
 
 create table challenges(
@@ -104,16 +115,7 @@ create table messages(
 );
 
 
-create table quizzes(
-	ID int auto_increment not null primary key,
-	quizName varchar(30),
-	description varchar(60),
-	date datetime,
-	creatorID int,
-	categoryID int,
-	foreign key FK_quizzes_users(creatorID) references users(ID),
-	foreign key FK_quizzes_quizCategories(categoryID) references quizCategories(ID)
-);
+
 
 
 create table quizzesAndUsers(
@@ -123,6 +125,12 @@ create table quizzesAndUsers(
 	foreign key FK_quizzesAndUsers_quizzes(quizID) references quizzes(ID)
 );
 
+create table usersAndMadeQuizes(
+	quizID int,
+	userID int,
+	foreign key FK_quizzesAndUsers_users(userID) references users(ID),
+	foreign key FK_quizzesAndUsers_quizzes(quizID) references quizzes(ID)
+);
 
 create table questions(
 	ID int auto_increment not null primary key,
