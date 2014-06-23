@@ -12,9 +12,9 @@ public class SQLTest {
 	public void test() {
 		DBConnection db = new DBConnection();
 		Connection con = db.getConnection();
-		
+
 		AccountManager.search(con, "gode go");
-		
+		AchievementManager.addFriendsAchievement(con, 1);
 		db.close();
 	}
 

@@ -10,8 +10,18 @@ insert into security_questions (question) value ('2*2?');
 select * from security_questions;
 
 insert into users(email,pass) values ('meme','cxeni');
+insert into users(email,pass) values ('zoro','cxeni');
+insert into users(email,pass) values ('zoroscxeni','cxeni');
+
+insert into friends(userID,friendID) values(1,2);
+
 insert into additional_info (userID, firstName, lastName, gender, questionID, answer)
 		values ('1', 'nika', 'buligini', 1, 6, 'ki');
+
+insert into additional_info (userID, firstName, lastName, gender, questionID, answer)
+		values ('2', 'nika', 'buligini', 1, 6, 'ki');
+insert into additional_info (userID, firstName, lastName, gender, questionID, answer)
+		values ('3', 'nika', 'buligini', 1, 6, 'ki');
 
 select * from additional_info;
 select * from users;
