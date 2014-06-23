@@ -47,7 +47,6 @@ public class AccountManager extends Manager {
 		insert(con, USERS_TABLE, USERS_COLUMNS, user);
 		
 		int ID = getSingleInt(con, USERS_TABLE, USERS_EMAIL_C, email, USERS_ID_C);
-		
 		Object[] userInfo = new Object[INFO_N_COL];
 		userInfo[0] = ID;
 		userInfo[1] = e.getFirstName();
@@ -60,6 +59,7 @@ public class AccountManager extends Manager {
 		
 		return SUCCESS;
 	}
+	
 	
 	
 	public static boolean contains(Connection con, String email, String password){
@@ -107,6 +107,11 @@ public class AccountManager extends Manager {
 	
 	public static String getEmail(Connection con, int ID){
 		return getSingleString(con, USERS_TABLE, USERS_ID_C, ID, USERS_EMAIL_C);
+	}
+	
+	
+	public static String getpassword(Connection con, int ID){
+		return getSingleString(con, USERS_TABLE, USERS_ID_C, ID, USERS_PASSWORD_C);
 	}
 	
 	
@@ -171,6 +176,7 @@ public class AccountManager extends Manager {
 		return result;
 	}
 	
+		
 	
 	private static String buildSpecialSelect(String text) {
 		return "SELECT * FROM " + INFO_TABLE + " WHERE concat(" + INFO_FIRSTNAME_C + ", ' ', " +

@@ -8,9 +8,10 @@
 <%@page import="model.WebVariables"%>
 <%@page import="model.DBConnection"%>
 <%@page import="model.SQLTest"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>QuizWebsite.com - პარამეტრების შეცვლა</title>
 <h2>QuizWebsire--Security</h2>
@@ -18,16 +19,16 @@
 	href="<%=request.getContextPath()%>/css/design.css">
 
 
+</head>
 <%
 	User currUser = (User) (request.getSession().getAttribute("user"));
-%>
-</head>
+	%>
 <body style="background-color: #C2CFDF;">
 <body>
 	<div class="topbar">
 		<li class=><a href="#">Mail</a></li>
 		<button onclick="showForm(event)">edit</button>
-		<form action="demo_form.asp" style="display: none" id="myForm"
+		<form action="PassRecovery" method="post" style="display: none" id="myForm"
 			onsubmit="return validateForm(event)">
 			current email: <input type="text" name="oldemail" value=""><br>
 			New email: <input type="text" name="email" value=""><br>
@@ -39,7 +40,7 @@
 
 		<li><a href="#">password</a></li>
 		<button onclick="showForm(event)">edit</button>
-		<form action="demo_form.asp" style="display: none" id="myForm"
+		<form action="PassRecovery" method="post" style="display: none" id="myForm"
 			onsubmit="return validateForm(event)">
 			old password: <input type="text" name="oldpassword" value=""><br>
 			New password: <input type="text" name="password" value=""><br>
@@ -51,7 +52,7 @@
 
 		<li><a href="#">Name</a></li>
 		<button onclick="showForm(event)">edit</button>
-		<form action="demo_form.asp" style="display: none" id="myForm"
+		<form action="PassRecovery" method="post" style="display: none" id="myForm"
 			onsubmit="return validateForm(event)">
 			old Name: <input type="text" name="oldName" value=""> <br>
 			Name: <input type="text" name="Name" value=""><br>
@@ -63,7 +64,7 @@
 
 		<li><a href="#">Lastname</a></li>
 		<button onclick="showForm(event)">edit</button>
-		<form action="demo_form.asp" style="display: none" id="myForm"
+		<form action="PassRecovery" method="post" style="display: none" id="myForm"
 			onsubmit="return validateForm(event)">
 			old Lastname: <input type="text" name="oldLastname" value=""><br>
 			old Lastname: <input type="text" name="lastname" value=""><br>
@@ -82,6 +83,7 @@
 		<a href="http://localhost:8080/QuizWebsite" target="_blank"> Visit
 			Quiz Web Site!</a>
 	</h5>
+	
 
 	<script type="text/javascript">
 		function showForm(e) {
@@ -108,6 +110,8 @@
 				return false;
 			}
 		}
+		
+
 	</script>
 	<div></div>
 </body>
