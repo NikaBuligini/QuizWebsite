@@ -18,6 +18,7 @@ $(document).ready(function() {
 	});
 });
 
+var curr = 0;
 
 $(window).load(function() {
 	bindEvents();
@@ -41,6 +42,26 @@ function bindEvents() {
 
 		$('#nav-home').mouseout(function() {
 			mclosetime();
+		});
+		
+		$('#search-input').keyup(function() {
+			var value = $('#search-input').val();
+			if (value.length != 0) {
+				$.post('/QuizWebsite/JSP/NoHTML/search.jsp', {text:value }, function(data) {
+					$('#results').html(data);
+					$('#results').removeClass('search-hidden');
+				});
+			} else {
+				$('#results').addClass('search-hidden');
+			}
+		});
+		
+		$('#search-input').keypress(function(e) {
+			if (e.which == 13) {
+				if (curr != 0){
+					window.location.replace('/QuizWebsite/view?p=');
+				}
+			}
 		});
 	});
 }
@@ -129,4 +150,8 @@ function correctOffset(){
 }
 
 // close layer when click-out
-document.onclick = mclose; 
+//document.onclick = mclose;
+$(document).click(function() {
+	$('#results').addClass('search-hidden');
+	
+});

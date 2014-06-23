@@ -1,3 +1,4 @@
+<%@page import="servlets.CreateQuizServlet"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,164 +18,107 @@
 		<jsp:include page="/JSP/Footer-header/profile-header.jsp"></jsp:include>
 		<div class="create-quiz">
 			<div class="form-background create-content">
-				<form action="" method="post">
+				<form action="/QuizWebsite/create" method="post">
 					<ul>
 						<li>
-							<div class="input-title">
-								<strong>Title:</strong>
-							</div>
-							<div class="input-content">
-								<input type=text name=titel size=50 value="">
-							</div>
-						</li>
-						<li>
-							<div class="input-title">
-								<Strong>Description:</Strong>
-							</div>
-							<div class="input-content">
-								<textarea name=einleitung cols=50 rows=4></textarea>
+							<div class="li-content">
+								<div class="input-title">
+									<strong>Title:</strong>
+								</div>
+								<div class="input-content">
+									<input type="text" name="<%=CreateQuizServlet.TITLE %>" class="title">
+								</div>
 							</div>
 						</li>
 						<li>
-							<div class="input-title">
-								<Strong>Category:</Strong>
-							</div>
-							<div class="input-content">
-								<select name=category>
-									<option value="sport">Sport</option>
-									<option value="iq">IQ</option>
-									<option value="movies">Movies</option>
-									<option value="books">Books</option>
-									<option value="knowledge">Knowledge</option>
-									<option value="other">Other</option>
-								</select>
+							<div class="descrip-div">
+								<div class="input-title">
+									<Strong>Description:</Strong>
+								</div>
+								<div class="input-content">
+									<textarea name="<%=CreateQuizServlet.DESCRIPTION %>" class="description"></textarea>
+								</div>
 							</div>
 						</li>
 						<li>
-							<div class="input-title">
-								<Strong>Order:</Strong>
-							</div>
-							<div class="input-content">
-								<select name=order>
-									<option value="random">Random</option>
-									<option value="same">Always Same</option>
-								</select>
-							</div>
-						</li>
-						<li>
-							<div class="input-title">
-								<Strong>Immediate Correction:</Strong>
-							</div>
-							<div class="input-content">
-								<select name=correction>
-									<option value="yes">Yes</option>
-									<option value="no">No</option>
-								</select>
+							<div class="li-content">
+								<div class="input-title">
+									<Strong>Category:</Strong>
+								</div>
+								<div class="input-content">
+									<select name="<%=CreateQuizServlet.CATEGORY %>">
+										<option value="sport">Sport</option>
+										<option value="iq">IQ</option>
+										<option value="movies">Movies</option>
+										<option value="books">Books</option>
+										<option value="knowledge">Knowledge</option>
+										<option value="other">Other</option>
+									</select>
+								</div>
 							</div>
 						</li>
 						<li>
-							<div class="input-title">
-								<Strong>Appearance:</Strong>
-							</div>
-							<div class="input-content">
-								<select name=appearance>
-									<option value="onePage">One Page</option>
-									<option value="multiplePages">Multiple Pages</option>
-								</select>
-							</div>
-						</li>
-						<li>
-							<div class="input-title">
-								<Strong>Practice Mode:</Strong>
-							</div>
-							<div class="input-content">
-								<select name=practiceMode>
-									<option value="yes">Yes</option>
-									<option value="no">No</option>
-								</select>
+							<div class="li-content">
+								<div class="input-title">
+									<Strong>Order:</Strong>
+								</div>
+								<div class="input-content">
+									<input type="checkbox" name="<%=CreateQuizServlet.RANDOM %>" value="y">
+									<label>Random</label>
+								</div>
 							</div>
 						</li>
 						<li>
-							<div class="input-title">
-								<Strong>Type:</Strong>
-							</div>
-							<div class="input-content">
-								<select name=type>
-									<option value="multiple">Multiple Choice</option>
-									<option value="questionResponse">Question-Response</option>
-									<option value="fillInTheblank">Fill in the blank</option>
-									<option value="pictureResponse">Picture Response</option>
-								</select>
+							<div class="li-content">
+								<div class="input-title">
+									<Strong>Immediate Correction:</Strong>
+								</div>
+								<div class="input-content">
+									<input type="checkbox" name="<%=CreateQuizServlet.CORRECTION %>" value="y">
+								</div>
 							</div>
 						</li>
-
-						<li><input type="submit" value="Next"></li>
+						<li>
+							<div class="li-content">
+								<div class="input-title">
+									<Strong>Appearance:</Strong>
+								</div>
+								<div class="input-content">
+									<input type="checkbox" name="<%=CreateQuizServlet.ONE_PAGE %>" value="y">
+									<label>One page</label>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="li-content">
+								<div class="input-title">
+									<Strong>Practice Mode:</Strong>
+								</div>
+								<div class="input-content">
+									<input type="checkbox" name="<%=CreateQuizServlet.PRACTICE %>" value="y">
+									<label>Allow practice mode</label>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="li-content">
+								<div class="input-title">
+									<Strong>Type:</Strong>
+								</div>
+								<div class="input-content">
+									<select name="<%=CreateQuizServlet.TYPE %>">
+										<option value="multiple">Multiple Choice</option>
+										<option value="questionResponse">Question-Response</option>
+										<option value="fillInTheblank">Fill in the blank</option>
+										<option value="pictureResponse">Picture Response</option>
+									</select>
+								</div>
+							</div>
+						</li>
 					</ul>
+					<input type="submit" value="Next" class="next-button">
 				</form>
 			</div>
-
-			<table class="create-content" cellspacing=5 cellpadding=5>
-				<tr>
-					<td><Strong>Title:</Strong></td>
-					<td><input type=text name=titel size=50 value=""></td>
-				</tr>
-				<tr>
-					<td><Strong>Description:</Strong></td>
-					<td><textarea name=einleitung cols=50 rows=4></textarea></td>
-				</tr>
-				<tr>
-					<td><Strong>Category:</Strong></td>
-					<td><select>
-							<option value="sport">Sport</option>
-							<option value="iq">IQ</option>
-							<option value="movies">Movies</option>
-							<option value="books">Books</option>
-							<option value="knowledge">Knowledge</option>
-							<option value="other">Other</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td><Strong>Order:</Strong></td>
-					<td><select>
-							<option value="random">Random</option>
-							<option value="same">Always Same</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td><Strong>Immediate Correction:</Strong></td>
-					<td><select>
-							<option value="yes">Yes</option>
-							<option value="no">No</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td><Strong>Appearance:</Strong></td>
-					<td><select>
-							<option value="onePage">One Page</option>
-							<option value="multiplePages">Multiple Pages</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td><Strong>Practice Mode:</Strong></td>
-					<td><select>
-							<option value="yes">Yes</option>
-							<option value="no">No</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td><Strong>Type:</Strong></td>
-					<td><select>
-							<option value="multiple">Multiple Choice</option>
-							<option value="questionResponse">Question-Response</option>
-							<option value="fillInTheblank">Fill in the blank</option>
-							<option value="pictureResponse">Picture Response</option>
-					</select></td>
-				</tr>
-			</table>
-			<input type=submit class=button id="createQuiz" value=Next
-				onclick="window.location = 'questionInputs.jsp'"
-				style="position: absolute; left: 300px; top: 400px;">
-			<P>
 		</div>
 		<jsp:include page="/JSP/Footer-header/footer.jsp"></jsp:include>
 	</div>

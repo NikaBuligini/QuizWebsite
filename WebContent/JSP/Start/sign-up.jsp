@@ -23,43 +23,41 @@ if (alert == null)
 			<form id="signup" class="form-horizontal" method="post" action="<%=request.getContextPath() %>/registration" autocomplete="off">
 				<legend>Sign Up</legend>
 				<div class="control-group">
-					<label class="control-label">First Name</label>
+					<label id="fname-title" class="control-label">First Name</label>
 					<div class="controls">
 						<div class="input-prepend">
 							<span class="add-on">
 								<i class="icon-user"></i>
 							</span>
-							<input type="text" class="input-xlarge" id="fname" name="fname" placeholder="First Name" onkeyup="checkfname()">
-							<span id="fname-alert" class="check-alert">You can't leave this empty</span>
+							<input type="text" class="input-xlarge" id="fname" name="fname" placeholder="First Name">
 						</div>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">Last Name</label>
+					<label id="lname-title" class="control-label">Last Name</label>
 					<div class="controls">
 						<div class="input-prepend">
 							<span class="add-on">
 								<i class="icon-user"></i>
 							</span>
-							<input type="text" class="input-xlarge" id="lname" name="lname" placeholder="Last Name" onkeyup="checklname()">
-							<span id="lname-alert" class="check-alert">You can't leave this empty</span>
+							<input type="text" class="input-xlarge" id="lname" name="lname" placeholder="Last Name">
 						</div>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">Email</label>
+					<label id="email-title" class="control-label">Email</label>
 					<div class="controls">
 						<div class="input-prepend">
 							<span class="add-on">
 								<i class="icon-user"></i>
 							</span>
-							<input type="text" class="input-xlarge" id="email" name="email" placeholder="Email" onkeyup="checkemail()">
-							<span id="email-alert" class="check-alert">You can't leave this empty</span>
+							<input type="text" class="input-xlarge" id="email" name="email" placeholder="Email">
+							<span id="email-alert" class="check-alert"></span>
 						</div>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">Gender</label>
+					<label id="gender-title" class="control-label">Gender</label>
 					<div class="controls">
 						<div class="input-prepend">
 							<div id="gender" name="gender" class="radio-group" data-toggle="buttons-radid">
@@ -70,7 +68,7 @@ if (alert == null)
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">Password</label>
+					<label id="passwd-title" class="control-label">Password</label>
 					<div class="controls">
 						<div class="input-prepend">
 							<span class="add-on">
@@ -82,20 +80,20 @@ if (alert == null)
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">Confirm Password</label>
+					<label id="conpasswd-title" class="control-label">Confirm Password</label>
 					<div class="controls">
 						<div class="input-prepend">
 							<span class="add-on">
 								<i class="icon-user"></i>
 							</span>
-							<input type="password" class="input-xlarge" id="conpasswd" name="conpasswd" placeholder="Re-enter Password" onkeyup="checkPass()" onclick="encrypt()">
+							<input type="password" class="input-xlarge" id="conpasswd" name="conpasswd" placeholder="Re-enter Password" onkeyup="checkPass()">
 						</div>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="input01"></label>
+					<label class="control-label"></label>
 					<div class="controls">
-						<button type="button" class="btn btn-success" onclick="fullCheck(this.form)">Create My Account</button>
+						<button id="submit-button" type="button" class="btn btn-success">Create My Account</button>
 					</div>
 				</div>
 				<span class="registration-alert"><%=alert %></span>
