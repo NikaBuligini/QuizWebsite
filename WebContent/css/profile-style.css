@@ -610,6 +610,38 @@ ul {
 	font-size: 15px;
 }
 
+div.achievement{
+	float:left;
+	margin:5px;
+}
 
+div.achievementImage{
+	float:left;
+}
+
+div.achievementImage img{
+	height:72px;
+	width:72px;
+}
+
+div.achievementInfo {
+float: left;
+font-size: small;
+margin-left: 5px;
+width: 215px;
+}
+
+div.progressContainer {
+width: 128px;
+height: 7px;
+background-color: #DDD;
+padding: 0px !important;
+}
+
+div.progressBar {
+height: 100%;
+background: #F50;
+padding: 0px !important;
+}
 
 
