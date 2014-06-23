@@ -1,6 +1,8 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class FriendManager extends Manager{
@@ -121,5 +123,25 @@ public class FriendManager extends Manager{
 		User author = AccountManager.getUser(con, (int)row.get(1));
 		
 		return new Notification(ID, author, TEXT, false);
+	}
+	
+	
+	public static void unfriend(Connection con, int user, int friend) {
+		removeFriend(con, user, friend);
+		removeFriend(con, friend, user);
+	}
+	
+	private static void removeFriend(Connection con, int owner, int friend) {
+		String SQLQuery = "DELETE FROM " + FRIENDS_TABLE + " WHERE " + FRIENDS_USER_C + "=" + owner + 
+				" AND " + FRIENDS_FRIEND_C + "=" + friend;
+		
+		Statement stmt = null;
+		try {
+			stmt = con.createStatement();
+			stmt.executeUpdate(SQLQuery);
+			stmt.close();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 	}
 }

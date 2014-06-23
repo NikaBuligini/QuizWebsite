@@ -30,7 +30,7 @@
 					<input id="Email" type="text" name="email" placeholder="Email">
 					<input id="Password" type="password" name="passwd" placeholder="Password">
 					<span id="alert" class="alert"><%=info %></span>
-					<input id="SignIn" type="button" onclick="check(this.form)" value="Sign In">
+					<input id="SignIn" type="button" value="Sign In">
 					<label>
 						<input name=<%=WebVariables.PERSISTENT %> type="checkbox" value="yes">
 						<span>Stay signed in</span>
@@ -44,17 +44,7 @@
 		</div>
 		<jsp:include page="/JSP/Footer-header/footer.jsp"></jsp:include>
 	</div>
-	<script type="text/javascript">
-		function check(form){
-			if (form.email.value.length == 0) {
-				document.getElementById("alert").innerHTML = "Enter your username.";
-				ok = ok && false;
-			} else if (form.passwd.value.length == 0){
-				document.getElementById("alert").innerHTML = "Enter your password.";
-			} else {
-				document.signin.submit();
-			}
-		}
-	</script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/QuizWebsite/Javascript/check.js"></script>
 </body>
 </html>

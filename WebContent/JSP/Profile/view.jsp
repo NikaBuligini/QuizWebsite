@@ -8,7 +8,7 @@
 Connection con = (Connection) config.getServletContext().getAttribute(WebVariables.CONNECTION);
 User c = (User)request.getAttribute("user");
 
-String name = "No user with this id";
+String name = "No result";
 if (c != null)
 	name = c.getFirstName() + " " + c.getLastName();
 %>
@@ -30,7 +30,6 @@ if (c != null)
 				<div class="header-cont">
 					<div class="username">
 						<h1><%=c.getFirstName() + " " + c.getLastName() %></h1>
-						<span id="id" style="display: none;"><%=request.getParameter(WebVariables.VIEW) %></span>
 					</div>
 					<div class="friends-info">
 						<span id="fr">
@@ -43,41 +42,8 @@ if (c != null)
 						<div class="photo">
 							<img src="">
 						</div>
-						<div class="row section">
-							<ul class="profile-tabs">
-								<li>
-									<a href="#">About</a>
-								</li>
-								<li>
-									<a href="#">Friends</a>
-									<span class="count">0</span>
-								</li>
-								<li>
-									<a href="#">Quizzes</a>
-									<span class="count">0</span>
-								</li>
-								<li>
-									<a href="#">Achievements</a>
-									<span class="count">0</span>
-								</li>
-							</ul>
-						</div>
-						<div id="profile-nav" class="row section">
-							<ul class="profile-nav">
-								<li>
-									<a href="#">Message</a>
-								</li>
-								<li>
-									<a href="#">Block <%=c.getFirstName() %></a>
-								</li>
-								<li>
-									<a href="#">Unfriend <%=c.getFirstName() %></a>
-								</li>
-								<li>
-									<a href="#">Report</a>
-								</li>
-							</ul>
-						</div>
+						<div id="profile-info" class="row section"></div>
+						<div id="profile-nav" class="row section"></div>
 					</div>
 					<div class="right-prof">
 						<div class="profile-feed-header">
@@ -100,7 +66,7 @@ if (c != null)
 		} else {
 		%>
 		<div class="view-content">
-			<h1>No Such User</h1>
+			<h1 class="view-no-result">No Such User</h1>
 		</div>
 		<%
 		}
@@ -108,17 +74,16 @@ if (c != null)
 		<jsp:include page="/JSP/Footer-header/footer.jsp"></jsp:include>
 	</div>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="/QuizWebsite/Javascript/view.js"></script>
+	<%
+		if (c != null){
+		%>
 	<script type="text/javascript">
-		if(true) {
-			$('#profile-nav').css({
-				"display": "none"
-			});
-			$('#friends').css({
-				"display": "none"
-			});
+		var id = '<%=c.getID() %>';
+	</script>		
+		<%
 		}
-	</script>
+	%>
+	<script type="text/javascript" src="/QuizWebsite/Javascript/view.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath() %>/Javascript/profile-header.js"></script>
 </body>
 </html>

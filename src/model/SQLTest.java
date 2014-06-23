@@ -13,9 +13,7 @@ public class SQLTest {
 		DBConnection db = new DBConnection();
 		Connection con = db.getConnection();
 		
-		boolean bla = FriendManager.areFriends(con, 2, 1);
-		
-		if (bla)
+		AccountManager.search(con, "gode go");
 		
 		db.close();
 	}
