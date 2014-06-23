@@ -13,7 +13,7 @@ public class SQLTest {
 		DBConnection db = new DBConnection();
 		Connection con = db.getConnection();
 		
-//		assertEquals(1, AccountManager.getIDByUsername(con, "nika"));
+		AccountManager.search(con, "gode go");
 		
 		db.close();
 	}

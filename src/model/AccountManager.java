@@ -1,7 +1,12 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class AccountManager extends Manager {
 	
@@ -83,7 +88,7 @@ public class AccountManager extends Manager {
 	
 	public static User getUser(Connection con, int id){
 		ArrayList<Object> row = getSingleRow(con, INFO_TABLE, INFO_USER_ID_C, id, INFO_N_COL);
-		if (row == null)
+		if (row == null || row.size() == 0)
 			return null;
 		
 		String firstname = (String)row.get(1);
@@ -95,6 +100,7 @@ public class AccountManager extends Manager {
 		
 		
 		User e = new User(firstname, lastname, genderID, questionID, answer, image);
+		e.setID(id);
 		return e;
 	}
 	
@@ -121,6 +127,55 @@ public class AccountManager extends Manager {
 		list[3] = (String)userRow.get(2);
 		
 		return list;
+	}
+	
+	
+	public static ArrayList<User> search(Connection con, String text) {
+		if (text == null || text.equals(""))
+			return null;
+		
+		String SQLQuery = buildSpecialSelect(text);
+		
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(SQLQuery);
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		HashSet<Integer> users = new HashSet<Integer>();
+		try {
+			while (rs.next()){
+				users.add((int)rs.getInt(1));
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				rs.close();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+		ArrayList<User> result = new ArrayList<User>();
+		Iterator<Integer> it = users.iterator();
+		while (it.hasNext()) {
+			result.add(getUser(con, it.next()));
+		}
+		
+		return result;
+	}
+	
+	
+	private static String buildSpecialSelect(String text) {
+		return "SELECT * FROM " + INFO_TABLE + " WHERE concat(" + INFO_FIRSTNAME_C + ", ' ', " +
+				INFO_LASTNAME_C + ") Like '%" + text + "%' OR concat(" + INFO_LASTNAME_C + ", ' ', " +
+				INFO_FIRSTNAME_C + ") Like '%" + text + "%'";
 	}
 	
 }

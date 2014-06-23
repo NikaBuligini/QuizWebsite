@@ -23,15 +23,20 @@
 				
 				User e = AccountManager.getUser(con, username);
 				%>
-				<li class="hover">
-					<a id="home" href="#" class="nav-item" class="nav-item">
-						<strong>Home</strong>
+				<li class="hover" id="home-li">
+					<div id="counts" style="display: none;"></div>
+					<a id="home" href="/QuizWebsite/notifications" class="nav-item" class="nav-item">
+						<strong id="h-t">Home</strong>
 					</a>
 					<div id="nav-home" class="nav-h">
 						<div class="content">
 							<ul class="list">
+								<li id="notif">
+									<a href="/QuizWebsite/notifications" id="f-t">Friend Request</a>
+								</li>
+								<li class="space"></li>
 								<li>
-									<a href="#">Notifications</a>
+									<a href="/QuizWebsite/notifications">Challenges</a>
 								</li>
 								<li class="space"></li>
 								<li>
@@ -42,7 +47,7 @@
 					</div>
 				</li>
 				<li class="hover">
-					<a id="prof" href="#" class="nav-item" onmouseover="mopen('nav-profile', 'prof')" onmouseout="mclosetime()">
+					<a id="prof" href="/QuizWebsite/view?p=<%=e.getID() %>" class="nav-item" onmouseover="mopen('nav-profile', 'prof')" onmouseout="mclosetime()">
 						<strong><%=e.getFirstName() %></strong>
 					</a>
 					<div id="nav-profile" class="nav-p" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
@@ -63,29 +68,20 @@
 								</li>
 								<li class="space"></li>
 								<li>
-									<a href="http://localhost:8080/QuizWebsite/logout">Logout</a>
+									<a href="/QuizWebsite/logout">Logout</a>
 								</li>
 							</ul>
 						</div>
 					</div>
 				</li>
-				<a id="addQuiz" href="#" class="add-quiz">Add Quiz</a>
+				<a id="addQuiz" href="/QuizWebsite/create" class="add-quiz">Add Quiz</a>
 			</ul>
 			<div class="search-bar">
-				<form id="search-form" action="<%=request.getContextPath() %>/search" onsubmit="">
-					<span class="search-logo"></span>
-					<input type="text" value="" name=<%=WebVariables.SEARCH %> autocomplete="off" placeholder="Search for quizes and users">
-				</form>
+				<span class="search-logo"></span>
+				<input id="search-input" type="text" value="" name=<%=WebVariables.SEARCH %> autocomplete="off" placeholder="Search for quizes and users">
+				<div id="results" class="search-result search-hidden"></div>
 			</div>
 		</div>
-		<script type="text/javascript">
-			var button = document.getElementById("addQuiz");
-			button.addEventListener("click", mod, false);
-			
-			function mod(){
-				buton.style.color = '#ffffff';
-			}
-		</script>
 	</div>
 </body>
 </html>

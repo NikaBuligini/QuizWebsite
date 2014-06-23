@@ -1,48 +1,114 @@
 /**
  * 
  */
-var match = false;
 var gender = false;
 
-function checkfname(){
-	checkField("fname", "fname-alert");
+$(document).ready(function() {
+	$('#fname').keyup(function() {
+		makeBlack('fname-title');
+	});
+
+	$('#lname').keyup(function() {
+		makeBlack('lname-title');
+	});
+	
+	$('#email').keyup(function() {
+		makeBlack('email-title');
+		var email = $('#email').val();
+		$.post('/QuizWebsite/JSP/NoHTML/check-email.jsp', { email: email }, function(data) {
+			$('#email-alert').html(data);
+		});
+	});
+	
+	$('#passwd').keyup(function() {
+		makeBlack('passwd-title');
+	});
+	
+	$('#conpasswd').keyup(function() {
+		makeBlack('conpasswd-title');
+	});
+	
+	$('#submit-button').click(function(form) {
+		var allow = true;
+		if ($('#fname').val().length == 0) {
+			makeRed('fname-title');
+			allow = allow && false;
+		}
+		if ($('#lname').val().length == 0) {
+			makeRed('lname-title');
+			allow = allow && false;
+		}
+		if ($('#email').val().length == 0) {
+			makeRed('email-title');
+			allow = allow && false;
+		}
+		if ($('#passwd').val().length == 0) {
+			makeRed('passwd-title');
+			allow = allow && false;
+		}
+		if (!gender) {
+			makeRed('gender-title');
+			allow = allow && false;
+		}
+		if ($('#passwd').val() != $('#conpasswd').val()){
+			makeRed('conpasswd-title');
+			$("#passwd-alert").css({
+				visibility: 'visible'
+			});
+			$("#passwd-alert").text('Passwords don\'t match');
+			allow = allow && false;
+		}
+		
+		if (allow){
+			$('#signup').submit();
+		}
+	});
+	
+	$('#Email').keypress(function(e) {
+		if (e.which == 13) {
+			login();
+		}
+	});
+	
+	$('#Password').keypress(function(e) {
+		if (e.which == 13) {
+			login();
+		}
+	});
+	
+	$('#SignIn').click(function() {
+		login();
+	});
+});
+
+
+function makeRed(id){
+	$('#' + id).addClass('red-label');
 }
 
-function checklname(){
-	checkField("lname", "lname-alert");
-}
-
-function checkemail(){
-	checkField("email", "email-alert");
+function makeBlack(id){
+	$('#' + id).removeClass('red-label');
 }
 
 function checkRadio(){
 	gender = true;
+	makeBlack('gender-title');
 }
 
 function checkPass(){
-	document.getElementById("passwd-alert").style.visibility = 'visible';
-	if (document.getElementById("passwd").value != document.getElementById("conpasswd").value){
-		document.getElementById("passwd-alert").innerHTML = "Passwords don't match.";
-		match = false;
-	} else {
-		document.getElementById("passwd-alert").style.visibility = 'hidden';
-		match = true;
+	if ($("#passwd").val() == $("#conpasswd").val()){
+		$('#passwd-alert').css({
+			visibility: 'hidden'
+		});
 	}
 }
 
-function checkField(id, alert){
-	if (document.getElementById(id).value.length == 0)
-		document.getElementById(alert).style.visibility = 'visible';
-	else
-		document.getElementById(alert).style.visibility = 'hidden';
-}
-
-function fullCheck(form){
-	var correct = true;
-	if (form.fname.value.length == 0 || form.lname.value.length == 0 || form.email.value.length == 0)
-		correct = correct && false;
-	
-	if (correct && match && gender)
-		document.getElementById("signup").submit();
+function login(){
+	if ($('#Email').val().length == 0) {
+		$('#alert').text('Enter your username.');
+	} else if ($('#Password').val().length == 0) {
+		$('#alert').text('Enter your password.');
+	} else {
+		document.signin.submit();
+	}
 }
