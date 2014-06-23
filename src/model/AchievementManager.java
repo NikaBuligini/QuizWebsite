@@ -9,15 +9,7 @@ public class AchievementManager extends Manager{
 	String ACHIEVEMENTS = "achievements";
 	
 	private void fillArray(Connection con, int userID){
-		arr = new ArrayList<>();
-		
-		ArrayList<ArrayList<Object>> allRaws = getAllRows(con, tablename, 2);
-		for(int i=0; i<allRaws.size();i++){
-			int stringID = (int) allRaws.get(i).get(0);
-			if(stringID==userID)
-				arr.add(allRaws.get(i).get(1));
-		}
-		
+		arr = AccountManager.getSingleColumn(con, tablename, userID, 2);
 	}
 	
 	public int numOfAchievements(Connection con,int userID){

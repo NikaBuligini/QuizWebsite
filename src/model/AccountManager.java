@@ -178,4 +178,20 @@ public class AccountManager extends Manager {
 				INFO_FIRSTNAME_C + ") Like '%" + text + "%'";
 	}
 	
+	
+
+
+	public static ArrayList<Object> getSingleColumn(Connection con,
+						String tableName, int userID, int numCols) {
+		ArrayList<Object> arr = new ArrayList<Object>();
+		ArrayList<ArrayList<Object>> allRaws = getAllRows(con, tableName, numCols);
+		for(int i=0; i<allRaws.size();i++){
+			int stringID = (int) allRaws.get(i).get(0);
+			if(stringID==userID)
+				arr.add(allRaws.get(i).get(1));
+		}
+		return arr;
+		
+	}
+
 }
