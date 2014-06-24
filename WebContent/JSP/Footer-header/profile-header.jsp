@@ -64,7 +64,7 @@
 									<a href="#">Stats</a>
 								</li>
 								<li>
-									<a href="#">Settings</a>
+									<a href="/QuizWebsite/settings">Settings</a>
 								</li>
 								<li class="space"></li>
 								<li>

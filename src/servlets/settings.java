@@ -23,28 +23,21 @@ import model.Manager;
 @WebServlet("/settings")
 public class settings extends HttpServlet implements WebVariables {
 	private static final long serialVersionUID = 1L;
+	
 	static final int DEFAULT_QUESTION = 1;
 	static final String USERS_TABLE = "users";
 	static final String USERS_ID_C = "ID";
 	static final String USERS_EMAIL_C = "email";
 	static final String USERS_PASSWORD_C = "pass";
 	
-	
 	static final String DEFAULT_IMAGE = "default.png";
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public settings() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(JSP_SETTINGS);
+		dispatcher.forward(request, response);
 	}
 		
 
