@@ -301,6 +301,8 @@ public class Manager {
 				query += (Integer) obj;
 			else if (obj instanceof String)
 				query += "'" + (String) obj + "'";
+			else if(obj instanceof Command)
+				query += obj.toString();
 			else
 				return null;
 

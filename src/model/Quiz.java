@@ -10,64 +10,90 @@ public class Quiz {
 	private boolean immediateCorrection;
 	private boolean onePage;
 	private boolean allowPractice;
-	private String type;
 	private ArrayList<Question> questions;
-	
-	public Quiz(String name, String description, String category, boolean random, boolean correction, 
-			boolean onePage, boolean practice, String type){
+	private int CreatorID;
+	private int CategoryID;
+
+	public Quiz(String name, String description, boolean random,
+			boolean correction, boolean onePage, boolean practice,
+			int creatorID, int categoryID) {
 		this.name = name;
 		this.description = description;
-		this.category = category;
 		this.isRandom = random;
 		this.immediateCorrection = correction;
 		this.onePage = onePage;
 		this.allowPractice = practice;
-		this.type = type;
+		this.CreatorID = creatorID;
+		this.CategoryID = categoryID;
 		questions = new ArrayList<Question>();
 	}
-	
-	public String getName(){
+
+	public String getName() {
 		return name;
 	}
-	
-	public void setName(String Name){
+
+	public int getCreatorID() {
+		return CreatorID;
+	}
+
+	public void setCreatorID(int ID) {
+		CreatorID = ID;
+	}
+
+	public int getCategoryID() {
+		return CategoryID;
+	}
+
+	public void setCategoryID(int ID) {
+		CategoryID = ID;
+	}
+
+	public void setName(String Name) {
 		name = Name;
 	}
-	
-	public String getDescription(){
+
+	public String getDescription() {
 		return description;
 	}
-	
-	public void setDescription(String Descrip){
+
+	public void setDescription(String Descrip) {
 		description = Descrip;
 	}
-	
-	public String getCategory(){
+
+	public boolean getRandom() {
+		return isRandom;
+	}
+
+	public boolean getCorrection() {
+		return immediateCorrection;
+	}
+
+	public boolean getOnePage() {
+		return onePage;
+	}
+
+	public boolean getPractice() {
+		return allowPractice;
+	}
+
+	public String getCategory() {
 		return category;
 	}
-	
-	public void setCategory(String Categ){
+
+	public void setCategory(String Categ) {
 		category = Categ;
 	}
-	
-	public String getType(){
-		return type;
-	}
-	
-	public void setType(String Type){
-		type = Type;
-	}
-	
-	public ArrayList<Question> getQuestions(){
+
+	public ArrayList<Question> getQuestions() {
 		return questions;
 	}
-	
-	public void addQuestion(Question question){
+
+	public void addQuestion(Question question) {
 		questions.add(question);
 	}
-	
-	public void deleteQuestion(int num){
+
+	public void deleteQuestion(int num) {
 		questions.remove(num);
 	}
-	
+
 }
