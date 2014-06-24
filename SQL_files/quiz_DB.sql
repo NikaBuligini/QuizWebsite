@@ -79,7 +79,6 @@ create table quizzes(
 	random boolean,
 	correction boolean,
 	onePage boolean,
-	practice boolean,
 	date datetime,
 	creatorID int,
 	categoryID int,
@@ -161,11 +160,3 @@ create table scores(
 	foreign key FK_scores_users(userID) references users(ID),
 	foreign key FK_scores_quizzes(quizID) references quizzes(ID)
 );
-
-create table newsFeed(
-	ID int auto_increment not null primary key,
-	userID int,
-	text varchar(50),
-	foreign key FK_newsFeed_users(userID) references users(ID)
-);
-	
