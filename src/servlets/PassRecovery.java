@@ -65,10 +65,10 @@ public class PassRecovery extends HttpServlet implements WebVariables {
 			System.out.println("Pass : " + Pass);
 			
 			HttpSession session = request.getSession();
-			session.setAttribute("recoveryQuestion", Question);
-			session.setAttribute("recoveryAnswer",Answer);
-			session.setAttribute("recoveryUsername",Username);
-			session.setAttribute("recoveryPass",Pass);
+			request.setAttribute("recoveryQuestion", Question);
+			request.setAttribute("recoveryAnswer",Answer);
+			request.setAttribute("recoveryUsername",Username);
+			request.setAttribute("recoveryPass",Pass);
 			
 			dispatcher = request.getRequestDispatcher("passRecoveryQuestion.jsp");
 		}
