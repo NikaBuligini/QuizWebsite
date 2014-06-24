@@ -16,6 +16,7 @@ if (log == null){
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=uts-8">
 	<title>QuizWebsite</title>
+	<link rel="stylesheet" type="text/css" href="/QuizWebsite/css/design.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header-footer.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/profile-style.css">
 </head>

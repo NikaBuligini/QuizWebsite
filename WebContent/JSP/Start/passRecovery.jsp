@@ -7,22 +7,29 @@
 	<title>Insert title here</title>
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/design.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header-footer.css">
-	
 </head>
 <body>
 	<div class="wrapper">
-		<div class = "need help">
-			<form action="PassRecovery" method="post">
-				<h1>Forgot Your Password or Username? </h1>
-				<br>
-				<p> Enter the email address that you usually sign in with, or your QuizWebsite username, and we'll help you recover your account. </p>
-				<p> Username or E-mail:</p>
-				<p> <input type="text" name = "text" size = "30" /> </p>
-				<span id="alert" class="alert"><%=(String)request.getAttribute("tryAgain")%></span>
-				<p> <input type="submit" value="Submit"> </p>
-			</form>
+		<div class="header-bar">
+			<div class="registration-header-content"></div>
+		</div>
+		<div class="recovery-content">
+			<div class="recovery">
+				<div id="recovery-result" class="recovery-result">
+					<label class="recovery-header">Forgot Your Password?</label>
+					<label class="recovery-sub-header">
+						Enter the email address that you usually sign in with and we'll help you recover your account
+					</label>
+					<div class="recovery-inputs">
+						<input id="email-input" type="text" placeholder="Email" class="email-input">
+						<button id="email-button" class="submit-button">Submit</button>
+					</div>
+				</div>
+			</div>
 		</div>
 		<jsp:include page="/JSP/Footer-header/footer.jsp"></jsp:include>
 	</div>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/QuizWebsite/Javascript/recovery.js"></script>
 </body>
 </html>

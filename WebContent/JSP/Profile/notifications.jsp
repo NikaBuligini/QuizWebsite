@@ -16,6 +16,7 @@ if (log == null){
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Notifications</title>
+	<link rel="stylesheet" type="text/css" href="/QuizWebsite/css/design.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header-footer.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/profile-style.css">
 </head>

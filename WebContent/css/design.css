@@ -15,6 +15,8 @@ html {
 }
 
 body {
+	position: relative;
+	min-height: 100%;
 	margin: 0;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 13px;
@@ -330,3 +332,139 @@ legend + .control-group {
 	margin-left: 160px;
 	color: #dd4b39;
 }
+
+
+.settings-content {
+	position: relative;
+	margin-left: 280px;
+	margin-bottom: 100px;
+	margin-top: 70px;
+	width: 485px;
+	min-height: 460px;
+}
+.settings-content .account-col {
+	width: 100%;
+}
+.account-col .account-content {
+	float: left;
+	width: 100%;
+}
+.account-content .account-title {
+	font-size: 1.2em;
+	padding-bottom: 10px;
+}
+.account-content .email-bar {
+	float: left;
+	width: 100%;
+	border-top: 1px solid #c0c0c0;
+	margin-bottom: 5px;
+	padding: 3px 0;
+}
+.email-bar .email-title {
+	float: left;
+	padding: 10px 0;
+	width: 155px;
+}
+.email-bar .email-item {
+	border-bottom: 1px solid #e0e0e0;
+	float: left;
+	position: relative;
+	padding: 10px 0;
+	width: 330px;
+}
+.email-bar .change-email {
+	float: left;
+	position: relative;
+	padding: 10px 0;
+	width: 330px;
+}
+.email-bar .change-input {
+	float: left;
+}
+.change-email .email-but {
+	padding-top: 3px;
+	margin-left: 10px;
+	float: left;
+}
+.account-content a:HOVER {
+	text-decoration: underline;
+}
+.account-content .passwd-bar {
+	
+}
+.account-content:LAST-CHILD {
+	border-bottom: 1px solid #c0c0c0;
+}
+.passwd-bar .passwd-item {
+	float: left;
+	position: relative;
+	padding: 10px 0;
+	width: 330px;
+}
+.pass-bar {
+	float: left;
+	width: 100%;
+	padding: 2px 0;
+}
+.pass-bar label {
+	float: left;
+	padding-top: 3px;
+	width: 120px;
+}
+.pass-bar .pass-input {
+	float: left;
+	height: 15px;
+}
+.finish-pass-change {
+	float: left;
+	width: 100%;
+	padding-top: 7px;
+}
+.none {
+	display: none;
+}
+.block {
+	display: block;
+}
+
+.recovery-content {
+	position: relative;
+	min-height: 405px;
+}
+.recovery-content .recovery {
+	position: relative;
+	padding-top: 100px;
+	margin: 0 300px 150px 300px;
+}
+.recovery .recovery-result {
+	float: left;
+	width: 100%;
+	padding: 20px;
+}
+.recovery-result .recovery-header {
+	padding: 5px;
+	width: 100%;
+	float: left;
+	font-size: 17px;
+}
+.recovery-result .recovery-sub-header {
+	padding: 7px 5px;
+	width: 100%;
+	float: left;
+}
+.recovery-result .recovery-inputs {
+	float: left;
+	width: 100%;
+	padding-left: 5px;
+}
+.recovery-result .email-input {
+	float: left;
+	width: 200px;
+}
+.recovery-result .submit-button {
+	float: left;
+	height: 28px;
+	width: 65px;
+	margin-left: 10px;
+}
+
