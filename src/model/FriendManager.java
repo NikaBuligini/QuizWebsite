@@ -75,14 +75,20 @@ public class FriendManager extends Manager{
 	
 	private static void insertIntoNewsFeed(Connection con, int to, int from) {
 		ArrayList<Integer> friends = getFriends(con, to);
-		String text = buildText(con,to,from);
-		String columns = "(userID,text)";
-		Object[] values = new Object[2];
+		String text = " became friends with ";
+		String columns = "(userID,text,subjectID,objectID)";
+		Object[] values = new Object[4];
 		values[1] = text;
+		values[2] = to;
+		values[3] = from;
 		for(int i=0; i<friends.size();i++){
 			values[0] = i;
 			insert(con, "newsFeed", columns, values);
 		}
+		
+		values[2] = from;
+		values[3] = to;
+		
 		friends = getFriends(con, from);
 		for(int i=0; i<friends.size();i++){
 			values[0] = i;
@@ -90,15 +96,7 @@ public class FriendManager extends Manager{
 		}
 	}
 
-	private static String buildText(Connection con, int to, int from) {
-		String toFirstName = AccountManager.getUser(con, to).getFirstName();
-		String toLastName = AccountManager.getUser(con, to).getLastName();
-		String fromLastName = AccountManager.getUser(con, from).getLastName();
-		String fromFirstName = AccountManager.getUser(con, from).getFirstName();
-		String text = toFirstName + " " + toLastName +" and " + fromFirstName + " " + fromLastName + " are now friends";
-		
-		return text;
-	}
+	
 
 	public static ArrayList<Integer> getFriends(Connection con, int userID) {
 		ArrayList<ArrayList<Object>> list = getMultipleRows(con, FRIENDS_TABLE, FRIENDS_USER_C, userID, FRIENDS_N_COL);

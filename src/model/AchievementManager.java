@@ -111,24 +111,17 @@ public class AchievementManager extends Manager {
 
 	private static void insertIntoNewsFeed(Connection con, int userID,
 			int achievementID) {
-		String AchievementName = getSingleString(con, ACHIEVEMENTS, "ID", achievementID, "name");
-		String text = buildText(con, userID, AchievementName);
-		String columns = "(userID,text)";
-		Object[] values = new Object[2];
-		values[0] = userID;
+		String text = " achieved ";
+		String columns = "(userID,text,subjectID,objectID)";
+		Object[] values = new Object[4];
+		values[3] = achievementID;
+		values[2] = userID;
 		values[1] = text;
 		insert(con, "newsFeed", columns, values);
 
 	}
 
-	private static String buildText(Connection con, int userID,
-			String achievementName) {
-		String FirstName = AccountManager.getUser(con, userID).getFirstName();
-		String LastName = AccountManager.getUser(con, userID).getLastName();
-		String text = FirstName + " " + LastName + " achieved " + achievementName;
-		
-		return text;
-	}
+
 
 	public static ArrayList<ArrayList<Object>> totalAchievements(Connection con) {
 		ArrayList<ArrayList<Object>> raws = getAllRows(con, ACHIEVEMENTS, 4);

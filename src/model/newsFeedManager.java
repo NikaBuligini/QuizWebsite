@@ -16,51 +16,33 @@ public class newsFeedManager extends Manager {
 	}
 
 	public static void postCreatedQuizNews(Connection con, Object userID,
-			Object quizName) {
-		String personName = AccountManager.getUser(con, (Integer) userID)
-				.getFirstName()
-				+ " "
-				+ AccountManager.getUser(con, (Integer) userID).getLastName();
-		String text = personName + " created Quiz named " + (String) quizName;
-		Object[] ar = new Object[] { userID, text };
-		insert(con, tableName, "(userID, text)", ar);
-		for (int i = 0; i < FriendManager.getFriends(con, (Integer) userID)
-				.size(); i++) {
+			Object quiz) {
+		
+		int ID = (Integer)userID;
+		String quizName = (String)quiz;
+		int quizID = getSingleInt(con, "quizzes", "name", quizName, "ID");
+		String text = " created Quiz named ";
+		Object[] ar = new Object[] { userID, text,userID, quizID };
+		insert(con, tableName, "(userID, text,subjectID,objectID)", ar);
+		for(int i = 0; i < FriendManager.getFriends(con, ID).size(); i++) {
 			ar[0] = FriendManager.getFriends(con, (Integer) userID).get(i);
 			insert(con, tableName, "(userID,  text)", ar);
 		}
 	}
 
 	public static void postPlayedQuizNews(Connection con, Object userID,
-			Object quizName) {
-		String personName = AccountManager.getUser(con, (Integer) userID)
-				.getFirstName()
-				+ " "
-				+ AccountManager.getUser(con, (Integer) userID).getLastName();
-		String text = personName + " played Quiz named " + (String) quizName;
-		Object[] ar = new Object[] { userID, text };
-		insert(con, tableName, "(userID, text)", ar);
-		for (int i = 0; i < FriendManager.getFriends(con, (Integer) userID)
-				.size(); i++) {
+			Object quiz) {
+		int ID = (Integer)userID;
+		String quizName = (String)quiz;
+		int quizID = getSingleInt(con, "quizzes", "name", quizName, "ID");
+		String text = " played Quiz named ";
+		Object[] ar = new Object[] { userID, text,userID, quizID };
+		insert(con, tableName, "(userID, text,subjectID,objectID)", ar);
+		for(int i = 0; i < FriendManager.getFriends(con, ID).size(); i++) {
 			ar[0] = FriendManager.getFriends(con, (Integer) userID).get(i);
 			insert(con, tableName, "(userID,  text)", ar);
 		}
 	}
 
-	public static void postAchievementNews(Connection con, Object userID,
-			Object quizName) {
-		String personName = AccountManager.getUser(con, (Integer) userID)
-				.getFirstName()
-				+ " "
-				+ AccountManager.getUser(con, (Integer) userID).getLastName();
-		String text = personName + " played Quiz named " + (String) quizName;
-		Object[] ar = new Object[] { userID, text };
-		insert(con, tableName, "(userID, text)", ar);
-		for (int i = 0; i < FriendManager.getFriends(con, (Integer) userID)
-				.size(); i++) {
-			ar[0] = FriendManager.getFriends(con, (Integer) userID).get(i);
-			insert(con, tableName, "(userID,  text)", ar);
-		}
-	}
 
 }
