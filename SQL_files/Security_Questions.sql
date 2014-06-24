@@ -56,3 +56,4 @@ insert into achievementsAndUsers(userID,achievementID) values (1,5);
 select * from achievementsAndUsers;
 select * from achievements;
 
+select * from quizzes join friends on friends.friendID = quizzes.creatorID where friends.userID = 1 order by quizzes.date asc limit 5;
