@@ -99,33 +99,8 @@ User c = AccountManager.getUser(con, userCookie.getValue());
 		</div>
 	</div>
 	<jsp:include page="/JSP/Footer-header/footer.jsp"></jsp:include>
-	<script type="text/javascript">
-		function showForm(e) {
-			e.target.style.display = "none";
-			hideAll();
-			e.target.nextSibling.nextSibling.style.display = "block";
-
-		}
-		function hideAll() {
-			var forms = document.getElementsByTagName("form");
-			for (var i = 0; i < forms.length; i++) {
-				forms[i].style.display = "none";
-			}
-		}
-		function validateForm(e) {
-			//alert(e.target.childNodes[7]);
-			//alert(e.target.childNodes.length);
-			var inputs = e.target.getElementsByTagName("input");
-			var count = inputs.length;
-			var email = inputs[count - 3].value;
-			var email1 = inputs[count - 2].value;
-			if (email != email1 || email == "") {
-				alert("ველები ან ცარიელია ან ერთამენთს არ ემთხვევა");
-				return false;
-			}
-		}
-	</script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/QuizWebsite/Javascript/profile-header.js"></script>
 	<script type="text/javascript" src="/QuizWebsite/Javascript/settings.js"></script>
 </body>
 </html>

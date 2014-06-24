@@ -10,6 +10,7 @@ Quiz c = (Quiz)request.getAttribute("quiz");
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Create Quiz</title>
+	<link rel="stylesheet" type="text/css" href="/QuizWebsite/css/design.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/header-footer.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/profile-style.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/createQuiz.css">
