@@ -66,10 +66,6 @@ create table achievementsAndUsers(
 	foreign key FK_achievementsAndUsers_achievements(achievementID) references achievements(ID)
 );
 
-create table quizCategories(
-	ID int auto_increment not null primary key,
-	category varchar(30)
-);
 
 create table categories(
 	ID int auto_increment not null primary key,
@@ -80,11 +76,18 @@ create table quizzes(
 	ID int auto_increment not null primary key,
 	quizName varchar(30),
 	description varchar(60),
+	random boolean,
+	correction boolean,
+	onePage boolean,
+	practice boolean,
 	date datetime,
 	creatorID int,
 	categoryID int,
-	foreign key FK_quizzes_users(creatorID) references users(ID),
-	foreign key FK_quizzes_quizCategories(categoryID) references quizCategories(ID)
+FOREIGN KEY (creatorID)
+        REFERENCES users (ID),
+FOREIGN KEY (categoryID)
+        REFERENCES categories(ID)
+        ON DELETE CASCADE
 );
 
 create table challenges(

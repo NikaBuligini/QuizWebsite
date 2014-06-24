@@ -18,13 +18,16 @@ insert into friends(userID,friendID) values(1,2);
 insert into additional_info (userID, firstName, lastName, gender, questionID, answer)
 		values ('1', 'nika', 'buligini', 1, 6, 'ki');
 
-insert into additional_info (userID, firstName, lastName, gender, questionID, answer)
-		values ('2', 'nika', 'buligini', 1, 6, 'ki');
-insert into additional_info (userID, firstName, lastName, gender, questionID, answer)
-		values ('3', 'nika', 'buligini', 1, 6, 'ki');
+insert into categories(type) value ('sport');
+insert into categories(type) value ('skami');
+insert into categories(type) value ('zoro');
 
 select * from additional_info;
 select * from users;
+select * from quizzes;
+select * from categories;
+
+SET FOREIGN_KEY_CHECKS=1;
 
 insert into quizzes(quizName) value ('opa');
 insert into quizzes(quizName) value ('opasd');
