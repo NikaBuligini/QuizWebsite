@@ -87,6 +87,7 @@ public class AchievementManager extends Manager {
 		if (achievementID != -1) {
 			Object[] arr = new Object[] { userID, achievementID };
 			insert(con, tablename, "(userID, achievementID)", arr);
+			insertIntoNewsFeed(con,userID,achievementID);
 		}
 	}
 
@@ -95,6 +96,7 @@ public class AchievementManager extends Manager {
 		if (achievementID != -1) {
 			Object[] arr = new Object[] { userID, achievementID };
 			insert(con, tablename, "(userID, achievementID)", arr);
+			insertIntoNewsFeed(con,userID,achievementID);
 		}
 	}
 
@@ -103,7 +105,29 @@ public class AchievementManager extends Manager {
 		if (achievementID != -1) {
 			Object[] arr = new Object[] { userID, achievementID };
 			insert(con, tablename, "(userID, achievementID)", arr);
+			insertIntoNewsFeed(con,userID,achievementID);
 		}
+	}
+
+	private static void insertIntoNewsFeed(Connection con, int userID,
+			int achievementID) {
+		String AchievementName = getSingleString(con, ACHIEVEMENTS, "ID", achievementID, "name");
+		String text = buildText(con, userID, AchievementName);
+		String columns = "(userID,text)";
+		Object[] values = new Object[2];
+		values[0] = userID;
+		values[1] = text;
+		insert(con, "newsFeed", columns, values);
+
+	}
+
+	private static String buildText(Connection con, int userID,
+			String achievementName) {
+		String FirstName = AccountManager.getUser(con, userID).getFirstName();
+		String LastName = AccountManager.getUser(con, userID).getLastName();
+		String text = FirstName + " " + LastName + " achieved " + achievementName;
+		
+		return text;
 	}
 
 	public static ArrayList<ArrayList<Object>> totalAchievements(Connection con) {

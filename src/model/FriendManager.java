@@ -62,15 +62,44 @@ public class FriendManager extends Manager{
 		values[0] = from;
 		values[1] = to;
 		
+		insertIntoNewsFeed(con,to,from);
 		insert(con, FRIENDS_TABLE, FRIENDS_COLUMNS, values);
 		
 		values[0] = to;
 		values[1] = from;
 		
 		insert(con, FRIENDS_TABLE, FRIENDS_COLUMNS, values);
+		
 		deleteRequest(con, e);
 	}
 	
+	private static void insertIntoNewsFeed(Connection con, int to, int from) {
+		ArrayList<Integer> friends = getFriends(con, to);
+		String text = buildText(con,to,from);
+		String columns = "(userID,text)";
+		Object[] values = new Object[2];
+		values[1] = text;
+		for(int i=0; i<friends.size();i++){
+			values[0] = i;
+			insert(con, "newsFeed", columns, values);
+		}
+		friends = getFriends(con, from);
+		for(int i=0; i<friends.size();i++){
+			values[0] = i;
+			insert(con, "newsFeed", columns, values);
+		}
+	}
+
+	private static String buildText(Connection con, int to, int from) {
+		String toFirstName = AccountManager.getUser(con, to).getFirstName();
+		String toLastName = AccountManager.getUser(con, to).getLastName();
+		String fromLastName = AccountManager.getUser(con, from).getLastName();
+		String fromFirstName = AccountManager.getUser(con, from).getFirstName();
+		String text = toFirstName + " " + toLastName +" and " + fromFirstName + " " + fromLastName + " are now friends";
+		
+		return text;
+	}
+
 	public static ArrayList<Integer> getFriends(Connection con, int userID) {
 		ArrayList<ArrayList<Object>> list = getMultipleRows(con, FRIENDS_TABLE, FRIENDS_USER_C, userID, FRIENDS_N_COL);
 		

@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
+
+
 public class AccountManager extends Manager {
 	
 	public static final int FAILED = 0;
@@ -73,7 +75,10 @@ public class AccountManager extends Manager {
 		return false;
 	}
 	
-	
+	public static void remove(Connection con, String email, String password, User e){
+		delete(con, INFO_TABLE, INFO_COLUMNS, e);
+		
+	}
 	
 	public static int getIDByEmail(Connection con, String email){
 		return getSingleInt(con, USERS_TABLE, USERS_EMAIL_C, email, USERS_ID_C);

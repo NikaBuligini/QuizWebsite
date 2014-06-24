@@ -63,6 +63,13 @@ public class User {
 		this.l_name = lastname;
 	}
 	
+	/**
+	 * @return abrunebs fullnames-s
+	 */
+	public String getFullName(){
+		return getFirstName() + " " + getLastName();
+	}
+	
 	
 	public int getGenderID(){
 		return gender;
