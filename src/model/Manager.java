@@ -349,5 +349,17 @@ public class Manager {
 
 		return "DELETE FROM " + table + " WHERE " + column + "=" + val;
 	}
+	
+	protected static ArrayList<Object> getAllRowsByID(Connection con, String tablename, int userID, int rowSize){
+		ArrayList<Object> arr = new ArrayList<Object>();
+		ArrayList<ArrayList<Object>> allRows = getAllRows(con, tablename, rowSize);
+		for (int i = 0; i < allRows.size(); i++) {
+			int stringID = (int) allRows.get(i).get(0);
+			if (stringID == userID)
+				arr.add(allRows.get(i).get(1));
+		}
+		
+		return arr;
+	}
 
 }
