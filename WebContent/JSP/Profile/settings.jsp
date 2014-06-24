@@ -95,6 +95,8 @@ User c = AccountManager.getUser(con, userCookie.getValue());
 						</div>
 					</div>
 				</div>
+				<p><a href="#"> Delete your Quizes</a></p>
+				<p><a href="http://localhost:8080/QuizWebsite/JSP/Profile/deactivateaccount.jsp"> Deactivate your account.</a></p>
 			</div>
 		</div>
 	</div>
