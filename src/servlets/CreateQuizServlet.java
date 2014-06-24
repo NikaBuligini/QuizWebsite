@@ -20,12 +20,11 @@ public class CreateQuizServlet extends HttpServlet implements WebVariables {
 	private static final long serialVersionUID = 1L;
 	
 	public static final String TITLE = "title";
-	public static final String DESCRIPTION = "desc";
+	public static final String DESCRIPTION = "description";
 	public static final String CATEGORY = "category";
 	public static final String RANDOM = "random";
 	public static final String CORRECTION = "correction";
-	public static final String ONE_PAGE = "page";
-	public static final String PRACTICE = "practice";
+	public static final String ONE_PAGE = "onePage";
 	public static final String TYPE = "type";
 	
 	public static final String CATEGORY_SPORT = "1";
@@ -59,14 +58,13 @@ public class CreateQuizServlet extends HttpServlet implements WebVariables {
 		boolean random = request.getParameter(RANDOM) != null;
 		boolean correction = request.getParameter(CORRECTION) != null;
 		boolean onePage = request.getParameter(ONE_PAGE) != null;
-		boolean practice = request.getParameter(PRACTICE) != null;
-		String type = request.getParameter(TYPE);
 		
-		Quiz newQuiz = new Quiz(name, description, category, random, correction, onePage, practice, type);
-		request.setAttribute("quiz", newQuiz);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(JSP_CREATE);
-		dispatcher.forward(request, response);
+//		Quiz newQuiz = new Quiz(name, description, category, random, correction, onePage, practice, type);
+//		request.setAttribute("quiz", newQuiz);
+		
+//		RequestDispatcher dispatcher = request.getRequestDispatcher(JSP_CREATE);
+//		dispatcher.forward(request, response);
 	}
 
 }

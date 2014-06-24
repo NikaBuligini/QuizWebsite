@@ -144,4 +144,221 @@
 }
 
 
+.quiz-content {
+	position: relative;
+	padding-top: 100px;
+	margin: 0 400px 100px 280px;
+	min-height: 430px
+}
+.quiz-content .quiz-nav {
+	float: left;
+	position: relative;
+	width: 100%;
+}
+.quiz-nav .nav-item {
+	float: left;
+	width: 100px;
+	font-size: 15px;
+	font-weight: bold;
+	text-align: center;
+	height: 25px;
+	padding-top: 5px;
+	border-bottom: 1px solid #aeaeae;
+	box-shadow: 0px 3px 0px 0px rgba(0,0,0,0.05);
+	cursor: pointer;
+}
+.quiz-nav .nav-marked {
+	border-top: 2px solid #71C254;
+	border-left: 1px solid #aeaeae;
+	border-right: 1px solid #aeaeae;
+	border-bottom: none;
+	border-top-left-radius: 1px;
+	border-top-right-radius: 1px;
+	border-top-width: 2px;
+	box-shadow: none;
+}
+.quiz-nav .start-nav {
+	float: left;
+	padding-top: 5px;
+	width: 20px;
+	height: 25px;
+	border-bottom: 1px solid #aeaeae;
+	box-shadow: 0px 3px 0px 0px rgba(0,0,0,0.05);
+}
+.quiz-nav .rest-nav {
+	float: left;
+	padding-top: 5px;
+	width: 445px;
+	height: 25px;
+	border-bottom: 1px solid #aeaeae;
+	box-shadow: 0px 3px 0px 0px rgba(0,0,0,0.05);
+}
 
+.quiz-bar {
+	float: left;
+	width: 100%;
+	position: relative;
+	padding-top: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.quiz-bar .row, .answers-row {
+	float: left;
+	width: 100%;
+	padding: 8px 10px;
+}
+.quiz-bar .row .label {
+	float: left;
+	width: 150px;
+	font-weight: bold;
+	padding-top: 3px;
+}
+.input {
+	float: left;
+}
+.row .textarea, .select {
+	padding: 4px;
+	font-size: 13px;
+	line-height: 18px;
+	color: #555555;
+	border: 1px solid #ccc;
+}
+.row .checkbox {
+	float: left;
+	width: 17px;
+	height: 22px;
+	padding-top: 2px;
+	margin-left: 50px;
+}
+.row .checkbox-label {
+	float: left;
+	width: 180px;
+	padding-top: 1px;
+}
+.quiz-bar .footer {
+	float: left;
+	width: 100%;
+	padding: 25px 30px;
+}
+.quiz-bar .button {
+	height: 30px;
+	width: 80px;
+	padding: 4px;
+	font-size: 13px;
+	line-height: 18px;
+	color: #555555;
+}
+.quiz-bar .question-input {
+	float: left;
+	width: 300px
+}
+.quiz-bar .upload {
+	float: left;
+	width: 185px;
+}
+.quiz-bar .button-div {
+	float: left;
+	margin-left: 10px;
+	width: 330px;
+}
+.quiz-bar .img-button {
+	float: left;
+	height: 26px;
+	width: 60px;
+	padding-top: 3px;
+	font-size: 13px;
+	line-height: 18px;
+	color: #555555;
+}
+.quiz-bar .upload-text {
+	float: left;
+	padding-top: 3px;
+	margin-left: 5px;
+}
+.quiz-bar .answer-label {
+	float: left;
+	padding-top: 4px;
+	text-align: center;
+	width: 140px;
+}
+.quiz-bar .answer-input {
+	float: left;
+	width: 495px;
+}
+.quiz-bar .answer-add {
+	padding-top: 4px;
+	margin-left: 5px;
+}
+.quiz-bar .answer-add:HOVER {
+	text-decoration: underline;
+}
+.quiz-bar .answer-empty-label {
+	float: left;
+	width: 140px;
+}
+.quiz-bar .new-answer {
+	padding: 5px 0;
+}
+.quiz-bar .answer-full-row {
+	float: left;
+	width: 100%;
+	padding: 5px 0;
+}
+.quiz-bar .questions-footer {
+	float: left;
+	width: 100%;
+	padding: 10px 10px;
+}
+.quiz-bar .quiz-create-button {
+	float: right;
+	margin-right: 50px;
+	height: 25px;
+	width: 60px;
+	padding-top: 5px;
+	padding-left: 15px;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 18px;
+	background-color: #60b044;
+	background-image: linear-gradient(#8add6d, #60b044);
+	background-repeat: repeat-x;
+	border-color: #5ca941;
+	border-width: 1.5px;
+	border-radius: 2px;
+	cursor: pointer;
+	color: #fff;
+}
+.next-span {
+	position: relative;
+	font-size: 15px;
+	cursor: pointer;
+	border: 1px solid #aeaeae;
+	padding: 7px 15px;
+	background-color: #60b044;
+	background-image: linear-gradient(#8add6d, #60b044);
+	background-repeat: repeat-x;
+	border-color: #5ca941;
+	border-width: 1.5px;
+	border-radius: 2px;
+	color: #fff;
+}
+.next-span:HOVER {
+	border-color: #333;
+}
+.add-span {
+	position: relative;
+	float: left;
+	padding: 6px 15px;
+	width: 31px;
+	border: 1px solid #999;
+	border-bottom: 1px solid #777;
+	font-size: 1em;
+	font-weight: bold;
+	background: linear-gradient(to bottom,#fefefe 0,#e0e0e0 70%);
+	border-radius: 3px;
+	cursor: pointer;
+	display: inline-block;
+	text-align: center;
+	text-shadow: 0 1px #f0f0f0;
+	color: #333;
+}

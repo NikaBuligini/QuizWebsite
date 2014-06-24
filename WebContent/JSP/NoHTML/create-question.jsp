@@ -4,33 +4,33 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <body>
-<%
-String index = request.getParameter("index");
-String quizType = request.getParameter("type");
-
-%>
-<li class="li">
-	<div class="question-header">
-		<span><%=index %>.</span>
+	<%
+	String index = request.getParameter("index");
+	%>
+	<div class="row">
+		<label class="label"><%=index %>.</label>
+		<input name="question<%=index %>" type="text" class="question-input" placeholder="Question" autocomplete="off">
+		<div class="upload">
+			<div class="button-div">
+				<span>
+					<a id="image<%=index %>" href="#" class="img-button">Image</a>
+					<input id="image-input<%=index %>" type="text" name="image<%=index %>" class="none" placeholder="Image URL" autocomplete="off">
+				</span>
+			</div>
+		</div>
+		<div id="answer-row<%=index %>" class="answers-row">
+			<span id="count<%=index %>" class="none"></span>
+			<div class="answer-full-row">
+				<label class="answer-label">Answers</label>
+				<div class="answer-input">
+					<label>
+						<input type="text" name="answer<%=index %>" placeholder="Answer 1" autocomplete="off">
+						<input id="radio<%=index %>" type="radio" name="radio<%=index %>" class="none" checked="checked">
+						<a id="add<%=index %>" href="#" class="answer-add">Add answer</a>
+					</label>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="row-bar">
-		<div class="text">
-			<span class="text-span">Hint</span>
-		</div>
-		<div class="hint-input">
-			<input type="text" class="input" name="hint<%=index %>">
-		</div>
-	</div>
-	<div class="row-bar">
-		<div class="text">
-			<span class="tet-span">Answer</span>
-		</div>
-		<div class="hint-input">
-			<input type="text" class="answer-input" name="answer<%=index %>">
-		</div>
-	</div>
-</li>
-<%
-%>
 </body>
 </html>

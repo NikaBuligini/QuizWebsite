@@ -21,8 +21,8 @@ body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 13px;
 	line-height: 18px;
-	color: #333333;
-	background-color: #ffffff;
+	color: #333;
+	background-color: #fff;
 }
 
 legend {
@@ -58,7 +58,7 @@ input, textarea {
 	transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 
-input, textarea, select, .uneditable-input {
+input {
 	height: 18px;
 	padding: 4px;
 	font-size: 13px;
