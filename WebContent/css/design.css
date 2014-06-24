@@ -427,4 +427,44 @@ legend + .control-group {
 	display: block;
 }
 
+.recovery-content {
+	position: relative;
+	min-height: 405px;
+}
+.recovery-content .recovery {
+	position: relative;
+	padding-top: 100px;
+	margin: 0 300px 150px 300px;
+}
+.recovery .recovery-result {
+	float: left;
+	width: 100%;
+	padding: 20px;
+}
+.recovery-result .recovery-header {
+	padding: 5px;
+	width: 100%;
+	float: left;
+	font-size: 17px;
+}
+.recovery-result .recovery-sub-header {
+	padding: 7px 5px;
+	width: 100%;
+	float: left;
+}
+.recovery-result .recovery-inputs {
+	float: left;
+	width: 100%;
+	padding-left: 5px;
+}
+.recovery-result .email-input {
+	float: left;
+	width: 200px;
+}
+.recovery-result .submit-button {
+	float: left;
+	height: 28px;
+	width: 65px;
+	margin-left: 10px;
+}
 

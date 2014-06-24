@@ -58,7 +58,7 @@
 								</li>
 								<li class="space"></li>
 								<li>
-									<a href="#">Profile</a>
+									<a href="/QuizWebsite/view?p=<%=e.getID() %>">Profile</a>
 								</li>
 								<li>
 									<a href="#">Stats</a>

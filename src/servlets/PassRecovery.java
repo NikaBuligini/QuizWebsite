@@ -18,7 +18,7 @@ import model.WebVariables;
 /**
  * Servlet implementation class PassRecovery
  */
-@WebServlet("/PassRecovery")
+@WebServlet("/recovery")
 public class PassRecovery extends HttpServlet implements WebVariables {
 	private static final long serialVersionUID = 1L;
 	private static final String TEXT = "text";
