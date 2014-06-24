@@ -1,14 +1,19 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.Connection;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.AccountManager;
+import model.CookiesManager;
 import model.Quiz;
 import model.WebVariables;
 
@@ -52,19 +57,31 @@ public class CreateQuizServlet extends HttpServlet implements WebVariables {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter(TITLE);
-		String description = request.getParameter(DESCRIPTION);
-		String category = request.getParameter(CATEGORY);
-		boolean random = request.getParameter(RANDOM) != null;
-		boolean correction = request.getParameter(CORRECTION) != null;
-		boolean onePage = request.getParameter(ONE_PAGE) != null;
+		ServletContext context = getServletConfig().getServletContext();
+		Connection con = (Connection) context.getAttribute(CONNECTION);
+		
+		Quiz c = createQuiz(request, con);
 		
 		
-//		Quiz newQuiz = new Quiz(name, description, category, random, correction, onePage, practice, type);
-//		request.setAttribute("quiz", newQuiz);
+		
 		
 //		RequestDispatcher dispatcher = request.getRequestDispatcher(JSP_CREATE);
 //		dispatcher.forward(request, response);
 	}
-
+	
+	
+	private Quiz createQuiz(HttpServletRequest request, Connection con) {
+		String title = request.getParameter(TITLE);
+		String description = request.getParameter(DESCRIPTION);
+		String category = request.getParameter(CATEGORY);
+		int categoryID = Integer.parseInt(category);
+		boolean random = request.getParameter(RANDOM) != null;
+		boolean correction = request.getParameter(CORRECTION) != null;
+		boolean onePage = request.getParameter(ONE_PAGE) != null;
+		
+		Cookie userEmail = CookiesManager.getCookie(request, COOKIE_USER);
+		int ID = AccountManager.getIDByEmail(con, userEmail.getValue());
+		
+		return new Quiz(title, description, random, correction, onePage, ID, categoryID);
+	}
 }
