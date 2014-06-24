@@ -3,7 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
 import java.sql.Connection;
 
 public class QuizManager extends Manager {
@@ -55,10 +54,8 @@ public class QuizManager extends Manager {
 	}
 
 	public void insertQuiz(Quiz qz, Connection con) {
-		for (int i = 0; i < arr.length; i++) {
-			System.out.println(arr[i]);
-		}
 		insert(con, tableName, columns, arr);
+		newsFeedManager.postCreatedQuizNews(con, arr[7], arr[0]);
 	}
 
 	public Quiz getQuizByQuizID(Connection con, int quizID) {

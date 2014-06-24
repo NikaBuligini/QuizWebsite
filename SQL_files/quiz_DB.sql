@@ -128,9 +128,10 @@ create table quizzesAndUsers(
 	foreign key FK_quizzesAndUsers_quizzes(quizID) references quizzes(ID)
 );
 
-create table usersAndMadeQuizes(
+create table playedQuizes(
 	quizID int,
 	userID int,
+	date datetime,
 	foreign key FK_quizzesAndUsers_users(userID) references users(ID),
 	foreign key FK_quizzesAndUsers_quizzes(quizID) references quizzes(ID)
 );
