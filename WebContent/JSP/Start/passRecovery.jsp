@@ -10,19 +10,37 @@
 	
 </head>
 <body>
+
 	<div class="wrapper">
-		<div class = "need help">
-			<form action="PassRecovery" method="post">
-				<h1>Forgot Your Password or Username? </h1>
-				<br>
-				<p> Enter the email address that you usually sign in with, or your QuizWebsite username, and we'll help you recover your account. </p>
-				<p> Username or E-mail:</p>
-				<p> <input type="text" name = "text" size = "30" /> </p>
-				<span id="alert" class="alert"><%=(String)request.getAttribute("tryAgain")%></span>
-				<p> <input type="submit" value="Submit"> </p>
-			</form>
+		<div class="header-bar">
+			<div class="registration-header-content"></div>
 		</div>
+		<br>
+		<h1>Forgot Your Password ?</h1>
+		<div style="height: 1px; text-align:left; margin: 20px;">
+    			Enter the email address that you usually sign in with and we'll help you recover your account.
+    			<form action="PassRecovery" method="post">
+				<p><input type="text" name = "text" size = "30"/></p>
+				
+				<p><input type = "submit" value= "Submit" style="height: 30px"></p>
+				</form>
+		</div>
+		
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		
+			
+		
 		<jsp:include page="/JSP/Footer-header/footer.jsp"></jsp:include>
 	</div>
+	
 </body>
 </html>
