@@ -35,5 +35,6 @@ public interface WebVariables {
 	static final String JSP_NOTIFICATIONS = "/JSP/Profile/notifications.jsp";
 	static final String JSP_CREATE = "/JSP/Profile/createQuiz.jsp";
 	static final String JSP_SETTINGS = "/JSP/Profile/settings.jsp";
+	static final String JSP_PLAY = "/JSP/Profile/play.jsp";
 	
 }

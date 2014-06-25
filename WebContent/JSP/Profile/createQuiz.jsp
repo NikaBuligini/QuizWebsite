@@ -16,63 +16,62 @@ Quiz c = (Quiz)request.getAttribute("quiz");
 	<link rel="stylesheet" type="text/css" href="/QuizWebsite/css/createQuiz.css">
 </head>
 <body>
-	<div class="wrapper">
-		<jsp:include page="/JSP/Footer-header/profile-header.jsp"></jsp:include>
-		<div class="quiz-content">
-			<div class="quiz-nav">
-				<span class="start-nav"></span>
-				<span id="quiz-info-title" class="nav-item nav-marked">Quiz Info</span>
-				<span id="data-title" class="nav-item">Data</span>
-				<span class="rest-nav"></span>
-			</div>
-			<div class="quiz-bar">
-				<form id="newQuiz" action="/QuizWebsite/create" method="post">
-					<div id="quiz-info" class="">
-						<div class="row">
-							<label class="label">Title</label>
-							<input id="title" name="title" type="text" class="input" placeholder="Quiz Name" autocomplet="off">
-						</div>
-						<div class="row">
-							<label class="label">Description</label>
-							<textarea id="description" rows="5" cols="50" name="description" class="textarea" placeholder="Enter Quiz Description"></textarea>
-						</div>
-						<div class="row">
-							<label class="label">Category</label>
-							<select name="<%=CreateQuizServlet.CATEGORY %>" class="select">
-								<option value="<%=CreateQuizServlet.CATEGORY_SPORT %>">Sport</option>
-								<option value="<%=CreateQuizServlet.CATEGORY_IQ %>">IQ</option>
-								<option value="<%=CreateQuizServlet.CATEGORY_MOVIES %>">Movies</option>
-								<option value="<%=CreateQuizServlet.CATEGORY_BOOKS %>">Books</option>
-								<option value="<%=CreateQuizServlet.CATEGORY_KNOWLEDGE %>">Knowledge</option>
-								<option value="<%=CreateQuizServlet.CATEGORY_OTHER %>">Other</option>
-							</select>
-						</div>
-						<div class="row">
-							<label class="label"> </label>
-							<label class="checkbox-label">Random Order</label>
-							<input type="checkbox" name="random" value="y" class="checkbox">
-						</div>
-						<div class="row">
-							<label class="label"> </label>
-							<label class="checkbox-label">Immediate Correction</label>
-							<input type="checkbox" name="correction" value="y" class="checkbox">
-						</div>
-						<div class="row">
-							<label class="label"> </label>
-							<label class="checkbox-label">Show all Quiz on Single Page</label>
-							<input type="checkbox" name="onePage" value="y" class="checkbox">
-						</div>
-						<div class="footer">
-							<span id="next" class="next-span">Next</span>
-						</div>
+	<jsp:include page="/JSP/Footer-header/profile-header.jsp"></jsp:include>
+	<div class="quiz-content">
+		<div class="quiz-nav">
+			<span class="start-nav"></span>
+			<span id="quiz-info-title" class="nav-item nav-marked">Quiz Info</span>
+			<span id="data-title" class="nav-item">Data</span>
+			<span class="rest-nav"></span>
+		</div>
+		<div class="quiz-bar">
+			<form id="newQuiz" action="/QuizWebsite/create" method="post">
+				<div id="quiz-info" class="">
+					<div class="row">
+						<label class="label">Title</label>
+						<input id="title" name="title" type="text" class="input" placeholder="Quiz Name" autocomplet="off">
 					</div>
-					<div id="data" class="none">
-						<div id="data-res">
-							<div class="row">
-								<label class="label">1.</label>
-								<input name="question1" type="text" class="question-input" placeholder="Question" autocomplete="off">
-								<div class="upload">
-									<div class="button-div">
+					<div class="row">
+						<label class="label">Description</label>
+						<textarea id="description" rows="5" cols="50" name="description" class="textarea" placeholder="Enter Quiz Description"></textarea>
+					</div>
+					<div class="row">
+						<label class="label">Category</label>
+						<select name="<%=CreateQuizServlet.CATEGORY %>" class="select">
+							<option value="<%=CreateQuizServlet.CATEGORY_SPORT %>">Sport</option>
+							<option value="<%=CreateQuizServlet.CATEGORY_IQ %>">IQ</option>
+							<option value="<%=CreateQuizServlet.CATEGORY_MOVIES %>">Movies</option>
+							<option value="<%=CreateQuizServlet.CATEGORY_BOOKS %>">Books</option>
+							<option value="<%=CreateQuizServlet.CATEGORY_KNOWLEDGE %>">Knowledge</option>
+							<option value="<%=CreateQuizServlet.CATEGORY_OTHER %>">Other</option>
+						</select>
+					</div>
+					<div class="row">
+						<label class="label"> </label>
+						<label class="checkbox-label">Random Order</label>
+						<input type="checkbox" name="random" value="y" class="checkbox">
+					</div>
+					<div class="row">
+						<label class="label"> </label>
+						<label class="checkbox-label">Immediate Correction</label>
+						<input type="checkbox" name="correction" value="y" class="checkbox">
+					</div>
+					<div class="row">
+						<label class="label"> </label>
+						<label class="checkbox-label">Show all Quiz on Single Page</label>
+						<input type="checkbox" name="onePage" value="y" class="checkbox">
+					</div>
+					<div class="footer">
+						<span id="next" class="next-span">Next</span>
+					</div>
+				</div>
+				<div id="data" class="none">
+					<div id="data-res">
+						<div class="row">
+							<label class="label">1.</label>
+							<input name="question1" type="text" class="question-input" placeholder="Question" autocomplete="off">
+							<div class="upload">
+								<div class="button-div">
 										<span>
 											<a id="image1" href="#" class="img-button">Image</a>
 											<input id="image-input1" type="text" name="image1" class="none" placeholder="Image URL" autocomplete="off">
@@ -104,7 +103,6 @@ Quiz c = (Quiz)request.getAttribute("quiz");
 			</div>
 		</div>
 		<jsp:include page="/JSP/Footer-header/footer.jsp"></jsp:include>
-	</div>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath() %>/Javascript/profile-header.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath() %>/Javascript/create-quiz.js"></script>

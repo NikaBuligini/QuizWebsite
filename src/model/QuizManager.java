@@ -31,7 +31,7 @@ public class QuizManager extends Manager {
 //		newsFeedManager.postCreatedQuizNews(con, arr[6], arr[0]);
 	}
 
-	public Quiz getQuizByQuizID(Connection con, int quizID) {
+	public static Quiz getQuizByQuizID(Connection con, int quizID) {
 		ArrayList<Object> ar = getSingleRow(con, tableName, "ID", quizID, 10);
 		Quiz qz = new Quiz((String) ar.get(0), (String) ar.get(1),
 				(boolean) ar.get(2), (boolean) ar.get(3), (boolean) ar.get(4),

@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.AccountManager;
-import model.CipherPass;
 import model.CookiesManager;
 import model.User;
 import model.WebVariables;
@@ -57,9 +56,9 @@ public class RegistrationServlet extends HttpServlet implements WebVariables{
 			gender = FEMALE;
 		
 		String passwd = request.getParameter("passwd");
-		CipherPass cfr = new CipherPass();
+		
 		User e = new User(fname, lname, gender, DEFAULT_QUESTION, "", DEFAULT_IMAGE);
-		int result = AccountManager.add(con, email, cfr.Cipher(passwd), e);
+		int result = AccountManager.add(con, email, passwd, e);
 		
 		if (result == AccountManager.FAILED){
 			request.setAttribute(REGISTRATION_INFO, "Email " + email + " is already used.");
