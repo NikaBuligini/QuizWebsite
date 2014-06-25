@@ -7,31 +7,26 @@
 	<%
 	ServletContext context = getServletConfig().getServletContext();
 	Connection con = (Connection) context.getAttribute("connection");
-	
 	String mail = request.getParameter("email");
 	String[] list = AccountManager.getRecovery(con, mail);
-	if(list == null){
+	String answer = request.getParameter("answer");
+	
+	if(answer.equals(list[1])){
 	%>
-		<div> 
-			<label> wrong email, go back and try again.. </label>
-			<div>
-				<a href = "http://localhost:8080/QuizWebsite/login">go back</a>
-			</div>		
+		<div>
+		<label> shen moige uto</label> 
 		</div>
 	<%
 	}else{
 	%>
-		<div>
-			<label> Please, answer the question below</label>
-			<p><%=list[0] %></p>
-			<input id="question-input" type="text" placeholder="Answer" class="email-input">
-			<button id="question-button" class="submit-button">Submit</button>
-			
+		<div> 
+			<label> wrong answer, sorry, we cant help you.. </label>
+			<div>
+				<a href = "http://localhost:8080/QuizWebsite/login">go back</a>
+			</div>
 		</div>
 	<%
 	}
 	%>
- 	<div>
- 	
- 	</div>
+	
 </html>
