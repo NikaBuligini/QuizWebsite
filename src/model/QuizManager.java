@@ -8,7 +8,7 @@ import java.sql.Connection;
 
 public class QuizManager extends Manager {
 	static String columns = "(quizName, description, random, correction, onePage, practice, date, creatorID, categoryID)";
-	String tableName = "quizzes";
+	static String tableName = "quizzes";
 	String quizName;
 	String description;
 	boolean random;
@@ -69,7 +69,7 @@ public class QuizManager extends Manager {
 		return qz;
 	}
 
-	public ArrayList<Quiz> getQuizesByCreatorID(Connection con, int creatorID) {
+	public static ArrayList<Quiz> getQuizesByCreatorID(Connection con, int creatorID) {
 		ArrayList<ArrayList<Object>> ar = getMultipleRows(con, tableName,
 				"creatorID", creatorID, 10);
 		ArrayList<Quiz> quizzes = new ArrayList<Quiz>();
@@ -80,7 +80,19 @@ public class QuizManager extends Manager {
 					.get(5), (int) ar.get(i).get(7), (int) ar.get(i).get(8));
 			quizzes.add(qz);
 		}
+		
 		return quizzes;
+	}
+	
+	public static ArrayList <String> getQuizesNameByCreatorID(Connection con, int ID){
+		ArrayList<String> Name = new ArrayList<String>();
+		int k= getQuizesByCreatorID(con, ID ).size();
+			for (int i=0; i<k; i++){
+				String Quizname= getQuizesByCreatorID(con, ID).get(i).getName();
+				Name.add(Quizname);
+			}
+		return Name;
+		
 	}
 
 }

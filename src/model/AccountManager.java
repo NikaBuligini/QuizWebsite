@@ -80,6 +80,10 @@ public class AccountManager extends Manager {
 		
 	}
 	
+	public static void updates(Connection con, String table, String whatUpdate,  Object value, String whereCol, Object equals){
+		update(con, table, whatUpdate, value, whereCol, equals);
+	}
+	
 	public static int getIDByEmail(Connection con, String email){
 		return getSingleInt(con, USERS_TABLE, USERS_EMAIL_C, email, USERS_ID_C);
 	}

@@ -29,6 +29,10 @@ public class settings extends HttpServlet implements WebVariables {
 	static final String USERS_ID_C = "ID";
 	static final String USERS_EMAIL_C = "email";
 	static final String USERS_PASSWORD_C = "pass";
+	static final String INFO_TABLE = "additional_info";
+	static final String INFO_USER_ID_C = "userID";
+	static final String INFO_FIRSTNAME_C = "firstName";
+	static final String INFO_LASTNAME_C = "lastName";
 	
 	static final String DEFAULT_IMAGE = "default.png";
        
@@ -48,34 +52,40 @@ public class settings extends HttpServlet implements WebVariables {
 		ServletContext context = getServletConfig().getServletContext();
 		Connection con = (Connection) context.getAttribute(CONNECTION);
 		User currUser = (User) (request.getSession().getAttribute("user"));
+		int ID = currUser.getID();
 		
 		
 		String Name = request.getParameter("Name");
 		if(request.getParameter("Name")==(null))
 		{
 			Name=currUser.getFirstName();
+			AccountManager.updates(con, INFO_TABLE, INFO_FIRSTNAME_C, Name, INFO_USER_ID_C, ID);
 		}
 		String lastname = request.getParameter("lastname");
 		if(request.getParameter("lastname")==(null))
 		{
 			lastname=currUser.getLastName();
+			AccountManager.updates(con, INFO_TABLE, INFO_LASTNAME_C, lastname, INFO_USER_ID_C, ID);
 		}
 		
 		String email = request.getParameter("email");
 		if(request.getParameter("email")==(null))
 		{
 			email=AccountManager.getEmail(con, currUser.getID());
+			AccountManager.updates(con, USERS_TABLE, USERS_EMAIL_C, email, USERS_ID_C, ID);
 		}
 		
 		String password = request.getParameter("password");
 		if(password==null){
 					password=AccountManager.getpassword(con, currUser.getID());
+					AccountManager.updates(con, USERS_TABLE, USERS_PASSWORD_C, password, USERS_ID_C, ID);
+		
 		}
 		
 		int gender=currUser.getGenderID();
 		Manager man = new Manager ();
 		
-		//CookiesManager.update(con, USERS_TABLE, USERS_EMAIL_C, USERS_PASSWORD_C, currUser.getID());
+		
 			RequestDispatcher dispatcher = request.getRequestDispatcher("setting.jsp");
 			dispatcher.forward(request, response);
 		
