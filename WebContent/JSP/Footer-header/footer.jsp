@@ -6,7 +6,9 @@
 	<div class="footer-bar">
 		<div class="footer foot-content">
 			<ul>
-				<li>QuizWebsite</li>
+				<li>
+					<a href="http://localhost:8080/QuizWebsite/JSP/Start/login.jsp">QuizWebsite</a>
+				</li>
 				<li>
 					<a href="http://localhost:8080/QuizWebsite/JSP/Start/contact.html">Contact</a>
 				</li>

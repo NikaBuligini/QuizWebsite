@@ -19,8 +19,7 @@ int achievementsDone = AchievementManager.numOfAchievements(con,ID);
 int friends = FriendManager.getFriends(con,ID).size();
 int tmp =0;
 int progress = 0;
-ArrayList<Object> arrQuizes = AccountManager.getSingleColumn(con, "usersAndMadeQuizes", ID, 2);
-System.out.println("size : " + arrQuizes.size());
+ArrayList<Object> arrQuizes = AccountManager.getSingleColumn(con, "playedQuizes", ID, 2);
 
 %>
 

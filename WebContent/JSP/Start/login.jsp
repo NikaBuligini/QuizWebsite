@@ -35,7 +35,7 @@
 						<input name=<%=WebVariables.PERSISTENT %> type="checkbox" value="yes">
 						<span>Stay signed in</span>
 					</label>
-					<a href="<%=request.getContextPath() %>/passRecovery.html">Need help?</a>
+					<a href="<%=request.getContextPath() %>/JSP/Start/passRecovery.jsp">Need help?</a>
 				</form>
 			</div>
 			<div class="signin-footer">
