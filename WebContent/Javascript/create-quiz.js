@@ -97,11 +97,10 @@ $(document).ready(function() {
 		}
 	});
 	
-	$('button').unbind();
+	
 	$('#create-quiz').click(function() {
 		if ($('#title').val().length > 0 && $('#description').val().length > 0) {
 			$('#n-question').val(index);
-			alert($('#n-question').val());
 			$('#newQuiz').submit();
 		}
 	});

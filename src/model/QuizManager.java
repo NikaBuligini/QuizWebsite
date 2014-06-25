@@ -1,55 +1,34 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.sql.Connection;
 
 public class QuizManager extends Manager {
-	static String columns = "(quizName, description, random, correction, onePage, practice, date, creatorID, categoryID)";
-	String tableName = "quizzes";
-	String quizName;
-	String description;
-	boolean random;
-	boolean correction;
-	boolean onePage;
-	Date dateTime;
-	int creatorID;
-	int quizID;
-	int categoryID;
-	static Object[] arr = new Object[8];
+	static String columns = "(quizName, description, random, correction, onePage, date, creatorID, categoryID)";
+	static String tableName = "quizzes";
 
-	public QuizManager(Quiz qz) {
-		this.quizName = qz.getName();
-		this.description = qz.getDescription();
-		this.random = qz.getRandom();
-		this.correction = qz.getCorrection();
-		this.onePage = qz.getOnePage();
-		this.dateTime = Calendar.getInstance().getTime();
-		this.creatorID = qz.getCreatorID();
-		this.categoryID = qz.getCategoryID();
-		arr[0] = quizName;
-		arr[1] = description;
-		if (random)
+	public static void insert(Quiz qz, Connection con) {
+		Object[] arr = new Object[8];
+		arr[0] = qz.getName();
+		arr[1] = qz.getDescription();
+		if (qz.getRandom())
 			arr[2] = new Command("true");
 		else
 			arr[2] = new Command("false");
-		if (correction)
+		if (qz.getCorrection())
 			arr[3] = new Command("true");
 		else
 			arr[3] = new Command("false");
-		if (onePage)
+		if (qz.getOnePage())
 			arr[4] = new Command("true");
 		else
 			arr[4] = new Command("false");
 		arr[5] = new Command("now()");
-		arr[6] = creatorID;
-		arr[7] = categoryID;
-	}
-
-	public void insertQuiz(Quiz qz, Connection con) {
+		arr[6] = qz.getCreatorID();
+		arr[7] = qz.getCategoryID();
+		
 		insert(con, tableName, columns, arr);
-		newsFeedManager.postCreatedQuizNews(con, arr[6], arr[0]);
+//		newsFeedManager.postCreatedQuizNews(con, arr[6], arr[0]);
 	}
 
 	public Quiz getQuizByQuizID(Connection con, int quizID) {

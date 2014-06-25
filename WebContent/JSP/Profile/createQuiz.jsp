@@ -11,9 +11,9 @@ Quiz c = (Quiz)request.getAttribute("quiz");
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Create Quiz</title>
 	<link rel="stylesheet" type="text/css" href="/QuizWebsite/css/design.css">
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/header-footer.css">
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/profile-style.css">
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/createQuiz.css">
+	<link rel="stylesheet" type="text/css" href="/QuizWebsite/css/header-footer.css">
+	<link rel="stylesheet" type="text/css" href="/QuizWebsite/css/profile-style.css">
+	<link rel="stylesheet" type="text/css" href="/QuizWebsite/css/createQuiz.css">
 </head>
 <body>
 	<div class="wrapper">
@@ -85,8 +85,8 @@ Quiz c = (Quiz)request.getAttribute("quiz");
 										<label class="answer-label">Answers</label>
 										<div class="answer-input">
 											<label>
-												<input type="text" name="answer1" placeholder="Answer 1" autocomplete="off">
-												<input id="radio1" type="radio" name="radio1" class="none" checked="checked">
+												<input type="text" name="answer1_1" placeholder="Answer 1" autocomplete="off">
+												<input id="radio1" type="radio" name="radio1" class="none" value="1" checked="checked">
 												<a id="add1" href="#" class="answer-add">Add answer</a>
 											</label>
 										</div>
@@ -95,7 +95,7 @@ Quiz c = (Quiz)request.getAttribute("quiz");
 							</div>
 						</div>
 						<div class="questions-footer">
-							<input id="n-question" type="hidden">
+							<input id="n-question" type="hidden" name="n-question">
 							<label id="add" class="add-span">Add </label>
 							<a id="create-quiz" class="quiz-create-button">Create</a>
 						</div>

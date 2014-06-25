@@ -10,8 +10,8 @@
 	<div class="answer-full-row">
 		<label class="answer-empty-label"> </label>
 		<div class="answer-input">
-			<input type="text" name="answer<%=index %>" placeholder="Answer <%=count %>" autocomplete="off">
-			<input type="radio" name="radio<%=index %>">
+			<input type="text" name="answer<%=index %>_<%=count %>" value="<%=count %>" placeholder="Answer <%=count %>" autocomplete="off">
+			<input type="radio" name="radio<%=index %>" value="<%=count %>">
 		</div>
 	</div>
 

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Quiz {
 	private String title;
 	private String description;
-	private String category;
 	private boolean isRandom;
 	private boolean immediateCorrection;
 	private boolean onePage;
@@ -67,14 +66,6 @@ public class Quiz {
 
 	public boolean getOnePage() {
 		return onePage;
-	}
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String Categ) {
-		category = Categ;
 	}
 
 	public ArrayList<Question> getQuestions() {

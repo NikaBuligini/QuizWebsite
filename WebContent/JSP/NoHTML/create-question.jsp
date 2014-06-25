@@ -24,8 +24,8 @@
 				<label class="answer-label">Answers</label>
 				<div class="answer-input">
 					<label>
-						<input type="text" name="answer<%=index %>" placeholder="Answer 1" autocomplete="off">
-						<input id="radio<%=index %>" type="radio" name="radio<%=index %>" class="none" checked="checked">
+						<input type="text" name="answer<%=index %>_1" placeholder="Answer 1" autocomplete="off">
+						<input id="radio<%=index %>" type="radio" name="radio<%=index %>" value="1" class="none" checked="checked">
 						<a id="add<%=index %>" href="#" class="answer-add">Add answer</a>
 					</label>
 				</div>

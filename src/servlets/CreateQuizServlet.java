@@ -13,8 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.AccountManager;
+import model.Answer;
 import model.CookiesManager;
+import model.Question;
 import model.Quiz;
+import model.QuizManager;
 import model.WebVariables;
 
 /**
@@ -44,6 +47,8 @@ public class CreateQuizServlet extends HttpServlet implements WebVariables {
 	public static final String TYPE_FILL = "3";
 	public static final String TYPE_PICTURE = "4";
 	
+	private static final int DEFAULT_SCORE = 1;
+	
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -62,11 +67,41 @@ public class CreateQuizServlet extends HttpServlet implements WebVariables {
 		
 		Quiz c = createQuiz(request, con);
 		
+		String sizeStr = request.getParameter("n-question");
+		int size = Integer.parseInt(sizeStr);
 		
+		for (int i=1; i<size+1; i++) {
+			String text = request.getParameter("question" + i);
+			if (text == null)
+				text = "";
+			
+			String image = request.getParameter("image" + i);
+			if (image == null)
+				image = "";
+			
+			Question e = new Question(text, image);
+			
+			String answerStr = request.getParameter("radio" + 1);
+			int answer = Integer.parseInt(answerStr);
+			
+			for (int j=1; j<6; j++){
+				String temp = request.getParameter("answer" + i + "_" + j);
+				if (temp == null)
+					temp = "";
+				
+				int score = 0;
+				if (j == answer)
+					score = DEFAULT_SCORE;
+				Answer curr = new Answer(temp, score);
+				e.addAnswer(curr);
+			}
+			c.addQuestion(e);
+		}
 		
+		QuizManager.insert(c, con);
 		
-//		RequestDispatcher dispatcher = request.getRequestDispatcher(JSP_CREATE);
-//		dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/QuizWebsite/profile");
+		dispatcher.forward(request, response);
 	}
 	
 	
