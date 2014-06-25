@@ -14,9 +14,8 @@
 Connection con = (Connection) config.getServletContext().getAttribute(WebVariables.CONNECTION);
 String s = request.getParameter(WebVariables.VIEW);
 int ID = Integer.parseInt(s);
-AchievementManager manager = new AchievementManager();
-ArrayList<ArrayList<Object>> arrAchiev = manager.totalAchievements(con);
-int achievementsDone = manager.numOfAchievements(con,ID);
+ArrayList<ArrayList<Object>> arrAchiev = AchievementManager.totalAchievements(con);
+int achievementsDone = AchievementManager.numOfAchievements(con,ID);
 int friends = FriendManager.getFriends(con,ID).size();
 int tmp =0;
 int progress = 0;

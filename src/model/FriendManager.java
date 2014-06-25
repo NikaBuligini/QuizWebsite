@@ -62,15 +62,42 @@ public class FriendManager extends Manager{
 		values[0] = from;
 		values[1] = to;
 		
+		insertIntoNewsFeed(con,to,from);
 		insert(con, FRIENDS_TABLE, FRIENDS_COLUMNS, values);
 		
 		values[0] = to;
 		values[1] = from;
 		
 		insert(con, FRIENDS_TABLE, FRIENDS_COLUMNS, values);
+		
 		deleteRequest(con, e);
 	}
 	
+	private static void insertIntoNewsFeed(Connection con, int to, int from) {
+		ArrayList<Integer> friends = getFriends(con, to);
+		String text = " became friends with ";
+		String columns = "(userID,text,subjectID,objectID)";
+		Object[] values = new Object[4];
+		values[1] = text;
+		values[2] = to;
+		values[3] = from;
+		for(int i=0; i<friends.size();i++){
+			values[0] = i;
+			insert(con, "newsFeed", columns, values);
+		}
+		
+		values[2] = from;
+		values[3] = to;
+		
+		friends = getFriends(con, from);
+		for(int i=0; i<friends.size();i++){
+			values[0] = i;
+			insert(con, "newsFeed", columns, values);
+		}
+	}
+
+	
+
 	public static ArrayList<Integer> getFriends(Connection con, int userID) {
 		ArrayList<ArrayList<Object>> list = getMultipleRows(con, FRIENDS_TABLE, FRIENDS_USER_C, userID, FRIENDS_N_COL);
 		

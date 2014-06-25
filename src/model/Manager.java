@@ -301,7 +301,7 @@ public class Manager {
 				query += (Integer) obj;
 			else if (obj instanceof String)
 				query += "'" + (String) obj + "'";
-			else if(obj instanceof Command)
+			else if (obj instanceof Command)
 				query += obj.toString();
 			else
 				return null;
@@ -348,6 +348,18 @@ public class Manager {
 			return null;
 
 		return "DELETE FROM " + table + " WHERE " + column + "=" + val;
+	}
+	
+	protected static ArrayList<Object> getAllRowsByID(Connection con, String tablename, int userID, int rowSize){
+		ArrayList<Object> arr = new ArrayList<Object>();
+		ArrayList<ArrayList<Object>> allRows = getAllRows(con, tablename, rowSize);
+		for (int i = 0; i < allRows.size(); i++) {
+			int stringID = (int) allRows.get(i).get(0);
+			if (stringID == userID)
+				arr.add(allRows.get(i).get(1));
+		}
+		
+		return arr;
 	}
 
 }

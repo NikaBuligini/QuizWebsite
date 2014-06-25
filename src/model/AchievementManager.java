@@ -13,14 +13,7 @@ public class AchievementManager extends Manager {
 	static int[] playedQuizesAchievementStagesIDs = new int[] { 4, 5, 6 };
 
 	private static void fillArray(Connection con, int userID) {
-		arr = new ArrayList<>();
-
-		ArrayList<ArrayList<Object>> allRaws = getAllRows(con, tablename, 2);
-		for (int i = 0; i < allRaws.size(); i++) {
-			int stringID = (int) allRaws.get(i).get(0);
-			if (stringID == userID)
-				arr.add(allRaws.get(i).get(1));
-		}
+		arr = getAllRowsByID(con, tablename, userID, 2);
 
 	}
 
@@ -87,6 +80,7 @@ public class AchievementManager extends Manager {
 		if (achievementID != -1) {
 			Object[] arr = new Object[] { userID, achievementID };
 			insert(con, tablename, "(userID, achievementID)", arr);
+			insertIntoNewsFeed(con,userID,achievementID);
 		}
 	}
 
@@ -95,6 +89,7 @@ public class AchievementManager extends Manager {
 		if (achievementID != -1) {
 			Object[] arr = new Object[] { userID, achievementID };
 			insert(con, tablename, "(userID, achievementID)", arr);
+			insertIntoNewsFeed(con,userID,achievementID);
 		}
 	}
 
@@ -103,8 +98,23 @@ public class AchievementManager extends Manager {
 		if (achievementID != -1) {
 			Object[] arr = new Object[] { userID, achievementID };
 			insert(con, tablename, "(userID, achievementID)", arr);
+			insertIntoNewsFeed(con,userID,achievementID);
 		}
 	}
+
+	private static void insertIntoNewsFeed(Connection con, int userID,
+			int achievementID) {
+		String text = " achieved ";
+		String columns = "(userID,text,subjectID,objectID)";
+		Object[] values = new Object[4];
+		values[3] = achievementID;
+		values[2] = userID;
+		values[1] = text;
+		insert(con, "newsFeed", columns, values);
+
+	}
+
+
 
 	public static ArrayList<ArrayList<Object>> totalAchievements(Connection con) {
 		ArrayList<ArrayList<Object>> raws = getAllRows(con, ACHIEVEMENTS, 4);

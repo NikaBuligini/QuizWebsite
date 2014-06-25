@@ -14,10 +14,9 @@ public class SQLTest {
 		Connection con = db.getConnection();
 
 		AccountManager.search(con, "gode go");
-		// AchievementManager.addFriendsAchievement(con, 1);
-		// Quiz qu = new Quiz("saxeli", "descr", true, false, true, true, 1, 1);
-		// QuizManager qm = new QuizManager(qu);
-		// qm.insertQuiz(qu, con);
+//		AchievementManager.addFriendsAchievement(con, 1);
+		Quiz qu = new Quiz("saxeli", "descr", true, false, true, 1, 1);
+		QuizManager.insert(qu, con);
 		
 		db.close();
 	}

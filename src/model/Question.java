@@ -1,50 +1,56 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Question {
-	public List<String> answer = new ArrayList<String>();
-	String question;
-	String ImageName;
-
-	Question(String text) {
-		question = text;
+	
+	private ArrayList<Answer> answers;
+	private String text;
+	private String image;
+	
+	public Question(String text, String image) {
+		this.text = text;
+		this.image = image;
+		answers = new ArrayList<Answer>();
 	}
 	
 	
-	Question(String text, String Image) {
-		question = text;
-		ImageName=Image;
-		
+	public void setQuestion(String newText) {
+		this.text = newText;
 	}
 	
-	
-	void setQuestion(String text){
-		question=text;
-	}
-	
-	String getQuestion(String text ){
+	public String getQuestion() {
 		return text; 
 	}
 	
-	void setImage(String Image){
-		ImageName=Image;
+	public void setImage(String image) {
+		this.image = image;
 	}
 	 
-	String getImage(String Image){
-		return Image;
+	public String getImage() {
+		return image;
+	}
+	
+	public Answer getAnswer(int index) {
+		if (index < 0 || index >= answers.size())
+			return null;
+		
+		return answers.get(index);
 	}
 	
 	
-	boolean IsAnswer(String t){
-		for(int i=0; i<=answer.size(); i++){
-			if(t.equals(answer.get(i))) return true;
-		}
-		return false;
+	public void setAnswer(int index, Answer e) {
+		if (index < 0 || index >= answers.size())
+			return;
+		
+		answers.set(index, e);
 	}
 	
-	void getAnswer(){
-		answer.get(0);
+	public void addAnswer(Answer e) {
+		answers.add(e);
+	}
+	
+	public ArrayList<Answer> getAllAnswers() {
+		return answers;
 	}
 }
