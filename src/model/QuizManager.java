@@ -2,9 +2,10 @@ package model;
 
 import java.util.ArrayList;
 import java.sql.Connection;
+import java.sql.Date;
 
 public class QuizManager extends Manager {
-<<<<<<< HEAD
+
 	static String columns = "(quizName, description, random, correction, onePage, practice, date, creatorID, categoryID)";
 	static String tableName = "quizzes";
 	String quizName;
@@ -14,7 +15,7 @@ public class QuizManager extends Manager {
 	boolean onePage;
 	boolean practice;
 	Date dateTime;
-	int creatorID;
+	static int creatorID;
 	int quizID;
 	int categoryID;
 	static Object[] arr = new Object[9];
@@ -25,23 +26,17 @@ public class QuizManager extends Manager {
 		this.random = qz.getRandom();
 		this.correction = qz.getCorrection();
 		this.onePage = qz.getOnePage();
-		this.practice = qz.getPractice();
-		this.dateTime = Calendar.getInstance().getTime();
+		//this.practice = qz.getPractice();
+		//this.dateTime = Calendar.getInstance().getTime();
 		this.creatorID = qz.getCreatorID();
 		this.categoryID = qz.getCategoryID();
-		arr[0] = quizName;
-		arr[1] = description;
-		if (random)
-=======
-	static String columns = "(quizName, description, random, correction, onePage, date, creatorID, categoryID)";
-	static String tableName = "quizzes";
 
+	}
 	public static void insert(Quiz qz, Connection con) {
 		Object[] arr = new Object[8];
 		arr[0] = qz.getName();
 		arr[1] = qz.getDescription();
 		if (qz.getRandom())
->>>>>>> f6b9cf9656f2478fa0db4d520f9f2a4a46e76aa0
 			arr[2] = new Command("true");
 		else
 			arr[2] = new Command("false");
@@ -93,6 +88,10 @@ public class QuizManager extends Manager {
 			}
 		return Name;
 		
+	}
+	public static void deleteQuiz(Connection con, int ID){
+		delete(con, tableName, columns, creatorID);
+	
 	}
 
 }

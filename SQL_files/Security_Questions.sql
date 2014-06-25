@@ -16,7 +16,7 @@ insert into users(email,pass) values ('zoroscxeni','cxeni');
 insert into friends(userID,friendID) values(1,2);
 
 insert into additional_info (userID, firstName, lastName, gender, questionID, answer)
-		values ('1', 'nika', 'buligini', 1, 6, 'ki');
+		values ('3', 'noe', 'buligini', 1, 6, 'ki');
 
 insert into categories(type) value ('sport');
 insert into categories(type) value ('skami');
@@ -41,11 +41,11 @@ insert into quizzesandusers(userID,quizID) values (1,1);
 insert into quizzesandusers(userID,quizID) values (1,1);
 insert into quizzesandusers(userID,quizID) values (1,1);
 
-insert into usersAndMadeQuizes(userID,quizID) values (1,1);
-insert into usersAndMadeQuizes(userID,quizID) values (1,1);
-insert into usersAndMadeQuizes(userID,quizID) values (1,1);
-insert into usersAndMadeQuizes(userID,quizID) values (1,1);
-insert into usersAndMadeQsuizes(userID,quizID) values (1,1);
+insert into playedQuizes(userID,quizID) values (1,1);
+insert into playedQuizes(userID,quizID) values (1,1);
+insert into playedQuizes(userID,quizID) values (1,1);
+insert into playedQuizes(userID,quizID) values (1,1);
+insert into playedQuizes(userID,quizID) values (1,1);
 
 insert into achievementsAndUsers(userID,achievementID) values (1,1);
 insert into achievementsAndUsers(userID,achievementID) values (1,2);
@@ -55,5 +55,10 @@ insert into achievementsAndUsers(userID,achievementID) values (1,5);
 
 select * from achievementsAndUsers;
 select * from achievements;
+select * from users;
 
 select * from quizzes join friends on friends.friendID = quizzes.creatorID where friends.userID = 1 order by quizzes.date asc limit 5;
+
+
+insert into newsFeed (userID,text,subjectID,objectID) values (1, " misalma " , 2, 3);
+insert into newsFeed (userID,text,subjectID,objectID) values (2, " gamarjobao " , 1, 3);

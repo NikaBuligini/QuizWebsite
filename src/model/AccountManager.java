@@ -107,7 +107,6 @@ public class AccountManager extends Manager {
 		String answer = (String)row.get(5);
 		String image = (String)row.get(6);
 		
-		
 		User e = new User(firstname, lastname, genderID, questionID, answer, image);
 		e.setID(id);
 		return e;

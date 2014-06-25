@@ -20,6 +20,8 @@ import model.QuizManager;
 import model.User;
 import model.WebVariables;
 import model.Manager;
+import model.Quiz;
+
 
 /**
  * Servlet implementation class DeleteYourQuizesServlet
@@ -58,6 +60,7 @@ public class DeleteYourQuizesServlet extends HttpServlet implements WebVariables
 		QuizName = QuizManager.getQuizesNameByCreatorID(con, c.getID());
 		
 		QuizName.remove(0);
+		QuizManager.deleteQuiz(con, c.getID());
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("deleteyourquizes.jsp");

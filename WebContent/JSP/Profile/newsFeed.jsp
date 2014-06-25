@@ -19,26 +19,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 <body>
-	<div>
+	
+	<div id="newsFeed">
 		<%
 		for(int i=0; i<arr.size();i++){
-			int userID = (Integer)arr.get(i).get(4);
-			String name = AccountManager.getUser(con, userID).getFirstName() + " " + AccountManager.getUser(con, userID).getLastName();
-			int objectID = (Integer)arr.get(i).get(5);
-			String text = (String)arr.get(i).get(3);
+			int userID = (Integer)arr.get(i).get(3);
+			String name = AccountManager.getUser(con, userID).getFullName();
+			int objectID = (Integer)arr.get(i).get(4);
+			String text = (String)arr.get(i).get(2);
 			String objectName = "";
 			if(text.equals(" became friends with ")){
-				objectName = AccountManager.getUser(con, objectID).getFirstName() + " " + AccountManager.getUser(con, objectID).getLastName();
+				objectName = AccountManager.getUser(con, objectID).getFullName();
 			}else{
 				objectName = newsFeedManager.getString(con, "quizzes", "ID", objectID, "name");
 			}
 		%>
-			<h1>
-				newsFeed :
-				<div>
-					<%= name + text + objectName%>
-				</div>
-			</h1>
+					<div class="feed-row">
+						<div class="feed-item">
+							<%= name + text + objectName%>
+						</div>
+					</div>
 		<%
 		}
 		%>
