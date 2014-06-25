@@ -63,7 +63,7 @@ public class CommentServlet extends HttpServlet  implements WebVariables{
 		int quiz_id = Integer.parseInt(request.getParameter(QUIZ_ID));
 		int user_id = Integer.parseInt(request.getParameter(USER_ID));
 		
-		HttpSession session = request.getSession();
+		//HttpSession session = request.getSession();
 		
 		CommentManager.add(con, text, user_id, quiz_id);
 		doGet(request,response);
