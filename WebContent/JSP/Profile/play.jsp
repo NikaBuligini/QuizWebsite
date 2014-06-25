@@ -15,7 +15,7 @@ Connection con = (Connection) config.getServletContext().getAttribute(WebVariabl
 String quizStr = request.getParameter("id");
 int ID = Integer.parseInt(quizStr);
 
-Quiz c = new Quiz("dagerxa", "kai qvizia raaa", false, false, true, 1, 1);
+Quiz c = new Quiz("title", "description", false, false, false, 1, 1);
 
 /*
 //Quiz c = QuizManager.getQuizByQuizID(con, ID);

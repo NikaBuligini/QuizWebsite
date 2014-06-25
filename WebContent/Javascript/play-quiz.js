@@ -7,6 +7,17 @@ $(document).ready(function() {
 		$('#next' + i).val(i);
 		
 		if (page){
+			$('#next' + i).click(function() {
+				var index = $(this).val();
+				if ($('#correct' + index).val() == $('#answer' + index).val()) {
+					$('#score').text('swori pasuxli');
+				}
+				$('#question' + index).addClass('none');
+				if (index == 9) {
+					$('#score').removeClass('none');
+				}
+			});
+		} else {
 			if (i != 1) {
 				$('#question' + i).addClass('none');
 			}
@@ -16,19 +27,10 @@ $(document).ready(function() {
 				if ($('#correct' + index) == $('#answer' + index)) {
 					$('#score').text('swori pasuxli');
 				}
+				$('#question' + index).addClass('none');
+				index++;
 				$('#question' + index).removeClass('none');
-				if (index == 9) {
-					$('#score').removeClass('none');
-				}
-			});
-		} else {
-			$('#next' + i).click(function() {
-				var index = $(this).val();
-				if ($('#correct' + index) == $('#answer' + index)) {
-					$('#score').text('swori pasuxli');
-				}
-				$('#question' + index+1).addClass('none');
-				if (index == 9) {
+				if (index == 10) {
 					$('#score').removeClass('none');
 				}
 			});

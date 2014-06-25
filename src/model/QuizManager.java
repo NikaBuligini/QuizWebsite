@@ -3,10 +3,13 @@ package model;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class QuizManager extends Manager {
 
-	static String columns = "(quizName, description, random, correction, onePage, practice, date, creatorID, categoryID)";
+	static String columns = "(quizName, description, random, correction, onePage, date, creatorID, categoryID)";
 	static String tableName = "quizzes";
 	String quizName;
 	String description;
@@ -53,9 +56,76 @@ public class QuizManager extends Manager {
 		arr[7] = qz.getCategoryID();
 		
 		insert(con, tableName, columns, arr);
+//		int ID = getQuizIDByTitle(con, qz.getName());
+//		
+//		System.out.println(ID);
+//		
+//		ArrayList<Question> questions = qz.getQuestions();
+//		
+//		for (int i=0; i<questions.size(); i++) {
+//			Object[] values = new Object[2];
+//			values[0] = questions.get(i).getQuestion();
+//			values[1] = ID;
+//			
+//			System.out.println("Question: " + values[0] + ", " + values[1]);
+//			
+//			insert(con, "questions", "(question, quizID)", values);
+//			
+//			int questionID = getQuestionID(con, questions.get(i), ID);
+//			
+//			ArrayList<Answer> answers = questions.get(i).getAllAnswers();
+//			for (int j=0;j<answers.size(); j++){
+//				Answer c = answers.get(j);
+//				
+//				Object[] currAnswers = new Object[4];
+//				currAnswers[0] = c.getAnswer();
+//				currAnswers[1] = c.getScore();
+//				currAnswers[2] = questionID;
+//				currAnswers[3] = qz.getCreatorID();
+//				
+//				insert(con, "answers", "(answer, score, questionID, authorID", currAnswers);
+//			}
+//		}
+		
+		
 //		newsFeedManager.postCreatedQuizNews(con, arr[6], arr[0]);
 	}
+	
+	private static int getQuestionID(Connection con, Question q, int quizID) {
+		String SQLQuery = "SELECT ID FROM questions WHERE quizID=" + quizID + 
+				" AND question=" + q.getQuestion();
+		Statement stmt = null;
+		ResultSet rs = null;
 
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(SQLQuery);
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+
+		int result = 0;
+		try {
+			while (rs.next())
+				result = rs.getInt("ID");
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+
+		try {
+			stmt.close();
+			rs.close();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+
+		return result;
+	}
+	
+	private static int getQuizIDByTitle(Connection con, String title) {
+		return getSingleInt(con, "quizzes", "quizName", title, "ID");
+	}
+	
 	public static Quiz getQuizByQuizID(Connection con, int quizID) {
 		ArrayList<Object> ar = getSingleRow(con, tableName, "ID", quizID, 10);
 		Quiz qz = new Quiz((String) ar.get(0), (String) ar.get(1),

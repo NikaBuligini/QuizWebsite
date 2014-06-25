@@ -1,9 +1,9 @@
 package model;
 
 public class Answer {
-	static String answer;
-	static int score;
-	static int ID;
+	private String answer;
+	private int score;
+	private int ID;
 	
 	public Answer(String ans, int scr){
 		answer = ans;
@@ -11,27 +11,28 @@ public class Answer {
 	}
 	
 	
-	public static void setAnswer(String newAnswer){
+	public void setAnswer(String newAnswer){
 		answer = newAnswer;
 	}
 	
-	public static String getAnswer(){
+	public String getAnswer(){
 		return answer;
 	}
 	
-	public static int getScore(){
+	public int getScore(){
 		return score;
 	}
 	
-	public static void setScore(int scr){
+	public void setScore(int scr){
 		score = scr;
 	}
 	
-	public static void setID(int id){
+	public void setID(int id){
 		ID = id;
 	}
 	
-	public static int getID(){
+	public int getID(){
 		return ID;
 	}
+
 }
