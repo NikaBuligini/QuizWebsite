@@ -2,11 +2,36 @@ package model;
 
 import java.util.ArrayList;
 import java.sql.Connection;
+import java.sql.Date;
 
 public class QuizManager extends Manager {
-	static String columns = "(quizName, description, random, correction, onePage, date, creatorID, categoryID)";
-	static String tableName = "quizzes";
 
+	static String columns = "(quizName, description, random, correction, onePage, practice, date, creatorID, categoryID)";
+	static String tableName = "quizzes";
+	String quizName;
+	String description;
+	boolean random;
+	boolean correction;
+	boolean onePage;
+	boolean practice;
+	Date dateTime;
+	static int creatorID;
+	int quizID;
+	int categoryID;
+	static Object[] arr = new Object[9];
+
+	public QuizManager(Quiz qz) {
+		this.quizName = qz.getName();
+		this.description = qz.getDescription();
+		this.random = qz.getRandom();
+		this.correction = qz.getCorrection();
+		this.onePage = qz.getOnePage();
+		//this.practice = qz.getPractice();
+		//this.dateTime = Calendar.getInstance().getTime();
+		this.creatorID = qz.getCreatorID();
+		this.categoryID = qz.getCategoryID();
+
+	}
 	public static void insert(Quiz qz, Connection con) {
 		Object[] arr = new Object[8];
 		arr[0] = qz.getName();
@@ -39,7 +64,7 @@ public class QuizManager extends Manager {
 		return qz;
 	}
 
-	public ArrayList<Quiz> getQuizesByCreatorID(Connection con, int creatorID) {
+	public static ArrayList<Quiz> getQuizesByCreatorID(Connection con, int creatorID) {
 		ArrayList<ArrayList<Object>> ar = getMultipleRows(con, tableName,
 				"creatorID", creatorID, 10);
 		ArrayList<Quiz> quizzes = new ArrayList<Quiz>();
@@ -50,7 +75,23 @@ public class QuizManager extends Manager {
 					(int) ar.get(i).get(6), (int) ar.get(i).get(7));
 			quizzes.add(qz);
 		}
+		
 		return quizzes;
+	}
+	
+	public static ArrayList <String> getQuizesNameByCreatorID(Connection con, int ID){
+		ArrayList<String> Name = new ArrayList<String>();
+		int k= getQuizesByCreatorID(con, ID ).size();
+			for (int i=0; i<k; i++){
+				String Quizname= getQuizesByCreatorID(con, ID).get(i).getName();
+				Name.add(Quizname);
+			}
+		return Name;
+		
+	}
+	public static void deleteQuiz(Connection con, int ID){
+		delete(con, tableName, columns, creatorID);
+	
 	}
 
 }

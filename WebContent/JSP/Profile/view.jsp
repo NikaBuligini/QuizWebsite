@@ -52,11 +52,7 @@ if (c != null)
 						</div>
 						<div class="feed-content">
 							<div>
-								<div class="feed-row">
-									<div class="feed-item">
-										Test
-									</div>
-								</div>
+								<jsp:include page="/JSP/Profile/newsFeed.jsp"></jsp:include>
 							</div>
 						</div>
 					</div>

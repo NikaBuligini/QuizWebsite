@@ -44,10 +44,10 @@ public class newsFeedManager extends Manager {
 		}
 	}
 	
+	
 	public static ArrayList<ArrayList<Object>> getNews (Connection con, int userID){
 		ArrayList<ArrayList<Object>> temp = getAllRows(con, tableName, 5);
 		ArrayList<ArrayList<Object>> arr = new ArrayList<ArrayList<Object>>();
-		
 		for(int i=0;i<temp.size();i++){
 			int tempID = (Integer)temp.get(i).get(1);
 			if(tempID == userID)

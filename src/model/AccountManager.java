@@ -80,6 +80,10 @@ public class AccountManager extends Manager {
 		
 	}
 	
+	public static void updates(Connection con, String table, String whatUpdate,  Object value, String whereCol, Object equals){
+		update(con, table, whatUpdate, value, whereCol, equals);
+	}
+	
 	public static int getIDByEmail(Connection con, String email){
 		return getSingleInt(con, USERS_TABLE, USERS_EMAIL_C, email, USERS_ID_C);
 	}
@@ -102,7 +106,6 @@ public class AccountManager extends Manager {
 		int questionID = (int)row.get(4);
 		String answer = (String)row.get(5);
 		String image = (String)row.get(6);
-		
 		
 		User e = new User(firstname, lastname, genderID, questionID, answer, image);
 		e.setID(id);
