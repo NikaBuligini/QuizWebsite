@@ -12,8 +12,13 @@ public class Quiz {
 	private int CreatorID;
 	private int CategoryID;
 
-	public Quiz(String title, String description, boolean random, boolean correction, 
-			boolean onePage, int creatorID, int categoryID) {
+	public Quiz(String title, 
+		    String description, 
+		    boolean random, 
+		    boolean correction,
+		    boolean onePage, 
+		    int creatorID, 
+		    int categoryID) {
 		this.title = title;
 		this.description = description;
 		this.isRandom = random;
